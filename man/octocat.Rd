@@ -9,6 +9,8 @@ octocat(string, sep = "", last = "\\n")
 \arguments{
 \item{string}{A character vector of length 1. This string will be terminated
 with a new line and printed with \code{\link[base:cat]{base::cat()}}.}
+
+\item{sep}{a character vector of strings to append after each element.}
 }
 \value{
 \code{string} invisibly

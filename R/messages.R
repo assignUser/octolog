@@ -10,7 +10,7 @@ octo_debug <- function(message) {
     invisible(message)
 }
 
-#' @rdname octo_abort 
+#' @rdname octo_abort
 #' @export
 octo_inform <- function(message,
                         ...,
@@ -26,7 +26,7 @@ octo_inform <- function(message,
     invisible(message)
 }
 
-#' @rdname octo_abort 
+#' @rdname octo_abort
 #' @export
 octo_warn <- function(message,
                       ...,
@@ -45,12 +45,12 @@ octo_warn <- function(message,
 
 
 #' Signal conditions that create Github annotations.
-#' 
+#'
 #' These functions are a drop-in replacements for [cli::cli_warn()] and friends.
 #' If used while R is running within a Github Action, the conditions will be
 #' signaled in such a way that they will create annotations on the files
 #' affected.
-#'  
+#'
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]

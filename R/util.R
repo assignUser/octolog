@@ -2,6 +2,7 @@ on_github <- function() {
     tolower(Sys.getenv("GITHUB_ACTIONS")) == "true"
 }
 
+
 #' "cat" a string if on Github
 #'
 #' Prints a `string`` if on Github, detected via env var `GITHUB_ACTIONS ==
@@ -9,6 +10,7 @@ on_github <- function() {
 #'
 #' @param string A character vector of length 1. This string will be terminated
 #'   with a new line and printed with [base::cat()].
+#' @inheritParams base::cat
 #' @return `string` invisibly
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
@@ -48,6 +50,7 @@ prepare_string <- function(string) {
 #' c("100% This is some output with \n", "a new line") %>% encode_string()
 #' @noRd
 encode_string <- function(string) {
+    utils::globalVariables(".")
     string %>%
         gsub("%", "%25", .) %>%
         gsub("\n", "%0A", .) %>%
@@ -57,20 +60,21 @@ encode_string <- function(string) {
 #' Enable Colors on Github Actions
 #'
 #' This will set the option `cli.num_colors` to `color`
-#' @param color An integer giving the number of colors. Default 24bit.
+#' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @return `TRUE` if the option was set, `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
 #' enable_github_colors()
 #' @export
-enable_github_color <- function(color = as.integer(256^3)) {
+enable_github_colors <- function(n_colors = as.integer(256^3)) {
     if (on_github()) {
-        ct <- Sys.getenv("COLORTERM", unset = NA_character_)
+        ct <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
         if (is.na(ct)) {
-            Sys.setenv("COLORTERM" = "truecolor")
+            Sys.setenv("R_CLI_NUM_COLORS" = n_colors)
+            Sys.setenv("R_COLORS_UNSET" = "true")
             cli::cli_alert_success("Enabled colors!")
         } else {
-            cli::cli_alert_info("{.envvar COLORTERM} already set.")
+            cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
         }
         return(TRUE)
     }
