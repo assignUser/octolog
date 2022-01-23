@@ -16,5 +16,6 @@ A character vector.
 Encodes a multiline string into one line for Github Action output.
 }
 \examples{
-c("100\% This is some output with \n", "a new line") \%>\% encode_string()
+chrs <- c("100\% This is some output with \n", "a new line")
+encode_string(chrs)
 }
