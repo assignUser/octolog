@@ -27,6 +27,7 @@ Octolog provides drop-in replacements for `cli::cli_warn` and friends:
 ```{r example}
 library(octolog)
 
+Sys.setenv(GITHUB_ACTIONS = "FALSE")
 octo_warn(c("An important warning!", i = "And a tipp how to avoid this warning."))
 
 Sys.setenv(GITHUB_ACTIONS = "TRUE")

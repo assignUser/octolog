@@ -27,15 +27,13 @@ Octolog provides drop-in replacements for `cli::cli_warn` and friends:
 
 ``` r
 library(octolog)
-```
 
-    ## ℹ `COLORTERM` already set.
-
-``` r
+Sys.setenv(GITHUB_ACTIONS = "FALSE")
 octo_warn(c("An important warning!", i = "And a tipp how to avoid this warning."))
 ```
 
-    ## ::warning ::An important warning!%0Aℹ And a tipp how to avoid this warning.
+    ## Warning: An important warning!
+    ## ℹ And a tipp how to avoid this warning.
 
 ``` r
 Sys.setenv(GITHUB_ACTIONS = "TRUE")
