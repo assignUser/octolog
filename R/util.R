@@ -48,7 +48,7 @@ prepare_string <- function(string) {
 #' @return A character vector.
 #' @examples
 #' c("100% This is some output with \n", "a new line") %>% encode_string()
-#' @noRd
+#' @export
 encode_string <- function(string) {
     . <- NULL
     # utils::globalVariables(".", package = "octolog")
