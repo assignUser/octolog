@@ -58,7 +58,7 @@
     <dl><dt>name</dt>
 <dd><p>A character vector length 1.</p></dd>
 <dt>value</dt>
-<dd><p>A single line string. Use <code>encode_string()</code> to encode a numeric
+<dd><p>A single line string. Use <code><a href="encode_string.html">encode_string()</a></code> to encode a numeric
 or multiline string.</p></dd>
 </dl></div>
     <div id="see-also">
@@ -70,7 +70,7 @@ or multiline string.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTION <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">string</span> <span class="op">&lt;-</span> <span class="st">"A multi-line \n String."</span></span>
-<span class="r-in"><span class="va">value</span> <span class="op">&lt;-</span> <span class="fu">encode_string</span><span class="op">(</span><span class="va">string</span><span class="op">)</span></span>
+<span class="r-in"><span class="va">value</span> <span class="op">&lt;-</span> <span class="fu"><a href="encode_string.html">encode_string</a></span><span class="op">(</span><span class="va">string</span><span class="op">)</span></span>
 <span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in encode_string(string):</span> could not find function "encode_string"</span>
 <span class="r-in"><span class="fu">octo_set_output</span><span class="op">(</span><span class="st">"importan-value"</span>, <span class="va">value</span><span class="op">)</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
