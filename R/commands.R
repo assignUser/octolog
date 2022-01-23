@@ -16,6 +16,7 @@ octo_start_group <- function(name) {
 }
 
 #' @rdname octo_start_group
+#' @export
 octo_end_group <- function() {
     octocat("::endgroup::")
 }
@@ -77,6 +78,7 @@ octo_stop_commands <- function() {
 }
 
 #' @rdname octo_stop_commands
+#' @export
 octo_start_commands <- function(token) {
     glue("::{token}::") %>% octocat()
 }
