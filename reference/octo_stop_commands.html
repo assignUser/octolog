@@ -18,7 +18,7 @@ octo_start_commands() is called with the correct token."><!-- mathjax --><script
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">octolog</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -52,7 +52,9 @@ octo_start_commands() is called with the correct token."><!-- mathjax --><script
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">octo_stop_commands</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">octo_stop_commands</span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu">octo_start_commands</span><span class="op">(</span><span class="va">token</span><span class="op">)</span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -67,7 +69,7 @@ octo_start_commands() is called with the correct token."><!-- mathjax --><script
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTION <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTIONS <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">tk</span> <span class="op">&lt;-</span> <span class="fu">octo_stop_commands</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-in"><span class="co"># Commands will not be parsed by Github Actions</span></span>
 <span class="r-in"><span class="fu">octo_start_commands</span><span class="op">(</span><span class="va">tk</span><span class="op">)</span></span>
