@@ -16,13 +16,25 @@
     <loc>https://assignuser.github.io/octolog/index.html</loc>
   </url>
   <url>
-    <loc>https://assignuser.github.io/octolog/reference/enable_github_color.html</loc>
+    <loc>https://assignuser.github.io/octolog/reference/enable_github_colors.html</loc>
   </url>
   <url>
     <loc>https://assignuser.github.io/octolog/reference/index.html</loc>
   </url>
   <url>
     <loc>https://assignuser.github.io/octolog/reference/octo_abort.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_mask_value.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_set_output.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_start_group.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_stop_commands.html</loc>
   </url>
   <url>
     <loc>https://assignuser.github.io/octolog/reference/octocat.html</loc>
