@@ -4,11 +4,14 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7281-3989"))
-Description: Octolog makes it easy to create beautiful output in Github
+Description: Octolog provides drop-in replacementsmakes it easy to create beautiful output in Github
     Action logs and use workflow commands in R.
 License: MIT + file LICENSE
+Imports: 
+    cli,
+    glue,
+    magrittr,
+    rlang
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
-Imports: 
-    magrittr
