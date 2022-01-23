@@ -8,7 +8,7 @@ octocat(string, last = "\\n")
 }
 \arguments{
 \item{string}{A character vector of length 1. This string will be terminated
-with a new line and printed with \code{\link[base:cat]{base::cat()}}.}
+with \code{last} and printed with \code{\link[base:cat]{base::cat()}}.}
 
 \item{last}{Element to terminate string. Default is \verb{\\n}.}
 }
