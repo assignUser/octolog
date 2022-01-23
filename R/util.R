@@ -5,25 +5,25 @@ on_github <- function() {
 
 #' "cat" a string if on Github
 #'
-#' Prints a `string`` if on Github, detected via env var `GITHUB_ACTIONS ==
+#' Prints a `string` if on Github, detected via env var `GITHUB_ACTIONS ==
 #' 'true'`.
 #'
 #' @param string A character vector of length 1. This string will be terminated
-#'   with a new line and printed with [base::cat()].
-#' @inheritParams base::cat
+#'   with `last` and printed with [base::cat()].
+#' @param last Element to terminate string. Default is `\n`.
 #' @return `string` invisibly
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
 #' octocat("::error ::Something is wrong")
-#' Sys.setenv(GITHUB_ACTIONS = "")
+#' Sys.unsetenv("GITHUB_ACTIONS")
 #' octocat("::error ::Something is wrong")
 #'
 #' @export
-octocat <- function(string, sep = "", last = "\n") {
+octocat <- function(string, last = "\n") {
     if (on_github()) {
         stopifnot(is.character(string))
         stopifnot(length(string) == 1)
-        cat(string, last, sep = sep)
+        cat(string, last)
     }
 
     invisible(string)
@@ -50,7 +50,7 @@ prepare_string <- function(string) {
 #' c("100% This is some output with \n", "a new line") %>% encode_string()
 #' @noRd
 encode_string <- function(string) {
-    utils::globalVariables(".")
+    utils::globalVariables(".", package = "octolog")
     string %>%
         gsub("%", "%25", .) %>%
         gsub("\n", "%0A", .) %>%

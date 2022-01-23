@@ -5,7 +5,7 @@
 }
 
 .onUnload <- function(libname, pkgname) { # nolint
-    if (!is.null(Sys.getenv("R_COLORS_UNSET", NULL))) {
+    if (!is.na(Sys.getenv("R_COLORS_UNSET", NA_character_))) {
         Sys.unsetenv("R_COLORS_UNSET")
         Sys.unsetenv("R_CLI_NUM_COLORS")
     }

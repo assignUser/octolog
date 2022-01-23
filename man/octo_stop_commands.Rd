@@ -2,9 +2,12 @@
 % Please edit documentation in R/commands.R
 \name{octo_stop_commands}
 \alias{octo_stop_commands}
+\alias{octo_start_commands}
 \title{Stop workflow commands}
 \usage{
 octo_stop_commands()
+
+octo_start_commands(token)
 }
 \arguments{
 \item{token}{A unique token used to restart workflow command parsing.}
@@ -17,7 +20,7 @@ This will stop github from processing any workflow commands until
 \code{\link[=octo_start_commands]{octo_start_commands()}} is called with the correct \code{token}.
 }
 \examples{
-Sys.setenv(GITHUB_ACTION = "true")
+Sys.setenv(GITHUB_ACTIONS = "true")
 tk <- octo_stop_commands()
 # Commands will not be parsed by Github Actions
 octo_start_commands(tk)

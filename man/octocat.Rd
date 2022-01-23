@@ -4,25 +4,24 @@
 \alias{octocat}
 \title{"cat" a string if on Github}
 \usage{
-octocat(string, sep = "", last = "\\n")
+octocat(string, last = "\\n")
 }
 \arguments{
 \item{string}{A character vector of length 1. This string will be terminated
 with a new line and printed with \code{\link[base:cat]{base::cat()}}.}
 
-\item{sep}{a character vector of strings to append after each element.}
+\item{last}{Element to terminate string. Default is \verb{\\n}.}
 }
 \value{
 \code{string} invisibly
 }
 \description{
-Prints a \verb{string`` if on Github, detected via env var }GITHUB_ACTIONS ==
-'true'`.
+Prints a \code{string} if on Github, detected via env var \code{GITHUB_ACTIONS == 'true'}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "true")
 octocat("::error ::Something is wrong")
-Sys.setenv(GITHUB_ACTIONS = "")
+Sys.unsetenv("GITHUB_ACTIONS")
 octocat("::error ::Something is wrong")
 
 }
