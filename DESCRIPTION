@@ -18,3 +18,5 @@ RoxygenNote: 7.1.2
 URL: https://github.com/assignUser/octolog,
     https://assignuser.github.io/octolog
 BugReports: https://github.com/assignUser/octolog/issues
+Suggests: 
+    covr

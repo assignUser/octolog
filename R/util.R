@@ -50,7 +50,8 @@ prepare_string <- function(string) {
 #' c("100% This is some output with \n", "a new line") %>% encode_string()
 #' @noRd
 encode_string <- function(string) {
-    utils::globalVariables(".", package = "octolog")
+    . <- NULL
+    # utils::globalVariables(".", package = "octolog")
     string %>%
         gsub("%", "%25", .) %>%
         gsub("\n", "%0A", .) %>%

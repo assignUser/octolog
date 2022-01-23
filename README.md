@@ -8,6 +8,8 @@
 [![R-CMD-check](https://github.com/assignUser/octolog/workflows/R-CMD-check/badge.svg)](https://github.com/assignUser/octolog/actions)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![Codecov test
+coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)](https://app.codecov.io/gh/assignUser/octolog?branch=main)
 <!-- badges: end -->
 
 Octolog makes it easy to create conditions that create annotations in
