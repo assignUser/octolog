@@ -9,15 +9,27 @@
 \usage{
 octo_debug(message)
 
-octo_inform(message, ..., trace = rlang::trace_back(), .envir = parent.frame())
+octo_inform(
+  message,
+  ...,
+  trace = rlang::trace_back(),
+  title = NULL,
+  .envir = parent.frame()
+)
 
-octo_warn(message, ..., trace = rlang::trace_back(), .envir = parent.frame())
+octo_warn(
+  message,
+  ...,
+  trace = rlang::trace_back(),
+  title = NULL,
+  .envir = parent.frame()
+)
 
 octo_abort(
   message,
   ...,
-  title = NULL,
   trace = rlang::trace_back(),
+  title = NULL,
   .envir = parent.frame(),
   .fail_fast = getOption("octolog.fail_fast") \%||\% TRUE
 )
@@ -31,9 +43,9 @@ octo_abort(
 \item{trace}{An \code{\link[rlang:trace_back]{rlang::trace_back()}} will only be passed to \code{\link[rlang:abort]{rlang::abort()}}
 if not \code{\link[=missing]{missing()}}.}
 
-\item{.envir}{Environment to evaluate the glue expressions in.}
-
 \item{title}{A custom title for the Github annotation.}
+
+\item{.envir}{Environment to evaluate the glue expressions in.}
 
 \item{.fail_fast}{An error on Github will not kill the R process if this is
 set to \code{FALSE}. Use the option \code{octolog.fail_fast} to set the value

@@ -1,4 +1,5 @@
 #' @describeIn octo_abort A debug message which is only visible if the secret `ACTIONS_STEP_DEBUG` is set. For local use set option `octolog.debug = TRUE`.
+#' @export
 octo_debug <- function(message) {
     if (on_github()) {
         signal_github_condition("::debug", message)
@@ -10,9 +11,11 @@ octo_debug <- function(message) {
 }
 
 #' @rdname octo_abort 
+#' @export
 octo_inform <- function(message,
                         ...,
                         trace = rlang::trace_back(),
+                        title = NULL,
                         .envir = parent.frame()) {
     if (on_github()) {
         signal_github_condition("::notice ", message, trace, title)
@@ -24,9 +27,11 @@ octo_inform <- function(message,
 }
 
 #' @rdname octo_abort 
+#' @export
 octo_warn <- function(message,
                       ...,
                       trace = rlang::trace_back(),
+                      title = NULL,
                       .envir = parent.frame()) {
     if (on_github()) {
         signal_github_condition("::warning ", message, trace, title)
@@ -66,8 +71,8 @@ octo_warn <- function(message,
 #' @export
 octo_abort <- function(message,
                        ...,
-                       title = NULL,
                        trace = rlang::trace_back(),
+                       title = NULL,
                        .envir = parent.frame(),
                        .fail_fast = getOption("octolog.fail_fast") %||% TRUE) {
     if (on_github()) {

@@ -10,48 +10,36 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 <!-- badges: end -->
 
-The goal of octolog is to …
-
-## Installation
+Octolog makes it easy to create conditions that create annotations in
+Github Action workflows and use the other [workflow
+commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions)
+that are available. \#\# Installation
 
 You can install the development version of octolog like so:
 
 ``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
+pak::pak("assignUser/octolog")
 ```
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Octolog provides drop-in replacements for `cli::cli_warn` and friends:
 
 ``` r
 library(octolog)
-## basic example code
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+    ## ℹ `COLORTERM` already set.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+octo_warn(c("An important warning!", i = "And a tipp how to avoid this warning."))
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+    ## ::warning ::An important warning!%0Aℹ And a tipp how to avoid this warning.
 
-You can also embed plots, for example:
+``` r
+Sys.setenv(GITHUB_ACTIONS = "TRUE")
+octo_warn(c("An important warning!", i = "And a tipp how to avoid this warning."))
+```
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+    ## ::warning ::An important warning!%0Aℹ And a tipp how to avoid this warning.

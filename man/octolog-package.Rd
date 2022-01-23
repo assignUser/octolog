@@ -8,6 +8,15 @@
 \description{
 Octolog provides drop-in replacementsmakes it easy to create beautiful output in Github Action logs and use workflow commands in R.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/assignUser/octolog}
+  \item \url{https://assignuser.github.io/octolog}
+  \item Report bugs at \url{https://github.com/assignUser/octolog/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Jacob Wujciak-Jens \email{jacob@wujciak.de} (\href{https://orcid.org/0000-0002-7281-3989}{ORCID})
 
