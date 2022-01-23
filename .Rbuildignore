@@ -2,3 +2,6 @@
 ^README\.Rmd$
 ^\.lintr$
 ^\.github$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
