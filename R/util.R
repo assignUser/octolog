@@ -47,7 +47,8 @@ prepare_string <- function(string) {
 #' @param string A character vector.
 #' @return A character vector.
 #' @examples
-#' c("100% This is some output with \n", "a new line") %>% encode_string()
+#' chrs <- c("100% This is some output with \n", "a new line")
+#' encode_string(chrs)
 #' @export
 encode_string <- function(string) {
     . <- NULL
