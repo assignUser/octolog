@@ -19,7 +19,7 @@ Set an actions output parameter. These can be accessed in later steps.
 Sys.setenv(GITHUB_ACTION = "true")
 string <- "A multi-line \n String."
 value <- encode_string(string)
-octo_set_output("importan-value", value)
+octo_set_output("important-value", value)
 }
 \seealso{
 \href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter}{Github Docs}

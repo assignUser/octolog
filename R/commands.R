@@ -49,7 +49,7 @@ octo_mask_value <- function(value) {
 #' Sys.setenv(GITHUB_ACTION = "true")
 #' string <- "A multi-line \n String."
 #' value <- encode_string(string)
-#' octo_set_output("importan-value", value)
+#' octo_set_output("important-value", value)
 #' @export
 octo_set_output <- function(name, value) {
     stopifnot(length(value) == 1)

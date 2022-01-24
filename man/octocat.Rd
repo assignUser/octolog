@@ -4,13 +4,11 @@
 \alias{octocat}
 \title{"cat" a string if on Github}
 \usage{
-octocat(string, last = "\\n")
+octocat(string)
 }
 \arguments{
 \item{string}{A character vector of length 1. This string will be terminated
-with \code{last} and printed with \code{\link[base:cat]{base::cat()}}.}
-
-\item{last}{Element to terminate string. Default is \verb{\\n}.}
+with \code{last} and printed with a new line.}
 }
 \value{
 \code{string} invisibly

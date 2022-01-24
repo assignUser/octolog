@@ -18,7 +18,7 @@ Groups can not be nested at this point, see this \href{https://github.com/action
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "TRUE")
-octo_start_group("Print stuff 🚀")
+octo_start_group("Print stuff")
 print("Log other output")
 octo_end_group()
 }

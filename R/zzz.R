@@ -1,3 +1,4 @@
+# nocov start
 .onLoad <- function(libname, pkgname) { # nolint
     if (is.null(getOption("cli.num_colors"))) {
         enable_github_colors()
@@ -10,3 +11,4 @@
         Sys.unsetenv("R_CLI_NUM_COLORS")
     }
 }
+# nocov end
