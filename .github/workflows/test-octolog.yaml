@@ -1,0 +1,55 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+  
+name: octolog test
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: local::.
+
+      - name: Test octolog
+        run: |
+          library(octolog)
+          library(magrittr)
+          octo_start_group("Conditions")
+
+          octo_debug("Tracking the error")
+          octo_inform(c("A notice", i = "And some information"))
+          octo_warn(c("A warning", x = "Don't do that!"))
+          octo_warn(c("A warning", v = "Without a trace"), trace = NULL)
+          octo_abort(c("An error that does not kill R", i = "And how to fix it."), .fail_fast = FALSE)
+
+          octo_end_group()
+
+          octo_mask_value("secret_gh_token")
+          print("I accidentally logged my: secret_gh_token")
+          readLines("DESCRIPTION") %>%
+            encode_string(join = TRUE) %>%
+            octo_set_output("desc")
+          
+          t <- octo_stop_commands()
+          octo_inform("This will not be parsed")
+          octo_start_commands(t)
+        shell: Rscript {0}

@@ -4,13 +4,13 @@
 \alias{octo_set_output}
 \title{Set an output parameter}
 \usage{
-octo_set_output(name, value)
+octo_set_output(value, name)
 }
 \arguments{
-\item{name}{A character vector length 1.}
-
 \item{value}{A single line string. Use \code{\link[=encode_string]{encode_string()}} to encode a numeric
 or multiline string.}
+
+\item{name}{A character vector length 1.}
 }
 \description{
 Set an actions output parameter. These can be accessed in later steps.

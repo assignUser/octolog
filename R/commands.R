@@ -51,7 +51,7 @@ octo_mask_value <- function(value) {
 #' value <- encode_string(string)
 #' octo_set_output("important-value", value)
 #' @export
-octo_set_output <- function(name, value) {
+octo_set_output <- function(value, name) {
     stopifnot(length(value) == 1)
     stopifnot(length(name) == 1)
     stopifnot(is.character(value))
