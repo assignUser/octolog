@@ -128,7 +128,7 @@ get_location_string <- function(trace) {
     }
 
     paste0(
-        "file={fs::path(getSrcDirectory(src), getSrcFilename(src))},",
+        "file={file.path(getSrcDirectory(src), getSrcFilename(src))},",
         "line={src[[1]]},endLine={src[[3]]},",
         "col={src[[5]]},endCol={src[[6]]}"
     ) %>%

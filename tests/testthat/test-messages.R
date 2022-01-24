@@ -17,4 +17,3 @@ withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_snapshot(octo_abort("An error", .fail_fast = FALSE))
 
 })
-
