@@ -10,12 +10,16 @@ enable_github_colors(n_colors = as.integer(256^3))
 \item{n_colors}{An integer giving the number of colors. Default 24bit.}
 }
 \value{
-\code{TRUE} if the option was set, \code{FALSE} otherwise.
+\code{TRUE} if the envvar is set, \code{FALSE} otherwise.
 }
 \description{
-This will set the option \code{cli.num_colors} to \code{color}
+This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors}. To avoid
+sideeffects through overriding \code{\link[crayon:has_color]{crayon::has_color()}}, this function only
+works \code{\link[=on_github]{on_github()}}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "true")
+enable_github_colors()
+Sys.setenv(GITHUB_ACTIONS = "false")
 enable_github_colors()
 }

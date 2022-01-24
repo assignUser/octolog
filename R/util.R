@@ -1,3 +1,10 @@
+#' Detect if R is running within a Github Action.
+#'
+#' @return `TRUE` if on Github. `FALSE` otherwise.
+#' @details Uses `GITHUB_ACTIONS` envvar`.
+#' @examples
+#' on_github()
+#' @export
 on_github <- function() {
     tolower(Sys.getenv("GITHUB_ACTIONS")) == "true"
 }
@@ -9,8 +16,7 @@ on_github <- function() {
 #' 'true'`.
 #'
 #' @param string A character vector of length 1. This string will be terminated
-#'   with `last` and printed with [base::cat()].
-#' @param last Element to terminate string. Default is `\n`.
+#'   with `last` and printed with a new line.
 #' @return `string` invisibly
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
@@ -19,11 +25,11 @@ on_github <- function() {
 #' octocat("::error ::Something is wrong")
 #'
 #' @export
-octocat <- function(string, last = "\n") {
+octocat <- function(string) {
     if (on_github()) {
         stopifnot(is.character(string))
         stopifnot(length(string) == 1)
-        cat(string, last)
+        cat(string, "\n")
     }
 
     invisible(string)
@@ -45,27 +51,42 @@ prepare_string <- function(string) {
 #'
 #' Encodes a multiline string into one line for Github Action output.
 #' @param string A character vector.
-#' @return A character vector.
+#' @param join Join vector into single string using encoded newline.
+#' @return A character vector (of length 1 if `join`).
 #' @examples
 #' chrs <- c("100% This is some output with \n", "a new line")
 #' encode_string(chrs)
+#'
+#' # encode some md (e.g. to post as comment)
+#' md <- c("# Important PR Comment", " ", "This commit is great!")
+#' encode_string(md, TRUE)
 #' @export
-encode_string <- function(string) {
+encode_string <- function(string, join = FALSE) {
     . <- NULL
     # utils::globalVariables(".", package = "octolog")
-    string %>%
+    encoded <- string %>%
         gsub("%", "%25", .) %>%
         gsub("\n", "%0A", .) %>%
         gsub("\r", "%0D", .)
+
+    if (join) {
+        md <- paste0(md, collapse = "%0A")
+    }
+
+    md
 }
 
 #' Enable Colors on Github Actions
 #'
-#' This will set the option `cli.num_colors` to `color`
+#' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors`. To avoid
+#' sideeffects through overriding [crayon::has_color()], this function only
+#' works [on_github()].
 #' @param n_colors An integer giving the number of colors. Default 24bit.
-#' @return `TRUE` if the option was set, `FALSE` otherwise.
+#' @return `TRUE` if the envvar is set, `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
+#' enable_github_colors()
+#' Sys.setenv(GITHUB_ACTIONS = "false")
 #' enable_github_colors()
 #' @export
 enable_github_colors <- function(n_colors = as.integer(256^3)) {

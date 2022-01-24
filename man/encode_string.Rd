@@ -4,13 +4,15 @@
 \alias{encode_string}
 \title{Encode String for Github Actions}
 \usage{
-encode_string(string)
+encode_string(string, join = FALSE)
 }
 \arguments{
 \item{string}{A character vector.}
+
+\item{join}{Join vector into single string using encoded newline.}
 }
 \value{
-A character vector.
+A character vector (of length 1 if \code{join}).
 }
 \description{
 Encodes a multiline string into one line for Github Action output.
@@ -18,4 +20,8 @@ Encodes a multiline string into one line for Github Action output.
 \examples{
 chrs <- c("100\% This is some output with \n", "a new line")
 encode_string(chrs)
+
+# encode some md (e.g. to post as comment)
+md <- c("# Important PR Comment", " ", "This commit is great!")
+encode_string(md, TRUE)
 }
