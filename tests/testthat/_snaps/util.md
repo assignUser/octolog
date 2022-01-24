@@ -15,7 +15,7 @@
     Code
       encode_string(chrs)
     Output
-      [1] "# Important PR Comment" " "                      "This commit is great!" 
+      [1] "100%25 This is some output with %0A" "a new line"                         
 
 ---
 

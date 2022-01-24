@@ -70,10 +70,10 @@ encode_string <- function(string, join = FALSE) {
         gsub("\r", "%0D", .)
 
     if (join) {
-        md <- paste0(md, collapse = "%0A")
+        encoded <- paste0(encoded, collapse = "%0A")
     }
 
-    md
+    encoded
 }
 
 #' Enable Colors on Github Actions
