@@ -30,18 +30,22 @@ jobs:
           extra-packages: local::.
 
       - name: Test octolog
+        id: step1
         run: |
           library(octolog)
           library(magrittr)
           enable_github_colors()
+          
           octocat("::echo::on")
           source(".github/workflows/R/conditions.R")
 
+          octo_inform("Masking some secret stuff!")
           octo_mask_value("secret_gh_token")
-          octocat("::add-mask::another_secret_token")
+          Sys.setenv("SECRET_TOKEN" = "007") 
+          octo_mask_env("SECRET_TOKEN")
           octo_warn("`octo_mask_value` will only take effect in the NEXT step!")
           print("I accidentally logged my: secret_gh_token")
-          
+          print(Sys.getenv("SECRET_TOKEN" = "007"))
           readLines("DESCRIPTION") %>%
             encode_string(join = TRUE) %>%
             octo_set_output("desc")
@@ -49,6 +53,7 @@ jobs:
           t <- octo_stop_commands()
           octo_inform("This will not be parsed")
           octo_start_commands(t)
+          octo_inform("Now all commands are parsed again!")
         shell: Rscript {0}
       - name: Next step
         run: |
@@ -56,7 +61,11 @@ jobs:
           octo_inform("Now in the next step the mask has taken effect:")
           print("I accidentally logged my: secret_gh_token")
           print("secret_gh_token")
-          octocat("secret_gh_token")
-          print("Oh no it happened again: another_secret_token")
-          octocat("another_secret_token")
+          print(Sys.getenv("SECRET_TOKEN"))
+          system("echo $SECRET_TOKEN")
+          system("echo 'Oh no:secret_gh_token'")
+
+          octo_inform("We can use outputs from previous steps in other steps using the step id.")
+          octo_inform("Multiline strings will be automatically converted from their escaped form.")
+          cat("${{steps.step1.outputs.desc }}")
         shell: Rscript {0}

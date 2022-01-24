@@ -15,12 +15,16 @@ coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)]
 Octolog makes it easy to create conditions that create annotations in
 Github Action workflows and use the other [workflow
 commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions)
-that are available. \#\# Installation
+that are available.
 
-You can install the development version of octolog like so:
+## Installation
+
+You can install the development version of octolog with either of these
+options:
 
 ``` r
 pak::pak("assignUser/octolog")
+devtools::install_github("assignUser/octolog")
 ```
 
 ## Example
