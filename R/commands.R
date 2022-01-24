@@ -3,9 +3,9 @@
 #' These functions make it possible to group lines in the Github Actions log.
 #' Groups can not be nested at this point, see this [isssue](https://github.com/actions/runner/issues/802).
 #' @param name Name of the group, single line.
-#' @examples 
+#' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "TRUE")
-#' octo_start_group("Print stuff 🚀")
+#' octo_start_group("Print stuff")
 #' print("Log other output")
 #' octo_end_group()
 #' @export
