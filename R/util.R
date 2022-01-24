@@ -41,9 +41,9 @@ octocat <- function(string) {
 #' in one line for Github Action output.
 #' @inheritParams encode_string
 #' @noRd
-prepare_string <- function(string) {
+prepare_string <- function(string, .envir = parent.frame()) {
     string %>%
-        cli::format_message() %>%
+        cli::format_message(.envir = .envir) %>%
         encode_string()
 }
 
