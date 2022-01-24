@@ -52,7 +52,8 @@ jobs:
         shell: Rscript {0}
       - name: Next step
         run: |
-          octolog::octo_inform("Now in the next step the mask has taken effect:")
+          library(octolog)
+          octo_inform("Now in the next step the mask has taken effect:")
           print("I accidentally logged my: secret_gh_token")
           print("secret_gh_token")
           octocat("secret_gh_token")
