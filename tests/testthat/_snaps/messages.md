@@ -91,21 +91,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::[1m[22mTracking the error 
+      ::debug::Tracking the error 
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::[1m[22mA notice 
+      ::notice ::A notice 
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::[1m[22mA warning 
+      ::warning ::A warning 
 
 ---
 
@@ -116,7 +116,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::[1m[22mAn error 
+      ::error ::An error 
 
 # messages work [unicode]
 
@@ -211,21 +211,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::[1m[22mTracking the error 
+      ::debug::Tracking the error 
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::[1m[22mA notice 
+      ::notice ::A notice 
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::[1m[22mA warning 
+      ::warning ::A warning 
 
 ---
 
@@ -236,5 +236,5 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::[1m[22mAn error 
+      ::error ::An error 
 

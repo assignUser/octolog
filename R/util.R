@@ -113,7 +113,7 @@ enable_github_colors <- function(n_colors = as.integer(256^3),
 
 #' @rdname enable_github_colors
 disable_github_colors <- function(.local_envir = parent.frame(), quiet = FALSE) {
-    withr::local_envvar(NO_COLOR = "true", .local_envir = .local_envir)
+    withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
     if (!quiet) cli::cli_alert_danger("Disabeled colors!")
 }
 
