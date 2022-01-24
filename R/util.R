@@ -84,7 +84,7 @@ encode_string <- function(string, join = FALSE) {
 #' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @param quiet Should messages be printed?
 #' @inheritParams withr::local_envvar
-#' @return `TRUE` if the envvar is set, `FALSE` otherwise.
+#' @return Invisibly returns `TRUE` if the envvar is set, `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
 #' enable_github_colors()
@@ -105,14 +105,15 @@ enable_github_colors <- function(n_colors = as.integer(256^3),
         } else {
             if (!quiet) cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
         }
-        return(TRUE)
+        invisible(TRUE)
     }
 
-    FALSE
+    invisible(FALSE)
 }
 
 #' @rdname enable_github_colors
-disable_github_colors <- function(.local_envir = parent.frame(), quiet = FALSE) {
+disable_github_colors <- function(.local_envir = parent.frame(),
+                                  quiet = FALSE) {
     withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
     if (!quiet) cli::cli_alert_danger("Disabeled colors!")
 }
