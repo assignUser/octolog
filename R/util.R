@@ -111,7 +111,10 @@ enable_github_colors <- function(n_colors = as.integer(256^3)) {
 #' @return A string formated for use in Github Action workflow commands.
 #' @noRd
 get_location_string <- function(trace) {
-    stopifnot(inherits(trace, "rlang_trace"))
+    if (is.null(trace)) {
+        return("")
+    }
+
     src <- integer(0)
     for (call in trace$calls) {
         if (!is.null(attributes(call))) {

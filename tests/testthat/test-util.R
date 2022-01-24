@@ -1,7 +1,7 @@
 test_that("on_github", {
-  withr::local_envvar(GITHUB_ACTIONS = FALSE)
+  withr::local_envvar(GITHUB_ACTIONS = "false")
   expect_false(on_github())
-  withr::local_envvar(GITHUB_ACTIONS = TRUE)
+  withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_true(on_github())
 
   # Githubn sets the var to "true"
@@ -13,9 +13,9 @@ test_that("on_github", {
 
 test_that("octocat", {
   test_string <- "This is a message for Github!"
-  withr::local_envvar(GITHUB_ACTIONS = TRUE)
+  withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_snapshot(octocat(test_string))
-  withr::local_envvar(GITHUB_ACTIONS = FALSE)
+  withr::local_envvar(GITHUB_ACTIONS = "false")
   expect_snapshot(octocat(test_string))
   expect_equal(octocat(test_string), test_string)
 })
@@ -29,11 +29,11 @@ test_that("encode_string", {
 })
 
 cli::test_that_cli("enable_github_colors", {
-  withr::local_envvar(GITHUB_ACTIONS = FALSE, , R_CLI_NUM_COLORS = NULL)
+  withr::local_envvar(GITHUB_ACTIONS = "false", , R_CLI_NUM_COLORS = NULL)
   expect_false(enable_github_colors())
-  withr::local_envvar(GITHUB_ACTIONS = TRUE, R_CLI_NUM_COLORS = NULL)
+  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL)
   expect_snapshot(enable_github_colors())
 
-  withr::local_envvar(GITHUB_ACTIONS = TRUE, R_CLI_NUM_COLORS = 8L)
+  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 8L)
   expect_snapshot(enable_github_colors())
 })
