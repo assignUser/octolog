@@ -33,6 +33,7 @@ jobs:
         run: |
           library(octolog)
           library(magrittr)
+          enable_github_colors()
           octo_start_group("Conditions")
 
           octo_debug("Tracking the error")

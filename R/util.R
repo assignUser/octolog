@@ -76,12 +76,14 @@ encode_string <- function(string, join = FALSE) {
     encoded
 }
 
-#' Enable Colors on Github Actions
+#' Enable/disable Colors on Github Actions
 #'
-#' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors`. To avoid
-#' sideeffects through overriding [crayon::has_color()], this function only
-#' works [on_github()].
+#' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors` within the scope of
+#' `.local_envir`.  To avoid sideeffects through overriding
+#' [crayon::has_color()], this function only works [on_github()].
 #' @param n_colors An integer giving the number of colors. Default 24bit.
+#' @param quiet Should messages be printed?
+#' @inheritParams withr::local_envvar
 #' @return `TRUE` if the envvar is set, `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
@@ -89,20 +91,27 @@ encode_string <- function(string, join = FALSE) {
 #' Sys.setenv(GITHUB_ACTIONS = "false")
 #' enable_github_colors()
 #' @export
-enable_github_colors <- function(n_colors = as.integer(256^3)) {
+enable_github_colors <- function(n_colors = as.integer(256^3), 
+.local_envir = parent.frame(), quiet = FALSE) {
     if (on_github()) {
         ct <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
         if (is.na(ct)) {
-            Sys.setenv("R_CLI_NUM_COLORS" = n_colors)
-            Sys.setenv("R_COLORS_UNSET" = "true")
-            cli::cli_alert_success("Enabled colors!")
+            withr::local_envvar("R_CLI_NUM_COLORS" = n_colors, .local_envir = .local_envir)
+            
+            if(!quiet) cli::cli_alert_success("Enabled colors!")
         } else {
-            cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
+            if(!quiet)  cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
         }
         return(TRUE)
     }
 
     FALSE
+}
+
+#' @rdname enable_github_colors
+disable_github_colors <- function(.local_envir = parent.frame(), quiet = FALSE) {
+    withr::local_envvar(NO_COLOR = "true", .local_envir = .local_envir)
+    if(!quiet) cli::cli_alert_danger("Disabeled colors!")
 }
 
 #' Extract file path and position from trace_back.

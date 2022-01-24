@@ -2,20 +2,31 @@
 % Please edit documentation in R/util.R
 \name{enable_github_colors}
 \alias{enable_github_colors}
-\title{Enable Colors on Github Actions}
+\alias{disable_github_colors}
+\title{Enable/disable Colors on Github Actions}
 \usage{
-enable_github_colors(n_colors = as.integer(256^3))
+enable_github_colors(
+  n_colors = as.integer(256^3),
+  .local_envir = parent.frame(),
+  quiet = FALSE
+)
+
+disable_github_colors(.local_envir = parent.frame(), quiet = FALSE)
 }
 \arguments{
 \item{n_colors}{An integer giving the number of colors. Default 24bit.}
+
+\item{.local_envir}{\verb{[environment]}\cr The environment to use for scoping.}
+
+\item{quiet}{Should messages be printed?}
 }
 \value{
 \code{TRUE} if the envvar is set, \code{FALSE} otherwise.
 }
 \description{
-This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors}. To avoid
-sideeffects through overriding \code{\link[crayon:has_color]{crayon::has_color()}}, this function only
-works \code{\link[=on_github]{on_github()}}.
+This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors} within the scope of
+\code{.local_envir}.  To avoid sideeffects through overriding
+\code{\link[crayon:has_color]{crayon::has_color()}}, this function only works \code{\link[=on_github]{on_github()}}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "true")

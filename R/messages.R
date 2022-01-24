@@ -114,7 +114,7 @@ signal_github_condition <- function(prefix = c(
     } else {
         loc_str <- get_location_string(trace)
     }
-
+    disable_github_colors(quiet = TRUE)
     message <- prepare_string(message)
     glue("{prefix}{loc_str}{title}::{message}") %>% octocat()
 }
