@@ -42,7 +42,7 @@ jobs:
           octo_inform("Masking some secret stuff!")
           octo_mask_value("secret_gh_token")
           Sys.setenv("SECRET_TOKEN" = "007") 
-          octo_mask_env("SECRET_TOKEN")
+          octo_mask_envvar("SECRET_TOKEN")
           octo_warn("`octo_mask_value` will only take effect in the NEXT step!")
           print("I accidentally logged my: secret_gh_token")
           print(Sys.getenv("SECRET_TOKEN" = "007"))
