@@ -105,7 +105,7 @@ octo_set_output <- function(value, name) {
 #' octo_start_commands(tk)
 #' @export
 octo_stop_commands <- function() {
-    token <- tempfile("octotoken") %>% basename()
+    token <- tempfile("octo") %>% basename()
     glue("::stop-commands::{token}") %>% octocat()
 
     token
