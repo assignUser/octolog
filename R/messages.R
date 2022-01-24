@@ -49,7 +49,8 @@ octo_warn <- function(message,
 #' These functions are a drop-in replacements for [cli::cli_warn()] and friends.
 #' If used while R is running within a Github Action, the conditions will be
 #' signaled in such a way that they will create annotations on the files
-#' affected.
+#' affected. Even if [enable_github_colors()] was used the conditions will not
+#' have colors in the log as the color codes break the annotation.
 #'
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
@@ -114,6 +115,8 @@ signal_github_condition <- function(prefix = c(
     } else {
         loc_str <- get_location_string(trace)
     }
+
+    # Colors work in the log but break the annotations
     disable_github_colors(quiet = TRUE)
     message <- prepare_string(message)
     glue("{prefix}{loc_str}{title}::{message}") %>% octocat()

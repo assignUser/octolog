@@ -55,7 +55,8 @@ globally.`}
 These functions are a drop-in replacements for \code{\link[cli:cli_abort]{cli::cli_warn()}} and friends.
 If used while R is running within a Github Action, the conditions will be
 signaled in such a way that they will create annotations on the files
-affected.
+affected. Even if \code{\link[=enable_github_colors]{enable_github_colors()}} was used the conditions will not
+have colors in the log as the color codes break the annotation.
 }
 \section{Functions}{
 \itemize{
