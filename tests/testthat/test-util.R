@@ -35,7 +35,6 @@ cli::test_that_cli("enable_github_colors", {
   withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL)
   expect_snapshot(enable_github_colors(.local_envir = env))
 
-  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 8L)
-  
+  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 256^3)
   expect_snapshot(enable_github_colors(.local_envir = env))
 })

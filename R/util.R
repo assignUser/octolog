@@ -91,16 +91,19 @@ encode_string <- function(string, join = FALSE) {
 #' Sys.setenv(GITHUB_ACTIONS = "false")
 #' enable_github_colors()
 #' @export
-enable_github_colors <- function(n_colors = as.integer(256^3), 
-.local_envir = parent.frame(), quiet = FALSE) {
+enable_github_colors <- function(n_colors = as.integer(256^3),
+                                 .local_envir = parent.frame(), quiet = FALSE) {
     if (on_github()) {
         ct <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
         if (is.na(ct)) {
-            withr::local_envvar("R_CLI_NUM_COLORS" = n_colors, .local_envir = .local_envir)
-            
-            if(!quiet) cli::cli_alert_success("Enabled colors!")
+            withr::local_envvar(
+                "R_CLI_NUM_COLORS" = n_colors,
+                .local_envir = .local_envir
+            )
+
+            if (!quiet) cli::cli_alert_success("Enabled colors!")
         } else {
-            if(!quiet)  cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
+            if (!quiet) cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
         }
         return(TRUE)
     }
@@ -111,7 +114,7 @@ enable_github_colors <- function(n_colors = as.integer(256^3),
 #' @rdname enable_github_colors
 disable_github_colors <- function(.local_envir = parent.frame(), quiet = FALSE) {
     withr::local_envvar(NO_COLOR = "true", .local_envir = .local_envir)
-    if(!quiet) cli::cli_alert_danger("Disabeled colors!")
+    if (!quiet) cli::cli_alert_danger("Disabeled colors!")
 }
 
 #' Extract file path and position from trace_back.
