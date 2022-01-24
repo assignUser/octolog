@@ -30,8 +30,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       v Enabled colors!
-    Output
-      [1] TRUE
 
 ---
 
@@ -39,8 +37,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       i `R_CLI_NUM_COLORS` already set.
-    Output
-      [1] TRUE
 
 # enable_github_colors [ansi]
 
@@ -48,8 +44,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       [32mv[39m Enabled colors!
-    Output
-      [1] TRUE
 
 ---
 
@@ -57,8 +51,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       [36mi[39m [38;2;32;32;32m[48;2;232;232;232m[30m[47m`R_CLI_NUM_COLORS`[48;2;232;232;232m[38;2;32;32;32m[49m[39m already set.
-    Output
-      [1] TRUE
 
 # enable_github_colors [unicode]
 
@@ -66,8 +58,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       ✔ Enabled colors!
-    Output
-      [1] TRUE
 
 ---
 
@@ -75,8 +65,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       ℹ `R_CLI_NUM_COLORS` already set.
-    Output
-      [1] TRUE
 
 # enable_github_colors [fancy]
 
@@ -84,8 +72,6 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       [32m✔[39m Enabled colors!
-    Output
-      [1] TRUE
 
 ---
 
@@ -93,6 +79,4 @@
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
       [36mℹ[39m [38;2;32;32;32m[48;2;232;232;232m[30m[47m`R_CLI_NUM_COLORS`[48;2;232;232;232m[38;2;32;32;32m[49m[39m already set.
-    Output
-      [1] TRUE
 

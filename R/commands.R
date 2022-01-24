@@ -21,21 +21,48 @@ octo_end_group <- function() {
     octocat("::endgroup::")
 }
 
-#' Masking a value in the GHA log.
+#' Masking a value or envvar in the GHA log.
 #'
-#' This will set an envvar `OCTOLOG_MASK*` containing the value and masks it.
+#' This will mask either a `value` or an envvar and prevent them (or their
+#'  content) from showing up in the Github Actions log.
+#' \cr ***ATTENTION***: The masking will only take effect in the ***NEXT*** step of
+#' the workflow. This is not very clear in the Github Docs but very important.
+#' @details The maskign is not restricted to R output, rather it will work for
+#' any logged output. For a practical demonstration please see the
+#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' @param value A single value to mask, coercible to string.
+#' @param name Name of the envvar to mask.
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log)
+#' @examples
+#' octo_mask_value("secret_token123")
+#' # The mask takes effect in the NEXT step
+#' print("Current token: secret_token123")
+#' # Will log as
+#' # "Current token:***"
+#' 
+#' Sys.setenv("SECRET_TOKEN" = "007") 
+#' octo_mask_envvar("SECRET_TOKEN")
+#' # The mask takes effect in the NEXT step
+#' print(Sys.getenv("SECRET_TOKEN"))
+#' # Will log as
+#' # "***"
 #' @export
 octo_mask_value <- function(value) {
-    stopifnot(length(value) == 1)
-    var <- tempfile("OCTOLOG_MASK") %>%
-        basename() %>%
-        toupper()
-    args <- list()
-    args[var] <- value
-    do.call(Sys.setenv, args)
-    glue("::add-mask::${var}") %>% octocat()
+    if (length(value) != 1) {
+        octo_abort(c("You can only mask one value at a time."))
+    }
+
+    glue("::add-mask::value") %>% octocat()
+}
+
+#' @rdname  octo_mask_value 
+#' @export
+octo_mask_envvar <- function(name) {
+    if (length(value) != 1) {
+        octo_abort(c("You can only mask one envvar at a time."))
+    }
+
+    glue("::add-mask::${name}") %>% octocat()
 }
 
 #' Set an output parameter

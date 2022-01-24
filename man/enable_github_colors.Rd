@@ -21,7 +21,7 @@ disable_github_colors(.local_envir = parent.frame(), quiet = FALSE)
 \item{quiet}{Should messages be printed?}
 }
 \value{
-\code{TRUE} if the envvar is set, \code{FALSE} otherwise.
+Invisibly returns \code{TRUE} if the envvar is set, \code{FALSE} otherwise.
 }
 \description{
 This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors} within the scope of
