@@ -34,10 +34,11 @@ jobs:
           library(octolog)
           library(magrittr)
           enable_github_colors()
-          
+          octocat("::echo::on")
           source(".github/workflows/R/conditions.R")
 
           octo_mask_value("secret_gh_token")
+          octocat("::add-mask::another_secret_token")
           octo_warn("`octo_mask_value` will only take effect in the NEXT step!")
           print("I accidentally logged my: secret_gh_token")
           
@@ -53,4 +54,8 @@ jobs:
         run: |
           octolog::octo_inform("Now in the next step the mask has taken effect:")
           print("I accidentally logged my: secret_gh_token")
+          print("secret_gh_token")
+          octocat("secret_gh_token")
+          print("Oh no it happened again: another_secret_token")
+          octocat("another_secret_token")
         shell: Rscript {0}
