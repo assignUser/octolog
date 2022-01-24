@@ -30,6 +30,13 @@ octo_end_group <- function() {
 #' @details The maskign is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
 #' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' 
+#' Additionally some values and envvars will be masked autmatically by github,
+#' though this behaviour is pporly documented. It looks like anything with
+#' "TOKEN" will be masked. Related Issues
+#' [here](https://github.com/actions/runner/issues/643#issuecomment-823537871)
+#' and
+#' [here](https://github.com/actions/runner/issues/475#issuecomment-742271143).
 #' @param value A single value to mask, coercible to string.
 #' @param name Name of the envvar to mask.
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log)
@@ -52,13 +59,13 @@ octo_mask_value <- function(value) {
         octo_abort(c("You can only mask one value at a time."))
     }
 
-    glue("::add-mask::value") %>% octocat()
+    glue("::add-mask::{value}") %>% octocat()
 }
 
 #' @rdname  octo_mask_value 
 #' @export
 octo_mask_envvar <- function(name) {
-    if (length(value) != 1) {
+    if (length(name) != 1) {
         octo_abort(c("You can only mask one envvar at a time."))
     }
 
