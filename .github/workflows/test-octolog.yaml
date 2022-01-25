@@ -36,7 +36,7 @@ jobs:
           library(magrittr)
           enable_github_colors()
           
-          octocat("::echo::on")
+     
           source(".github/workflows/R/conditions.R")
 
           octo_inform("Masking some secret stuff!")
@@ -53,6 +53,7 @@ jobs:
           t <- octo_stop_commands()
           octo_inform("This will not be parsed")
           octo_start_commands(t)
+          print(42)
           octo_inform("Now all commands are parsed again!")
         shell: Rscript {0}
       - name: Next step
