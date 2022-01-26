@@ -106,8 +106,8 @@ octo_set_output <- function(value, name) {
 #' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' @export
 octo_stop_commands <- function() {
-    token <- tempfile("octo") %>% basename()
-    glue("::stop-commands::{token}") %>% cat()
+    token <- tempfile("") %>% basename()
+    glue("::stop-commands::{token}") %>% octocat()
 
     token
 }
@@ -115,7 +115,7 @@ octo_stop_commands <- function() {
 #' @rdname octo_stop_commands
 #' @export
 octo_start_commands <- function(token) {
-    glue("::{token}::") %>% cat()
+    glue("::{token}::") %>% octocat()
 }
 
 # #' @export

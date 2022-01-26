@@ -50,11 +50,9 @@ jobs:
             encode_string(join = TRUE) %>%
             octo_set_output("desc")
           
-          #t <- octo_stop_commands()
-          cat("::stop-commands::1\n")
+          t <- octo_stop_commands()
           octo_inform("This will not be parsed")
-          #octo_start_commands(t)
-          cat("::1::\n")
+          octo_start_commands(t)
           octo_inform("Now all commands are parsed again!")
         shell: Rscript {0}
       - name: Next step
