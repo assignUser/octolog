@@ -29,7 +29,7 @@ octocat <- function(string) {
     if (on_github()) {
         stopifnot(is.character(string))
         stopifnot(length(string) == 1)
-        cat(string, "\n")
+        cat(string, "\n", sep = "")
     }
 
     invisible(string)
