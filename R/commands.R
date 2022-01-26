@@ -25,8 +25,10 @@ octo_end_group <- function() {
 #'
 #' This will mask either a `value` or an envvar and prevent them (or their
 #'  content) from showing up in the Github Actions log.
-#' \cr ***ATTENTION***: The masking will only take effect in the ***NEXT*** step of
-#' the workflow. This is not very clear in the Github Docs but very important.
+#' \cr ***ATTENTION***: Currently the masking of envvar values will only take
+#' effect in the ***NEXT*** step of the workflow. Values that are masked
+#' directly are masked immediately. This is not very clear in the Github Docs
+#' but very important.
 #' @details The maskign is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
 #' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
@@ -95,7 +97,7 @@ octo_set_output <- function(value, name) {
 #' Stop workflow commands
 #'
 #' This will stop github from processing any workflow commands until
-#' [octo_start_commands()] is called with the correct `token`.
+#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicous workflow commands.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
@@ -104,6 +106,7 @@ octo_set_output <- function(value, name) {
 #' # Commands will not be parsed by Github Actions
 #' octo_start_commands(tk)
 #' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
     token <- tempfile("") %>% basename()

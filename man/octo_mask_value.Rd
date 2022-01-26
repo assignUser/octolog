@@ -17,8 +17,10 @@ octo_mask_envvar(name)
 \description{
 This will mask either a \code{value} or an envvar and prevent them (or their
 content) from showing up in the Github Actions log.
-\cr \emph{\strong{ATTENTION}}: The masking will only take effect in the \emph{\strong{NEXT}} step of
-the workflow. This is not very clear in the Github Docs but very important.
+\cr \emph{\strong{ATTENTION}}: Currently the masking of envvar values will only take
+effect in the \emph{\strong{NEXT}} step of the workflow. Values that are masked
+directly are masked immediately. This is not very clear in the Github Docs
+but very important.
 }
 \details{
 The maskign is not restricted to R output, rather it will work for
