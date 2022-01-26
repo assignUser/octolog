@@ -17,6 +17,13 @@ A character vector (of length 1 if \code{join}).
 \description{
 Encodes a multiline string into one line for Github Action output.
 }
+\details{
+This will only encode '\%', '\\n', '\\r' as these will be automatically
+decoded by Github when using the output via \verb{$\{\{ steps.<step_id>.outputs.<name> \}\}}. You can use \code{\link[utils:URLencode]{utils::URLencode()}} instead
+of this function to also escape everything else problematic like (double)
+quotes etc. but you will have to manually use \code{\link[utils:URLencode]{utils::URLdecode()}} to revert
+this.
+}
 \examples{
 chrs <- c("100\% This is some output with \n", "a new line")
 encode_string(chrs)
