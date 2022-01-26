@@ -103,10 +103,11 @@ octo_set_output <- function(value, name) {
 #' tk <- octo_stop_commands()
 #' # Commands will not be parsed by Github Actions
 #' octo_start_commands(tk)
+#' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' @export
 octo_stop_commands <- function() {
     token <- tempfile("octo") %>% basename()
-    glue("::stop-commands::{token}") %>% octocat()
+    glue("::stop-commands::{token}") %>% cat()
 
     token
 }
