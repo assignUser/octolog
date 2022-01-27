@@ -64,6 +64,14 @@
     <h2>Value</h2>
     <p>A character vector (of length 1 if <code>join</code>).</p>
     </div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>This will only encode '%', '\n', '\r' as these will be automatically
+decoded by Github when using the output via <code>${{ steps.&lt;step_id&gt;.outputs.&lt;name&gt; }}</code>. You can use <code><a href="https://rdrr.io/r/utils/URLencode.html" class="external-link">utils::URLencode()</a></code> instead
+of this function to also escape everything else problematic like (double)
+quotes etc. but you will have to manually use <code><a href="https://rdrr.io/r/utils/URLencode.html" class="external-link">utils::URLdecode()</a></code> to revert
+this.</p>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
