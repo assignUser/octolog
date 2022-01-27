@@ -140,6 +140,7 @@ octo_echo_on <- function() {
 }
 
 #' @rdname octo_echo_on
+#' @export
 octo_echo_off <- function() {
     octocat("::echo::off")
 }
@@ -168,7 +169,7 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
     if (set) {
         rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
     }
-    
+
     if (on_github()) {
         head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
         body <- glue("echo '{value}' >> $GITHUB_ENV")
