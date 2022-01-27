@@ -123,7 +123,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "51.603KB",
+  "fileSize": "51.644KB",
   "readme": "https://github.com/assignUser/octolog/blob/main/README.md",
   "contIntegration": ["https://github.com/assignUser/octolog/actions", "https://app.codecov.io/gh/assignUser/octolog?branch=main"],
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental",
