@@ -166,10 +166,13 @@ octo_echo_off <- function() {
 #' and the [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
     if (set) {
-        rlang::exec(Sys.setenv, "{ paste(name, sep ='\n') }" := value)
+        rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
     }
-    head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
-    body <- glue("echo '{value}' >> $GITHUB_ENV")
-    footer <- glue("echo '{delim}' >> $GITHUB_ENV")
-    system(command = paste0(c(head, body, footer), collapse = ";"))
+    
+    if (on_github()) {
+        head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
+        body <- glue("echo '{value}' >> $GITHUB_ENV")
+        footer <- glue("echo '{delim}' >> $GITHUB_ENV")
+        system(command = paste0(c(head, body, footer), collapse = ";"))
+    }
 }
