@@ -41,7 +41,7 @@ print("Current token: secret_token123")
 # Will log as
 # "Current token:***"
 
-Sys.setenv("SECRET_TOKEN" = "007") 
+Sys.setenv("SECRET_TOKEN" = "007")
 octo_mask_envvar("SECRET_TOKEN")
 # The mask takes effect in the NEXT step
 print(Sys.getenv("SECRET_TOKEN"))
