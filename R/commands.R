@@ -11,7 +11,10 @@
 #' @export
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines)
 octo_start_group <- function(name) {
-    stopifnot(length(name) == 1)
+    if (length(name) != 1) {
+        octo_abort("Group {.arg name} must be length 1!")
+    }
+
     glue("::group::{name}") %>% octocat()
 }
 
@@ -70,6 +73,9 @@ octo_mask_envvar <- function(name) {
     if (length(name) != 1) {
         octo_abort(c("You can only mask one envvar at a time."))
     }
+    if (is.na(Sys.getenv(name, NA_character_))) {
+        octo_abort("The envvar {.envvar {name}} does not exists!")
+    }
 
     glue("::add-mask::${name}") %>% octocat()
 }
@@ -78,7 +84,8 @@ octo_mask_envvar <- function(name) {
 #'
 #' Set an actions output parameter. These can be accessed in later steps.
 #' @param name A character vector length 1.
-#' @param value A single line string. Use [encode_string()] to encode a numeric
+#' @param value A single line string (or coercible to character). Use
+#'   [encode_string()] to encode a numeric
 #'   or multiline string.
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter)
 #' @examples
@@ -88,9 +95,13 @@ octo_mask_envvar <- function(name) {
 #' octo_set_output("important-value", value)
 #' @export
 octo_set_output <- function(value, name) {
-    stopifnot(length(value) == 1)
-    stopifnot(length(name) == 1)
-    stopifnot(is.character(value))
+    if (length(name) != 1) {
+        octo_abort(c("The output {.arg name} must be length 1."))
+    }
+    if (length(value) != 1) {
+        octo_abort(c("The output {.arg value} must be length 1."))
+    }
+
     glue("::set-output name={name}::{value}") %>% octocat()
 }
 
