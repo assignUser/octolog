@@ -2,15 +2,13 @@
 # Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.head_ref }}
   cancel-in-progress: true
-  
+
 name: Octolog example workflow
 
 jobs:
@@ -35,10 +33,15 @@ jobs:
           library(octolog)
           library(magrittr)
           enable_github_colors()
-          
-     
+
           source(".github/workflows/R/conditions.R")
 
+          
+          octo_inform("Setting envvars for the next step")
+          octo_set_envvar(c("A multiline", "string"), "MULTI_LINE")
+          octo_set_envvar("A multiline\nstring", "MULTI_LINE2")
+          
+          octo_echo_on()
           octo_inform("Masking some secret stuff!")
           Sys.setenv("SECRET_NUMBER" = "007") 
           octo_mask_envvar("SECRET_NUMBER")
@@ -47,11 +50,12 @@ jobs:
           octo_mask_value("secret_gh_token")
           octo_warn("`octo_mask_value` will take effect immediately!")
           print("I accidentally logged my: secret_gh_token")
+          octo_echo_off()
           
           readLines("DESCRIPTION") %>%
             encode_string(join = TRUE) %>%
             octo_set_output("desc")
-          
+
           t <- octo_stop_commands()
           octo_inform("This will not be parsed")
           octo_start_commands(t)
@@ -60,7 +64,7 @@ jobs:
       - name: Next step
         run: |
           library(octolog)
-          
+
           print("I accidentally logged my: secret_gh_token")
           print("secret_gh_token")
           octo_inform("Now in the next step the envvar mask has taken effect:")
@@ -68,7 +72,11 @@ jobs:
           system("echo $SECRET_NUMBER")
           system("echo 'Oh no:secret_gh_token'")
 
+          octo_inform("The envvar set in the last step can be used now:")
+          print(Sys.getenv("MULTI_LINE"))
+          print(Sys.getenv("MULTI_LINE2"))
           octo_inform("We can use outputs from previous steps in other steps using the step id.")
           octo_inform("Multiline strings will be automatically converted from their escaped form.")
           cat('${{steps.step1.outputs.desc }}')
+
         shell: Rscript {0}

@@ -7,7 +7,8 @@
 octo_set_output(value, name)
 }
 \arguments{
-\item{value}{A single line string. Use \code{\link[=encode_string]{encode_string()}} to encode a numeric
+\item{value}{A single line string (or coercible to character). Use
+\code{\link[=encode_string]{encode_string()}} to encode a numeric
 or multiline string.}
 
 \item{name}{A character vector length 1.}

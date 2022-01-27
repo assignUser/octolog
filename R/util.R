@@ -70,7 +70,7 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' @export
 encode_string <- function(string, join = FALSE) {
     . <- NULL
-    # utils::globalVariables(".", package = "octolog")
+
     encoded <- string %>%
         gsub("%", "%25", .) %>%
         gsub("\n", "%0A", .) %>%

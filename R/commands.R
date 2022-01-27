@@ -11,7 +11,10 @@
 #' @export
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines)
 octo_start_group <- function(name) {
-    stopifnot(length(name) == 1)
+    if (length(name) != 1) {
+        octo_abort("Group {.arg name} must be length 1!")
+    }
+
     glue("::group::{name}") %>% octocat()
 }
 
@@ -32,7 +35,7 @@ octo_end_group <- function() {
 #' @details The maskign is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
 #' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
-#' 
+#'
 #' Additionally some values and envvars will be masked autmatically by github,
 #' though this behaviour is pporly documented. It looks like anything with
 #' "TOKEN" will be masked. Related Issues
@@ -48,8 +51,8 @@ octo_end_group <- function() {
 #' print("Current token: secret_token123")
 #' # Will log as
 #' # "Current token:***"
-#' 
-#' Sys.setenv("SECRET_TOKEN" = "007") 
+#'
+#' Sys.setenv("SECRET_TOKEN" = "007")
 #' octo_mask_envvar("SECRET_TOKEN")
 #' # The mask takes effect in the NEXT step
 #' print(Sys.getenv("SECRET_TOKEN"))
@@ -64,11 +67,14 @@ octo_mask_value <- function(value) {
     glue("::add-mask::{value}") %>% octocat()
 }
 
-#' @rdname  octo_mask_value 
+#' @rdname  octo_mask_value
 #' @export
 octo_mask_envvar <- function(name) {
     if (length(name) != 1) {
         octo_abort(c("You can only mask one envvar at a time."))
+    }
+    if (is.na(Sys.getenv(name, NA_character_))) {
+        octo_abort("The envvar {.envvar {name}} does not exists!")
     }
 
     glue("::add-mask::${name}") %>% octocat()
@@ -78,7 +84,8 @@ octo_mask_envvar <- function(name) {
 #'
 #' Set an actions output parameter. These can be accessed in later steps.
 #' @param name A character vector length 1.
-#' @param value A single line string. Use [encode_string()] to encode a numeric
+#' @param value A single line string (or coercible to character). Use
+#'   [encode_string()] to encode a numeric
 #'   or multiline string.
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter)
 #' @examples
@@ -88,9 +95,13 @@ octo_mask_envvar <- function(name) {
 #' octo_set_output("important-value", value)
 #' @export
 octo_set_output <- function(value, name) {
-    stopifnot(length(value) == 1)
-    stopifnot(length(name) == 1)
-    stopifnot(is.character(value))
+    if (length(name) != 1) {
+        octo_abort(c("The output {.arg name} must be length 1."))
+    }
+    if (length(value) != 1) {
+        octo_abort(c("The output {.arg value} must be length 1."))
+    }
+
     glue("::set-output name={name}::{value}") %>% octocat()
 }
 
@@ -121,23 +132,59 @@ octo_start_commands <- function(token) {
     glue("::{token}::") %>% octocat()
 }
 
-# #' @export
-# #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs)
-# octo_echo_on <- function() {
+#' Echo workflow commands
+#'
+#' Enable or disable echoing of workflow commands in the log. This can be useful
+#' for debugging. Some commands are always echoed and will not be effected by
+#' these functions, this includes [octo_debug()] (if debugging is turned on),
+#' [octo_warn()] and [octo_abort()].
+#' @export
+#' @examples
+#' Sys.setenv(GITHUB_ACTIONS = "true")
+#' octo_echo_on()
+#' # workflow commands will be printed in their unparsed state in addition to
+#' # their normal effects
+#' octo_echo_off()
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs)
+octo_echo_on <- function() {
+    octocat("::echo::on")
+}
 
-# }
-
-# #' @rdname octo_echo_on
-# octo_echo_off <- function() {
-
-# }
+#' @rdname octo_echo_on
+#' @export
+octo_echo_off <- function() {
+    octocat("::echo::off")
+}
 
 # #' @export
 # octo_save_state <- function(name, value) {
 
 # }
 
-# #' @export
-# octo_set_envvar <- function(name, value) {
+#' Set environment variables
+#'
+#' This will set an envrionment variable in a way that makes it available to the
+#' following steps, compared to using [Sys.setenv()], which would only make an
+#' envvar available in the current step.
+#' @param value Value of the envvar, coercible to string. Can be a multiline
+#'   string or character vector of `length > 1`, each element will be
+#'   interpreted as one line.
+#' @param name Name of the envvar.
+#' @param set Should the envvar also be set in this step?
+#' @param delim Delimter used for multiline strings. No need to change this
+#'   unless your string contains 'EOF'.
+#' @export
+#' @seealso [octo_mask_envvar()]
+#' and the [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
+octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
+    if (set) {
+        rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
+    }
 
-# }
+    if (on_github()) {
+        head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
+        body <- glue("echo '{value}' >> $GITHUB_ENV")
+        footer <- glue("echo '{delim}' >> $GITHUB_ENV")
+        system(command = paste0(c(head, body, footer), collapse = ";"))
+    }
+}
