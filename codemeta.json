@@ -1,0 +1,131 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "octolog",
+  "description": "Octolog provides an API for Github workflow commands and makes it possible to signal conditions from within R that will create annotations when used within Github Actions but raise normal R conditions when used interactively.",
+  "name": "octolog: Better Github Action Logging",
+  "relatedLink": "https://assignuser.github.io/octolog",
+  "codeRepository": "https://github.com/assignUser/octolog",
+  "issueTracker": "https://github.com/assignUser/octolog/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Jacob",
+      "familyName": "Wujciak-Jens",
+      "email": "jacob@wujciak.de",
+      "@id": "https://orcid.org/0000-0002-7281-3989"
+    }
+  ],
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Jacob",
+      "familyName": "Wujciak-Jens",
+      "email": "jacob@wujciak.de",
+      "@id": "https://orcid.org/0000-0002-7281-3989"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "version": ">= 3.0.0",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": {
+    "1": {
+      "@type": "SoftwareApplication",
+      "identifier": "cli",
+      "name": "cli",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=cli"
+    },
+    "2": {
+      "@type": "SoftwareApplication",
+      "identifier": "glue",
+      "name": "glue",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=glue"
+    },
+    "3": {
+      "@type": "SoftwareApplication",
+      "identifier": "magrittr",
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
+    },
+    "4": {
+      "@type": "SoftwareApplication",
+      "identifier": "rlang",
+      "name": "rlang",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rlang"
+    },
+    "5": {
+      "@type": "SoftwareApplication",
+      "identifier": "withr",
+      "name": "withr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=withr"
+    },
+    "SystemRequirements": null
+  },
+  "fileSize": "51.603KB",
+  "readme": "https://github.com/assignUser/octolog/blob/main/README.md",
+  "contIntegration": ["https://github.com/assignUser/octolog/actions", "https://app.codecov.io/gh/assignUser/octolog?branch=main"],
+  "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental",
+  "keywords": ["rstats", "actions", "workflows"]
+}

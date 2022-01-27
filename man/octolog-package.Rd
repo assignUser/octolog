@@ -6,7 +6,7 @@
 \alias{octolog-package}
 \title{octolog: Better Github Action Logging}
 \description{
-Octolog provides drop-in replacementsmakes it easy to create beautiful output in Github Action logs and use workflow commands in R.
+Octolog provides an API for Github workflow commands and makes it possible to signal conditions from within R that will create annotations when used within Github Actions but raise normal R conditions when used interactively.
 }
 \seealso{
 Useful links:
