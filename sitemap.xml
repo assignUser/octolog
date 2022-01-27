@@ -4,6 +4,12 @@
     <loc>https://assignuser.github.io/octolog/404.html</loc>
   </url>
   <url>
+    <loc>https://assignuser.github.io/octolog/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/CONTRIBUTING.html</loc>
+  </url>
+  <url>
     <loc>https://assignuser.github.io/octolog/LICENSE-text.html</loc>
   </url>
   <url>
@@ -28,7 +34,13 @@
     <loc>https://assignuser.github.io/octolog/reference/octo_abort.html</loc>
   </url>
   <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_echo_on.html</loc>
+  </url>
+  <url>
     <loc>https://assignuser.github.io/octolog/reference/octo_mask_value.html</loc>
+  </url>
+  <url>
+    <loc>https://assignuser.github.io/octolog/reference/octo_set_envvar.html</loc>
   </url>
   <url>
     <loc>https://assignuser.github.io/octolog/reference/octo_set_output.html</loc>
