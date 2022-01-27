@@ -31,21 +31,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::Tracking the error 
+      ::debug::Tracking the error
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice 
+      ::notice ::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning 
+      ::warning ::A warning
 
 ---
 
@@ -56,7 +56,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error 
+      ::error ::An error
 
 # messages work [ansi]
 
@@ -91,21 +91,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::Tracking the error 
+      ::debug::Tracking the error
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice 
+      ::notice ::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning 
+      ::warning ::A warning
 
 ---
 
@@ -116,7 +116,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error 
+      ::error ::An error
 
 # messages work [unicode]
 
@@ -151,21 +151,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::Tracking the error 
+      ::debug::Tracking the error
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice 
+      ::notice ::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning 
+      ::warning ::A warning
 
 ---
 
@@ -176,7 +176,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error 
+      ::error ::An error
 
 # messages work [fancy]
 
@@ -211,21 +211,21 @@
     Code
       octo_debug("Tracking the error")
     Output
-      ::debug::Tracking the error 
+      ::debug::Tracking the error
 
 ---
 
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice 
+      ::notice ::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning 
+      ::warning ::A warning
 
 ---
 
@@ -236,5 +236,5 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error 
+      ::error ::An error
 
