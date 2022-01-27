@@ -21,21 +21,57 @@ octo_end_group <- function() {
     octocat("::endgroup::")
 }
 
-#' Masking a value in the GHA log.
+#' Masking a value or envvar in the GHA log.
 #'
-#' This will set an envvar `OCTOLOG_MASK*` containing the value and masks it.
+#' This will mask either a `value` or an envvar and prevent them (or their
+#'  content) from showing up in the Github Actions log.
+#' \cr ***ATTENTION***: Currently the masking of envvar values will only take
+#' effect in the ***NEXT*** step of the workflow. Values that are masked
+#' directly are masked immediately. This is not very clear in the Github Docs
+#' but very important.
+#' @details The maskign is not restricted to R output, rather it will work for
+#' any logged output. For a practical demonstration please see the
+#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' 
+#' Additionally some values and envvars will be masked autmatically by github,
+#' though this behaviour is pporly documented. It looks like anything with
+#' "TOKEN" will be masked. Related Issues
+#' [here](https://github.com/actions/runner/issues/643#issuecomment-823537871)
+#' and
+#' [here](https://github.com/actions/runner/issues/475#issuecomment-742271143).
 #' @param value A single value to mask, coercible to string.
+#' @param name Name of the envvar to mask.
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log)
+#' @examples
+#' octo_mask_value("secret_token123")
+#' # The mask takes effect in the NEXT step
+#' print("Current token: secret_token123")
+#' # Will log as
+#' # "Current token:***"
+#' 
+#' Sys.setenv("SECRET_TOKEN" = "007") 
+#' octo_mask_envvar("SECRET_TOKEN")
+#' # The mask takes effect in the NEXT step
+#' print(Sys.getenv("SECRET_TOKEN"))
+#' # Will log as
+#' # "***"
 #' @export
 octo_mask_value <- function(value) {
-    stopifnot(length(value) == 1)
-    var <- tempfile("OCTOLOG_MASK") %>%
-        basename() %>%
-        toupper()
-    args <- list()
-    args[var] <- value
-    do.call(Sys.setenv, args)
-    glue("::add-mask::${var}") %>% octocat()
+    if (length(value) != 1) {
+        octo_abort(c("You can only mask one value at a time."))
+    }
+
+    glue("::add-mask::{value}") %>% octocat()
+}
+
+#' @rdname  octo_mask_value 
+#' @export
+octo_mask_envvar <- function(name) {
+    if (length(name) != 1) {
+        octo_abort(c("You can only mask one envvar at a time."))
+    }
+
+    glue("::add-mask::${name}") %>% octocat()
 }
 
 #' Set an output parameter
@@ -61,7 +97,7 @@ octo_set_output <- function(value, name) {
 #' Stop workflow commands
 #'
 #' This will stop github from processing any workflow commands until
-#' [octo_start_commands()] is called with the correct `token`.
+#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicous workflow commands.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
@@ -69,9 +105,11 @@ octo_set_output <- function(value, name) {
 #' tk <- octo_stop_commands()
 #' # Commands will not be parsed by Github Actions
 #' octo_start_commands(tk)
+#' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
-    token <- tempfile("octotoken") %>% basename()
+    token <- tempfile("") %>% basename()
     glue("::stop-commands::{token}") %>% octocat()
 
     token

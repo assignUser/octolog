@@ -29,7 +29,7 @@ octocat <- function(string) {
     if (on_github()) {
         stopifnot(is.character(string))
         stopifnot(length(string) == 1)
-        cat(string, "\n")
+        cat(string, "\n", sep = "")
     }
 
     invisible(string)
@@ -50,6 +50,13 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' Encode String for Github Actions
 #'
 #' Encodes a multiline string into one line for Github Action output.
+#' 
+#' This will only encode '%', '\\n', '\\r' as these will be automatically
+#' decoded by Github when using the output via `${{
+#' steps.<step_id>.outputs.<name> }}`. You can use [utils::URLencode()] instead
+#' of this function to also escape everything else problematic like (double)
+#' quotes etc. but you will have to manually use [utils::URLdecode()] to revert
+#' this.
 #' @param string A character vector.
 #' @param join Join vector into single string using encoded newline.
 #' @return A character vector (of length 1 if `join`).

@@ -2,15 +2,51 @@
 % Please edit documentation in R/commands.R
 \name{octo_mask_value}
 \alias{octo_mask_value}
-\title{Masking a value in the GHA log.}
+\alias{octo_mask_envvar}
+\title{Masking a value or envvar in the GHA log.}
 \usage{
 octo_mask_value(value)
+
+octo_mask_envvar(name)
 }
 \arguments{
 \item{value}{A single value to mask, coercible to string.}
+
+\item{name}{Name of the envvar to mask.}
 }
 \description{
-This will set an envvar \verb{OCTOLOG_MASK*} containing the value and masks it.
+This will mask either a \code{value} or an envvar and prevent them (or their
+content) from showing up in the Github Actions log.
+\cr \emph{\strong{ATTENTION}}: Currently the masking of envvar values will only take
+effect in the \emph{\strong{NEXT}} step of the workflow. Values that are masked
+directly are masked immediately. This is not very clear in the Github Docs
+but very important.
+}
+\details{
+The maskign is not restricted to R output, rather it will work for
+any logged output. For a practical demonstration please see the
+\href{https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml}{{octolog} example workflow}
+
+Additionally some values and envvars will be masked autmatically by github,
+though this behaviour is pporly documented. It looks like anything with
+"TOKEN" will be masked. Related Issues
+\href{https://github.com/actions/runner/issues/643#issuecomment-823537871}{here}
+and
+\href{https://github.com/actions/runner/issues/475#issuecomment-742271143}{here}.
+}
+\examples{
+octo_mask_value("secret_token123")
+# The mask takes effect in the NEXT step
+print("Current token: secret_token123")
+# Will log as
+# "Current token:***"
+
+Sys.setenv("SECRET_TOKEN" = "007") 
+octo_mask_envvar("SECRET_TOKEN")
+# The mask takes effect in the NEXT step
+print(Sys.getenv("SECRET_TOKEN"))
+# Will log as
+# "***"
 }
 \seealso{
 \href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log}{Github Docs}
