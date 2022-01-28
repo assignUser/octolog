@@ -2,6 +2,5 @@ library(testthat)
 library(octolog)
 options(keep.source = TRUE)
 
-#enable_github_colors()
-options(cli.num_colors = 256^3)
+enable_github_colors()
 test_check("octolog")
