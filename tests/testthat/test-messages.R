@@ -5,7 +5,7 @@ cli::test_that_cli("messages work", {
     expect_snapshot(octo_debug("Tracking the error"))
   })
   expect_snapshot(octo_debug("Tracking the error"))
-  withr::with_envvar(list(R_CLI_NUM_COLORS = 256),
+  withr::with_envvar(list(R_CLI_NUM_COLORS = 256^3),
   expect_snapshot(octo_inform("A notice"))
   )
   
