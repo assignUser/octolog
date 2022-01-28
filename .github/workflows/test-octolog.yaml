@@ -32,6 +32,7 @@ jobs:
         run: |
           library(octolog)
           library(magrittr)
+          options(keep.source = TRUE)
           enable_github_colors()
 
           source(".github/workflows/R/conditions.R")

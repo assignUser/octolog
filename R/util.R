@@ -137,7 +137,7 @@ get_location_string <- function(trace) {
     }
 
     src <- integer(0)
-    for (call in trace$calls) {
+    for (call in trace$call) {
         if (!is.null(attributes(call))) {
             src <- attr(call, "srcref")
             break
