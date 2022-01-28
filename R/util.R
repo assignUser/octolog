@@ -50,7 +50,7 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' Encode String for Github Actions
 #'
 #' Encodes a multiline string into one line for Github Action output.
-#' 
+#'
 #' This will only encode '%', '\\n', '\\r' as these will be automatically
 #' decoded by Github when using the output via `${{
 #' steps.<step_id>.outputs.<name> }}`. You can use [utils::URLencode()] instead
@@ -137,7 +137,15 @@ get_location_string <- function(trace) {
     }
 
     src <- integer(0)
-    for (call in trace$call) {
+
+    # rlang changed trace layout with 1.0.0
+    if (packageVersion("rlang") >= "1.0.0") {
+        calls <- trace$call
+    } else {
+        calls <- trace$calls
+    }
+
+    for (call in calls) {
         if (!is.null(attributes(call))) {
             src <- attr(call, "srcref")
             break
