@@ -58,6 +58,11 @@ signaled in such a way that they will create annotations on the files
 affected. Even if \code{\link[=enable_github_colors]{enable_github_colors()}} was used the conditions will not
 have colors in the log as the color codes break the annotation.
 }
+\details{
+Annotations will only have file and line references if the option
+\code{keep.source = TRUE} is set. It defaults to \code{FALSE} when in non-interactive
+use.
+}
 \section{Functions}{
 \itemize{
 \item \code{octo_debug}: A debug message which is only visible if the secret \code{ACTIONS_STEP_DEBUG} is set. For local use set option \code{octolog.debug = TRUE}.

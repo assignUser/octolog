@@ -51,7 +51,10 @@ octo_warn <- function(message,
 #' signaled in such a way that they will create annotations on the files
 #' affected. Even if [enable_github_colors()] was used the conditions will not
 #' have colors in the log as the color codes break the annotation.
-#'
+#' 
+#' Annotations will only have file and line references if the option
+#' `keep.source = TRUE` is set. It defaults to `FALSE` when in non-interactive
+#' use.
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
