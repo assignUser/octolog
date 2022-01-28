@@ -15,8 +15,12 @@
 
     Code
       octo_inform("A notice")
-    Warning <warning>
+    Message <cliMessage>
+      [K
+    Message <rlang_message>
       A notice
+    Message <cliMessage>
+      [K
 
 ---
 
@@ -75,8 +79,12 @@
 
     Code
       octo_inform("A notice")
-    Warning <warning>
+    Message <cliMessage>
+      [K
+    Message <rlang_message>
       [1m[22mA notice
+    Message <cliMessage>
+      [K
 
 ---
 
@@ -135,8 +143,12 @@
 
     Code
       octo_inform("A notice")
-    Warning <warning>
+    Message <cliMessage>
+      [K
+    Message <rlang_message>
       A notice
+    Message <cliMessage>
+      [K
 
 ---
 
@@ -195,8 +207,12 @@
 
     Code
       octo_inform("A notice")
-    Warning <warning>
+    Message <cliMessage>
+      [K
+    Message <rlang_message>
       [1m[22mA notice
+    Message <cliMessage>
+      [K
 
 ---
 

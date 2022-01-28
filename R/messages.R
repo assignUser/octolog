@@ -20,7 +20,7 @@ octo_inform <- function(message,
     if (on_github()) {
         signal_github_condition("::notice ", message, trace, title)
     } else {
-        cli::cli_warn(message, ..., .envir = .envir)
+        cli::cli_inform(message, ..., .envir = .envir)
     }
 
     invisible(message)
@@ -110,11 +110,7 @@ signal_github_condition <- function(prefix = c(
         title <- glue(",title={title}")
     }
 
-    if (is.null(trace)) {
-        loc_str <- ""
-    } else {
-        loc_str <- get_location_string(trace)
-    }
+    loc_str <- get_location_string(trace)
 
     # Colors work in the log but break the annotations
     disable_github_colors(quiet = TRUE)
