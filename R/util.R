@@ -158,6 +158,7 @@ get_location_string <- function(trace) {
     }
 
     path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+    print(path)
     if (!fs::is_absolute_path(path)) {
         path <- fs::path(getwd(), path)
     }
