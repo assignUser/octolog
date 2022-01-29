@@ -1,8 +1,8 @@
           octo_start_group("Conditions")
 
           a <- function(b = rlang::trace_back()) b
-          a()
-          getSrcFilename(a, full.names = TRUE)
+          print(a())
+          print(getSrcFilename(a, full.names = TRUE))
           octo_debug("Tracking the error")
           octo_inform(c("A notice", i = "And some information"))
           octo_warn("A warning")
