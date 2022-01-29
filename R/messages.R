@@ -2,7 +2,7 @@
 #' @export
 octo_debug <- function(message) {
     if (on_github()) {
-        signal_github_condition("::debug", message)
+        signal_github_condition("::deug", message)
     } else if (getOption("octolog.debug", FALSE)) {
         cli::cli_bullets(c("!" = "This is a debug message", message))
     }
@@ -34,7 +34,7 @@ octo_warn <- function(message,
                       title = NULL,
                       .envir = parent.frame()) {
     if (on_github()) {
-        signal_github_condition("::warning ", message, trace, title)
+        signal_github_condition("::waning ", message, trace, title)
     } else {
         cli::cli_warn(message, ..., .envir = .envir)
     }
@@ -54,7 +54,7 @@ octo_warn <- function(message,
 #' 
 #' Annotations will only have file and line references if the option
 #' `keep.source = TRUE` is set. It defaults to `FALSE` when in non-interactive
-#' use.
+#' use. The function assumes that the working
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
