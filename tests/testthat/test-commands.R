@@ -1,6 +1,9 @@
-# rprojroot::find_package_root_file() %>%
-#   fs::path_tidy() %>%
-#   withr::local_envvar("OCTOLOG_START_DIR" = .)
+mockery::stub(
+  signal_github_condition,
+  "get_location_string",
+  "file=universe.R,line=23,endLine=42,col=3,endCol=27",
+  2
+)
 
 cli::test_that_cli("groups", {
   withr::local_envvar("GITHUB_ACTIONS" = "true")
@@ -13,7 +16,6 @@ cli::test_that_cli("groups", {
 })
 
 cli::test_that_cli("group errors", {
-  skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar("GITHUB_ACTIONS" = "true")
   expect_snapshot(octo_start_group(c("error", "too much")), error = TRUE)
 

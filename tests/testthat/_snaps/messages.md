@@ -40,21 +40,21 @@
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice
+      ::notice file=universe.R,line=23,endLine=42,col=3,endCol=27::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning
+      ::warning file=universe.R,line=23,endLine=42,col=3,endCol=27::A warning
 
 ---
 
     Code
       octo_abort("An error")
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
     Error <rlang_error>
       An error
 
@@ -63,7 +63,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
 
 # messages work [ansi]
 
@@ -107,21 +107,21 @@
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice
+      ::notice file=universe.R,line=23,endLine=42,col=3,endCol=27::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning
+      ::warning file=universe.R,line=23,endLine=42,col=3,endCol=27::A warning
 
 ---
 
     Code
       octo_abort("An error")
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
     Error <rlang_error>
       [1m[22mAn error
 
@@ -130,7 +130,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
 
 # messages work [unicode]
 
@@ -174,21 +174,21 @@
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice
+      ::notice file=universe.R,line=23,endLine=42,col=3,endCol=27::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning
+      ::warning file=universe.R,line=23,endLine=42,col=3,endCol=27::A warning
 
 ---
 
     Code
       octo_abort("An error")
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
     Error <rlang_error>
       An error
 
@@ -197,7 +197,7 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
 
 # messages work [fancy]
 
@@ -241,21 +241,21 @@
     Code
       octo_inform("A notice")
     Output
-      ::notice ::A notice
+      ::notice file=universe.R,line=23,endLine=42,col=3,endCol=27::A notice
 
 ---
 
     Code
       octo_warn("A warning")
     Output
-      ::warning ::A warning
+      ::warning file=universe.R,line=23,endLine=42,col=3,endCol=27::A warning
 
 ---
 
     Code
       octo_abort("An error")
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
     Error <rlang_error>
       [1m[22mAn error
 
@@ -264,5 +264,5 @@
     Code
       octo_abort("An error", .fail_fast = FALSE)
     Output
-      ::error ::An error
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
 

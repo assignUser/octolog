@@ -54,9 +54,11 @@ octo_warn <- function(message,
 #' 
 #' Annotations will only have file and line references if the option
 #' `keep.source = TRUE` is set. It defaults to `FALSE` when in non-interactive
-#' use. The file path for the annotations will be relative to the envvar
-#' `GITHUB_WORKSPACE`, if you want to change that set the envvar
-#' `OCTOLOG_START_DIR` to the dir the path should be relative to.
+#' use. 
+#' 
+#' The file path for the annotations will be relative to the R working
+#' directory, if you want to change that set the envvar `OCTOLOG_START_DIR` to
+#' the dir the path should be relative to.
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
@@ -115,7 +117,12 @@ signal_github_condition <- function(prefix = c(
         title <- glue(",title={title}")
     }
 
-    loc_str <- get_location_string(trace)
+    if(is.null(trace)){
+        loc_str <- ""
+    } else{
+      loc_str <- get_location_string(trace)
+    }
+    
 
     # Colors work in the log but break the annotations
     disable_github_colors(quiet = TRUE)

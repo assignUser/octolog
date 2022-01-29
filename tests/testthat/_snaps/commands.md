@@ -99,7 +99,7 @@
     Code
       octo_start_group(c("error", "too much"))
     Output
-      ::error file=R/commands.R,line=15,endLine=15,col=9,endCol=57::Group `name` must be length 1!
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
       Group `name` must be length 1!
 
@@ -112,7 +112,7 @@
     Code
       octo_start_group(c("error", "too much"))
     Output
-      ::error file=R/commands.R,line=15,endLine=15,col=9,endCol=57::Group `name` must be length 1!
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
       [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
 
@@ -125,7 +125,7 @@
     Code
       octo_start_group(c("error", "too much"))
     Output
-      ::error file=R/commands.R,line=15,endLine=15,col=9,endCol=57::Group `name` must be length 1!
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
       Group `name` must be length 1!
 
@@ -138,7 +138,7 @@
     Code
       octo_start_group(c("error", "too much"))
     Output
-      ::error file=R/commands.R,line=15,endLine=15,col=9,endCol=57::Group `name` must be length 1!
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
       [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
 
@@ -247,7 +247,7 @@
     Code
       octo_mask_value(c(1, 2))
     Output
-      ::error file=R/commands.R,line=64,endLine=64,col=9,endCol=63::You can only mask one value at a time.
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Error <rlang_error>
       You can only mask one value at a time.
 
@@ -276,7 +276,7 @@
     Code
       octo_mask_value(c(1, 2))
     Output
-      ::error file=R/commands.R,line=64,endLine=64,col=9,endCol=63::You can only mask one value at a time.
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Error <rlang_error>
       [1m[22mYou can only mask one value at a time.
 
@@ -305,7 +305,7 @@
     Code
       octo_mask_value(c(1, 2))
     Output
-      ::error file=R/commands.R,line=64,endLine=64,col=9,endCol=63::You can only mask one value at a time.
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Error <rlang_error>
       You can only mask one value at a time.
 
@@ -334,7 +334,7 @@
     Code
       octo_mask_value(c(1, 2))
     Output
-      ::error file=R/commands.R,line=64,endLine=64,col=9,endCol=63::You can only mask one value at a time.
+      ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Error <rlang_error>
       [1m[22mYou can only mask one value at a time.
 

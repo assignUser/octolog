@@ -1,7 +1,3 @@
-rprojroot::find_package_root_file() %>%
-  fs::path_tidy() %>%
-  withr::local_envvar("OCTOLOG_START_DIR" = .)
-
 test_that("on_github", {
   withr::local_envvar(GITHUB_ACTIONS = "false")
   expect_false(on_github())
