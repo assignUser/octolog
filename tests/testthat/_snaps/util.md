@@ -50,7 +50,7 @@
     Code
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
-      [36mi[39m [38;2;32;32;32m[48;2;232;232;232m[30m[47m`R_CLI_NUM_COLORS`[48;2;232;232;232m[38;2;32;32;32m[49m[39m already set.
+      [36mi[39m [30m[47m[30m[47m`R_CLI_NUM_COLORS`[47m[30m[49m[39m already set.
 
 # enable_github_colors [unicode]
 
@@ -78,5 +78,5 @@
     Code
       enable_github_colors(.local_envir = env)
     Message <cliMessage>
-      [36mℹ[39m [38;2;32;32;32m[48;2;232;232;232m[30m[47m`R_CLI_NUM_COLORS`[48;2;232;232;232m[38;2;32;32;32m[49m[39m already set.
+      [36mℹ[39m [30m[47m[30m[47m`R_CLI_NUM_COLORS`[47m[30m[49m[39m already set.
 

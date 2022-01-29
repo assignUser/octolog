@@ -1,3 +1,7 @@
+rprojroot::find_package_root_file() %>%
+  fs::path_tidy() %>%
+  withr::local_envvar("OCTOLOG_START_DIR" = .)
+
 cli::test_that_cli("groups", {
   withr::local_envvar("GITHUB_ACTIONS" = "true")
   expect_snapshot(octo_start_group("testthat"))
@@ -17,7 +21,7 @@ cli::test_that_cli("masking", {
   expect_snapshot(octo_mask_value("token2123123"))
   expect_snapshot(octo_mask_envvar("SECRET_VAR1"))
   expect_snapshot_error(octo_mask_envvar("SECRET_VAR"))
-  
+
   withr::local_envvar("GITHUB_ACTIONS" = "false", "SECRET_VAR1" = 42)
   expect_snapshot_error(octo_mask_value(c(1, 2)))
   expect_snapshot_error(octo_mask_envar(c("VAR1", "VAR2")))
