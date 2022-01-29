@@ -105,6 +105,15 @@ if not <code><a href="https://rdrr.io/r/base/missing.html" class="external-link"
 set to <code>FALSE</code>. Use the option <code>octolog.fail_fast</code> to set the value
 globally.`</p></dd>
 </dl></div>
+    <div id="details">
+    <h2>Details</h2>
+    <p>Annotations will only have file and line references if the option
+<code>keep.source = TRUE</code> is set. It defaults to <code>FALSE</code> when in non-interactive
+use.</p>
+<p>The file path for the annotations will be relative to the R working
+directory, if you want to change that set the envvar <code>OCTOLOG_START_DIR</code> to
+the dir the path should be relative to.</p>
+    </div>
     <div id="functions">
     <h2>Functions</h2>
     
