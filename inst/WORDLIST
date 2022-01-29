@@ -1,5 +1,7 @@
 assignuser
 assignUser
+aut
+BugReports
 cli
 CMD
 codecov
@@ -7,9 +9,11 @@ Codecov
 codemeta
 codeRepository
 ComputerLanguage
+Config
 contIntegration
 covr
 cran
+cre
 de
 developmentStatus
 doi
@@ -37,6 +41,8 @@ readme
 README
 relatedLink
 rlang
+Roxygen
+RoxygenNote
 rstats
 runtimePlatform
 sameAs

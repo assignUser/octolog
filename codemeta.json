@@ -50,14 +50,14 @@
       "@type": "SoftwareApplication",
       "identifier": "mockery",
       "name": "mockery",
-      "version": ">= 0.4.2",
+      "version": ">= 0.4.2.9000",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=mockery"
+      "sameAs": "https://github.com/r-lib/mockery"
     },
     {
       "@type": "SoftwareApplication",
@@ -154,7 +154,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "56.656KB",
+  "fileSize": "57.225KB",
   "readme": "https://github.com/assignUser/octolog/blob/main/README.md",
   "contIntegration": ["https://github.com/assignUser/octolog/actions", "https://app.codecov.io/gh/assignUser/octolog?branch=main"],
   "developmentStatus": "https://lifecycle.r-lib.org/articles/stages.html#experimental",
