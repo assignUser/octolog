@@ -2,7 +2,7 @@
 #' @export
 octo_debug <- function(message) {
     if (on_github()) {
-        signal_github_condition("::deug", message)
+        signal_github_condition("::debug", message)
     } else if (getOption("octolog.debug", FALSE)) {
         cli::cli_bullets(c("!" = "This is a debug message", message))
     }
@@ -34,7 +34,7 @@ octo_warn <- function(message,
                       title = NULL,
                       .envir = parent.frame()) {
     if (on_github()) {
-        signal_github_condition("::waning ", message, trace, title)
+        signal_github_condition("::warning ", message, trace, title)
     } else {
         cli::cli_warn(message, ..., .envir = .envir)
     }
