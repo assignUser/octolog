@@ -54,7 +54,9 @@ octo_warn <- function(message,
 #' 
 #' Annotations will only have file and line references if the option
 #' `keep.source = TRUE` is set. It defaults to `FALSE` when in non-interactive
-#' use. The function assumes that the working
+#' use. The file path for the annotations will be relative to the envvar
+#' `GITHUB_WORKSPACE`, if you want to change that set the envvar
+#' `OCTOLOG_START_DIR` to the dir the path should be relative to.
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]

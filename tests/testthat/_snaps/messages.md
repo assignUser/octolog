@@ -53,7 +53,12 @@
 
 ---
 
-    An error
+    Code
+      octo_abort("An error")
+    Output
+      ::error ::An error
+    Error <rlang_error>
+      An error
 
 ---
 
@@ -117,7 +122,12 @@
 
 ---
 
-    [1m[22mAn error
+    Code
+      octo_abort("An error")
+    Output
+      ::error ::An error
+    Error <rlang_error>
+      [1m[22mAn error
 
 ---
 
@@ -181,7 +191,12 @@
 
 ---
 
-    An error
+    Code
+      octo_abort("An error")
+    Output
+      ::error ::An error
+    Error <rlang_error>
+      An error
 
 ---
 
@@ -245,7 +260,12 @@
 
 ---
 
-    [1m[22mAn error
+    Code
+      octo_abort("An error")
+    Output
+      ::error ::An error
+    Error <rlang_error>
+      [1m[22mAn error
 
 ---
 

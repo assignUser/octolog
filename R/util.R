@@ -130,6 +130,7 @@ disable_github_colors <- function(.local_envir = parent.frame(),
 #'
 #' @param trace An [rlang::trace_back()] object.
 #' @return A string formated for use in Github Action workflow commands.
+#' @importFrom rlang `%|%`
 #' @noRd
 get_location_string <- function(trace) {
     if (is.null(trace)) {
@@ -156,8 +157,18 @@ get_location_string <- function(trace) {
         return("")
     }
 
+    path <- getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+    if (fs::is_absolute_path(path)) {
+        start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
+            Sys.getenv("GITHUB_WORKSPACE")) %>%
+            fs::path_tidy()
+
+        #stopifnot(fs::is_absolute_path(start_dir))
+        path <- path %>% fs::path_rel(start_dir)
+    }
+
     paste0(
-        "file={file.path(getSrcDirectory(src), getSrcFilename(src))},",
+        "file={path},",
         "line={src[[1]]},endLine={src[[3]]},",
         "col={src[[5]]},endCol={src[[6]]}"
     ) %>%

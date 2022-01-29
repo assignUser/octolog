@@ -61,7 +61,9 @@ have colors in the log as the color codes break the annotation.
 \details{
 Annotations will only have file and line references if the option
 \code{keep.source = TRUE} is set. It defaults to \code{FALSE} when in non-interactive
-use.
+use. The file path for the annotations will be relative to the envvar
+\code{GITHUB_WORKSPACE}, if you want to change that set the envvar
+\code{OCTOLOG_START_DIR} to the dir the path should be relative to.
 }
 \section{Functions}{
 \itemize{
