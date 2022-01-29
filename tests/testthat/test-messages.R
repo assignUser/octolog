@@ -1,11 +1,11 @@
-mockery::stub(
-  octolog:::signal_github_condition,
-  "get_location_string",
-  "file=universe.R,line=23,endLine=42,col=3,endCol=27",
-  2
-)
-
 cli::test_that_cli("messages work", {
+  mockery::stub(
+    octolog:::signal_github_condition,
+    "get_location_string",
+    "file=universe.R,line=23,endLine=42,col=3,endCol=27",
+    2
+  )
+
   skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar(GITHUB_ACTIONS = "false")
 

@@ -1,9 +1,4 @@
-mockery::stub(
-  octolog:::signal_github_condition,
-  "get_location_string",
-  "file=universe.R,line=23,endLine=42,col=3,endCol=27",
-  2
-)
+
 
 cli::test_that_cli("groups", {
   withr::local_envvar("GITHUB_ACTIONS" = "true")
@@ -16,6 +11,13 @@ cli::test_that_cli("groups", {
 })
 
 cli::test_that_cli("group errors", {
+  mockery::stub(
+    octolog:::signal_github_condition,
+    "get_location_string",
+    "file=universe.R,line=23,endLine=42,col=3,endCol=27",
+    2
+  )
+
   withr::local_envvar("GITHUB_ACTIONS" = "true")
   expect_snapshot(octo_start_group(c("error", "too much")), error = TRUE)
 
@@ -34,6 +36,12 @@ cli::test_that_cli("masking", {
 })
 
 cli::test_that_cli("masking errors", {
+  mockery::stub(
+    octolog:::signal_github_condition,
+    "get_location_string",
+    "file=universe.R,line=23,endLine=42,col=3,endCol=27",
+    2
+  )
   skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar("GITHUB_ACTIONS" = "true", "SECRET_VAR1" = 42)
   expect_snapshot(octo_mask_value(c(1, 2)), error = TRUE)
