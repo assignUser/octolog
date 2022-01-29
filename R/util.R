@@ -158,13 +158,12 @@ get_location_string <- function(trace) {
     }
 
     path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
-    print(path)
     if (!fs::is_absolute_path(path)) {
         path <- fs::path(getwd(), path)
     }
 
     start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
-        Sys.getenv("GITHUB_WORKSPACE")) %>%
+        ".") %>%
         fs::path_tidy()
 
     path <- path %>% fs::path_rel(start_dir)
