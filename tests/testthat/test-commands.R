@@ -1,5 +1,5 @@
 mockery::stub(
-  signal_github_condition,
+  octolog::signal_github_condition,
   "get_location_string",
   "file=universe.R,line=23,endLine=42,col=3,endCol=27",
   2
