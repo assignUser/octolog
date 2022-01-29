@@ -177,6 +177,7 @@ octo_echo_off <- function() {
 #' @seealso [octo_mask_envvar()]
 #' and the [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
+    `:=` <- NULL
     if (set) {
         rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
     }

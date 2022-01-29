@@ -140,7 +140,7 @@ get_location_string <- function(trace) {
     src <- integer(0)
 
     # rlang changed trace layout with 1.0.0
-    if (packageVersion("rlang") >= "1.0.0") {
+    if (utils::packageVersion("rlang") >= "1.0.0") {
         calls <- trace$call
     } else {
         calls <- trace$calls
@@ -157,7 +157,7 @@ get_location_string <- function(trace) {
         return("")
     }
 
-    path <- getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+    path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
     if (fs::is_absolute_path(path)) {
         start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
             Sys.getenv("GITHUB_WORKSPACE")) %>%

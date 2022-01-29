@@ -18,10 +18,10 @@ Imports:
     glue,
     magrittr,
     rlang,
+    utils,
     withr
 Suggests: 
     rprojroot,
-    rlang (>= 1.0.0),
     covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
