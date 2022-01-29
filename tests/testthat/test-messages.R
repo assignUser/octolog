@@ -1,6 +1,6 @@
-rprojroot::find_package_root_file() %>%
-  fs::path_tidy() %>%
-  withr::local_envvar("OCTOLOG_START_DIR" = .)
+# rprojroot::find_package_root_file() %>%
+#   fs::path_tidy() %>%
+#   withr::local_envvar("OCTOLOG_START_DIR" = .)
 
 cli::test_that_cli("messages work", {
   skip_if_not_installed("rlang", "1.0.0")
