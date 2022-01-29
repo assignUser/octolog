@@ -53,5 +53,4 @@ octo_warn(c("An important warning!", i = "And a tipp how to avoid this warning."
 Please note that the octolog project is released with a [Contributor
 Code of
 Conduct](https://assignuser.github.io/octolog/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms. \[Copied
-to clipboard\]
+contributing to this project, you agree to abide by its terms.

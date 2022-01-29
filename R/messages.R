@@ -20,7 +20,7 @@ octo_inform <- function(message,
     if (on_github()) {
         signal_github_condition("::notice ", message, trace, title)
     } else {
-        cli::cli_warn(message, ..., .envir = .envir)
+        cli::cli_inform(message, ..., .envir = .envir)
     }
 
     invisible(message)
@@ -51,7 +51,14 @@ octo_warn <- function(message,
 #' signaled in such a way that they will create annotations on the files
 #' affected. Even if [enable_github_colors()] was used the conditions will not
 #' have colors in the log as the color codes break the annotation.
-#'
+#' 
+#' Annotations will only have file and line references if the option
+#' `keep.source = TRUE` is set. It defaults to `FALSE` when in non-interactive
+#' use. 
+#' 
+#' The file path for the annotations will be relative to the R working
+#' directory, if you want to change that set the envvar `OCTOLOG_START_DIR` to
+#' the dir the path should be relative to.
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
@@ -110,11 +117,12 @@ signal_github_condition <- function(prefix = c(
         title <- glue(",title={title}")
     }
 
-    if (is.null(trace)) {
+    if(is.null(trace)){
         loc_str <- ""
-    } else {
-        loc_str <- get_location_string(trace)
+    } else{
+      loc_str <- get_location_string(trace)
     }
+    
 
     # Colors work in the log but break the annotations
     disable_github_colors(quiet = TRUE)

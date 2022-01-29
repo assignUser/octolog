@@ -58,6 +58,15 @@ signaled in such a way that they will create annotations on the files
 affected. Even if \code{\link[=enable_github_colors]{enable_github_colors()}} was used the conditions will not
 have colors in the log as the color codes break the annotation.
 }
+\details{
+Annotations will only have file and line references if the option
+\code{keep.source = TRUE} is set. It defaults to \code{FALSE} when in non-interactive
+use.
+
+The file path for the annotations will be relative to the R working
+directory, if you want to change that set the envvar \code{OCTOLOG_START_DIR} to
+the dir the path should be relative to.
+}
 \section{Functions}{
 \itemize{
 \item \code{octo_debug}: A debug message which is only visible if the secret \code{ACTIONS_STEP_DEBUG} is set. For local use set option \code{octolog.debug = TRUE}.
