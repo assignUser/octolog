@@ -184,15 +184,10 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
   }
 
   if (on_github()) {
-    if (length(value) > 1) {
-      head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
-      body <- glue("echo '{value}' >> $GITHUB_ENV")
-      footer <- glue("echo '{delim}' >> $GITHUB_ENV")
-      cmd <- paste0(c(head, body, footer), collapse = ";")
-    } else {
-      cmd <- glue("echo '{name}={value}' >> $GITHUB_ENV")
-    }
-
+    head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
+    body <- glue("echo '{value}' >> $GITHUB_ENV")
+    footer <- glue("echo '{delim}' >> $GITHUB_ENV")
+    cmd <- paste0(c(head, body, footer), collapse = ";")
     system(command = cmd)
   }
 }
