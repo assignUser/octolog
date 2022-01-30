@@ -4,12 +4,12 @@
 \alias{octo_add_path}
 \title{Add a system path}
 \usage{
-octo_add_path(value, check = TRUE)
+octo_add_path(dir, check = TRUE)
 }
 \arguments{
-\item{value}{A directory.}
+\item{dir}{A directory.}
 
-\item{check}{Should be checked that \code{value} is an existing dir.}
+\item{check}{Should be checked that \code{dir} is an existing dir.}
 }
 \description{
 Prepends a directory so the runners \code{PATH} envvar in a way that make it

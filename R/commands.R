@@ -204,8 +204,8 @@ utils::globalVariables(":=", "octolog")
 #' available in the following steps of the action. The `PATH` will not update
 #' during this step.
 #'
-#' @param value A directory.
-#' @param check Should be checked that `value` is an existing dir.
+#' @param dir A directory.
+#' @param check Should be checked that `dir` is an existing dir.
 #' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
 #' @examples
@@ -213,14 +213,14 @@ utils::globalVariables(":=", "octolog")
 #' octo_addpath("/.local/bin")
 #' }
 #' @export
-octo_add_path <- function(value, check = TRUE) {
-  if (length(value) != 1) {
-    octo_abort("{.arg value} must be length 1.")
+octo_add_path <- function(dir, check = TRUE) {
+  if (length(dir) != 1) {
+    octo_abort("{.arg dir} must be length 1.")
   }
 
-  if (!fs::is_dir(value) && check) {
+  if (!fs::is_dir(dir) && check) {
     octo_abort(
-      c("The path {.path {value}} could not be found.",
+      c("The path {.path {dir}} could not be found.",
         i = paste0(
           "If you want to add a path before it is ",
           "created set {.arg check = FALSE}."
@@ -229,5 +229,5 @@ octo_add_path <- function(value, check = TRUE) {
     )
   }
 
-  glue("echo '{name}' >> $GITHUB_PATH") %>% system()
+  glue("echo '{dir}' >> $GITHUB_PATH") %>% system()
 }
