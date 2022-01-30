@@ -107,3 +107,4 @@
       disable_github_colors()
     Message <cliMessage>
       ✖ Disabeled colors!
+
