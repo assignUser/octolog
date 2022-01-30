@@ -15,15 +15,22 @@ interpreted as one line.}
 
 \item{set}{Should the envvar also be set in this step?}
 
-\item{delim}{Delimter used for multiline strings. No need to change this
+\item{delim}{Delimiter used for multiline strings. No need to change this
 unless your string contains 'EOF'.}
 }
 \description{
-This will set an envrionment variable in a way that makes it available to the
+This will set an environment variable in a way that makes it available to the
 following steps, compared to using \code{\link[=Sys.setenv]{Sys.setenv()}}, which would only make an
 envvar available in the current step.
 }
+\examples{
+\dontrun{
+val <- c("Some content", "that spans", "multiple lines")
+octo_set_envvar(val, "multi")
+octo_set_envvar(2342, "pid")
+}
+}
 \seealso{
-\code{\link[=octo_mask_envvar]{octo_mask_envvar()}}
-and the \href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable}{Github docs}
+\code{\link[=octo_mask_envvar]{octo_mask_envvar()}}and the
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable}{Github docs}
 }

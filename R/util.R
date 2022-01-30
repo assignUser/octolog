@@ -6,7 +6,7 @@
 #' on_github()
 #' @export
 on_github <- function() {
-    tolower(Sys.getenv("GITHUB_ACTIONS")) == "true"
+  tolower(Sys.getenv("GITHUB_ACTIONS")) == "true"
 }
 
 
@@ -26,13 +26,13 @@ on_github <- function() {
 #'
 #' @export
 octocat <- function(string) {
-    if (on_github()) {
-        stopifnot(is.character(string))
-        stopifnot(length(string) == 1)
-        cat(string, "\n", sep = "")
-    }
+  if (on_github()) {
+    stopifnot(is.character(string))
+    stopifnot(length(string) == 1)
+    cat(string, "\n", sep = "")
+  }
 
-    invisible(string)
+  invisible(string)
 }
 
 #' Prepare a String for Github
@@ -42,9 +42,9 @@ octocat <- function(string) {
 #' @inheritParams encode_string
 #' @noRd
 prepare_string <- function(string, .envir = parent.frame()) {
-    string %>%
-        cli::format_message(.envir = .envir) %>%
-        encode_string()
+  string %>%
+    cli::format_message(.envir = .envir) %>%
+    encode_string()
 }
 
 #' Encode String for Github Actions
@@ -69,19 +69,18 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' encode_string(md, TRUE)
 #' @export
 encode_string <- function(string, join = FALSE) {
-    . <- NULL
+  encoded <- string %>%
+    gsub("%", "%25", .) %>%
+    gsub("\n", "%0A", .) %>%
+    gsub("\r", "%0D", .)
 
-    encoded <- string %>%
-        gsub("%", "%25", .) %>%
-        gsub("\n", "%0A", .) %>%
-        gsub("\r", "%0D", .)
+  if (join) {
+    encoded <- paste0(encoded, collapse = "%0A")
+  }
 
-    if (join) {
-        encoded <- paste0(encoded, collapse = "%0A")
-    }
-
-    encoded
+  encoded
 }
+utils::globalVariables(".", "octolog")
 
 #' Enable/disable Colors on Github Actions
 #'
@@ -100,30 +99,30 @@ encode_string <- function(string, join = FALSE) {
 #' @export
 enable_github_colors <- function(n_colors = as.integer(256^3),
                                  .local_envir = parent.frame(), quiet = FALSE) {
-    if (on_github()) {
-        ct <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
-        if (is.na(ct)) {
-            withr::local_envvar(
-                "R_CLI_NUM_COLORS" = n_colors,
-                .local_envir = .local_envir
-            )
+  if (on_github()) {
+    ct <- Sys.getenv("R_CLI_NUM_COLORS", unset = NA_character_)
+    if (is.na(ct)) {
+      withr::local_envvar(
+        "R_CLI_NUM_COLORS" = n_colors,
+        .local_envir = .local_envir
+      )
 
-            if (!quiet) cli::cli_alert_success("Enabled colors!")
-        } else {
-            if (!quiet) cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
-        }
-        invisible(TRUE)
+      if (!quiet) cli::cli_alert_success("Enabled colors!")
+    } else {
+      if (!quiet) cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
     }
+    invisible(TRUE)
+  }
 
-    invisible(FALSE)
+  invisible(FALSE)
 }
 
 #' @rdname enable_github_colors
 #' @export
 disable_github_colors <- function(.local_envir = parent.frame(),
                                   quiet = FALSE) {
-    withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
-    if (!quiet) cli::cli_alert_danger("Disabeled colors!")
+  withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
+  if (!quiet) cli::cli_alert_danger("Disabeled colors!")
 }
 
 #' Extract file path and position from trace_back.
@@ -133,46 +132,46 @@ disable_github_colors <- function(.local_envir = parent.frame(),
 #' @importFrom rlang `%|%`
 #' @noRd
 get_location_string <- function(trace) {
-    if (is.null(trace)) {
-        return("")
+  if (is.null(trace)) {
+    return("")
+  }
+
+  src <- integer(0)
+
+  # rlang changed trace layout with 1.0.0
+  if (utils::packageVersion("rlang") >= "1.0.0") {
+    calls <- trace$call
+  } else {
+    calls <- trace$calls
+  }
+
+  for (call in calls) {
+    if (!is.null(attributes(call))) {
+      src <- attr(call, "srcref")
+      break
     }
+  }
 
-    src <- integer(0)
+  if (length(src) == 0) {
+    return("")
+  }
 
-    # rlang changed trace layout with 1.0.0
-    if (utils::packageVersion("rlang") >= "1.0.0") {
-        calls <- trace$call
-    } else {
-        calls <- trace$calls
-    }
+  path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+  if (!fs::is_absolute_path(path)) {
+    path <- fs::path(getwd(), path)
+  }
 
-    for (call in calls) {
-        if (!is.null(attributes(call))) {
-            src <- attr(call, "srcref")
-            break
-        }
-    }
+  start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
+    ".") %>%
+    fs::path_tidy()
 
-    if (length(src) == 0) {
-        return("")
-    }
-
-    path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
-    if (!fs::is_absolute_path(path)) {
-        path <- fs::path(getwd(), path)
-    }
-
-    start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
-        ".") %>%
-        fs::path_tidy()
-
-    path <- path %>% fs::path_rel(start_dir)
+  path <- path %>% fs::path_rel(start_dir)
 
 
-    paste0(
-        "file={path},",
-        "line={src[[1]]},endLine={src[[3]]},",
-        "col={src[[5]]},endCol={src[[6]]}"
-    ) %>%
-        glue::glue()
+  paste0(
+    "file={path},",
+    "line={src[[1]]},endLine={src[[3]]},",
+    "col={src[[5]]},endCol={src[[6]]}"
+  ) %>%
+    glue::glue()
 }
