@@ -90,7 +90,8 @@ utils::globalVariables(".", "octolog")
 #' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @param quiet Should messages be printed?
 #' @inheritParams withr::local_envvar
-#' @return Invisibly returns `TRUE` if the envvar is set, `FALSE` otherwise.
+#' @return Invisibly returns `TRUE` if enabling/disabling was succesfull,
+#'   `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")
 #' enable_github_colors()
@@ -111,7 +112,7 @@ enable_github_colors <- function(n_colors = as.integer(256^3),
     } else {
       if (!quiet) cli::cli_alert_info("{.envvar R_CLI_NUM_COLORS} already set.")
     }
-    invisible(TRUE)
+    return(invisible(TRUE))
   }
 
   invisible(FALSE)
@@ -121,8 +122,16 @@ enable_github_colors <- function(n_colors = as.integer(256^3),
 #' @export
 disable_github_colors <- function(.local_envir = parent.frame(),
                                   quiet = FALSE) {
-  withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
-  if (!quiet) cli::cli_alert_danger("Disabeled colors!")
+  if (on_github()) {
+    withr::local_options(cli.num_colors = 1, .local_envir = .local_envir)
+    if (!quiet) {
+      cli::cli_alert_danger("Disabeled colors!")
+    }
+
+    return(invisible(TRUE))
+  }
+
+  invisible(FALSE)
 }
 
 #' Extract file path and position from trace_back.
@@ -157,6 +166,7 @@ get_location_string <- function(trace) {
   }
 
   path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+
   if (!fs::is_absolute_path(path)) {
     path <- fs::path(getwd(), path)
   }
