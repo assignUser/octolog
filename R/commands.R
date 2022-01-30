@@ -223,7 +223,5 @@ octo_add_path <- function(dir, check = TRUE) {
     dir <- fs::path(getwd(), dir)
   }
 
-  cmd <- glue('echo "{dir}" >> $GITHUB_PATH')
-  print(cmd)
-  system(cmd)
+  glue('echo "{dir}" >> $GITHUB_PATH') %>% system()
 }
