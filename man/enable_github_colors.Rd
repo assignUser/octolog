@@ -21,7 +21,7 @@ disable_github_colors(.local_envir = parent.frame(), quiet = FALSE)
 \item{quiet}{Should messages be printed?}
 }
 \value{
-Invisibly returns \code{TRUE} if enabling/disabling was succesfull,
+Invisibly returns \code{TRUE} if enabling/disabling was successful,
 \code{FALSE} otherwise.
 }
 \description{

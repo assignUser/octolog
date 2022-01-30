@@ -23,12 +23,12 @@ directly are masked immediately. This is not very clear in the Github Docs
 but very important.
 }
 \details{
-The maskign is not restricted to R output, rather it will work for
+The masking is not restricted to R output, rather it will work for
 any logged output. For a practical demonstration please see the
 \href{https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml}{{octolog} example workflow}
 
-Additionally some values and envvars will be masked autmatically by github,
-though this behaviour is pporly documented. It looks like anything with
+Additionally some values and envvars will be masked automatically by github,
+though this behaviour is poorly documented. It looks like anything with
 "TOKEN" will be masked. Related Issues
 \href{https://github.com/actions/runner/issues/643#issuecomment-823537871}{here}
 and

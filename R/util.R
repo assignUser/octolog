@@ -90,7 +90,7 @@ utils::globalVariables(".", "octolog")
 #' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @param quiet Should messages be printed?
 #' @inheritParams withr::local_envvar
-#' @return Invisibly returns `TRUE` if enabling/disabling was succesfull,
+#' @return Invisibly returns `TRUE` if enabling/disabling was successful,
 #'   `FALSE` otherwise.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "true")

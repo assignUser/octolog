@@ -41,7 +41,7 @@
 ---
 
     Code
-      disable_github_colors(.local_envir = env)
+      disable_github_colors()
     Message <cliMessage>
       x Disabeled colors!
 
@@ -62,7 +62,7 @@
 ---
 
     Code
-      disable_github_colors(.local_envir = env)
+      disable_github_colors()
     Message <cliMessage>
       x Disabeled colors!
 
@@ -83,7 +83,7 @@
 ---
 
     Code
-      disable_github_colors(.local_envir = env)
+      disable_github_colors()
     Message <cliMessage>
       ✖ Disabeled colors!
 
@@ -104,6 +104,6 @@
 ---
 
     Code
-      disable_github_colors(.local_envir = env)
+      disable_github_colors()
     Message <cliMessage>
       ✖ Disabeled colors!

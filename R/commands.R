@@ -1,7 +1,7 @@
 #' Grouping log lines
 #'
 #' These functions make it possible to group lines in the Github Actions log.
-#' Groups can not be nested at this point, see this [isssue](https://github.com/actions/runner/issues/802).
+#' Groups can not be nested at this point, see this [issue](https://github.com/actions/runner/issues/802).
 #' @param name Name of the group, single line.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "TRUE")
@@ -32,12 +32,12 @@ octo_end_group <- function() {
 #' effect in the ***NEXT*** step of the workflow. Values that are masked
 #' directly are masked immediately. This is not very clear in the Github Docs
 #' but very important.
-#' @details The maskign is not restricted to R output, rather it will work for
+#' @details The masking is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
 #' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #'
-#' Additionally some values and envvars will be masked autmatically by github,
-#' though this behaviour is pporly documented. It looks like anything with
+#' Additionally some values and envvars will be masked automatically by github,
+#' though this behaviour is poorly documented. It looks like anything with
 #' "TOKEN" will be masked. Related Issues
 #' [here](https://github.com/actions/runner/issues/643#issuecomment-823537871)
 #' and
@@ -108,7 +108,7 @@ octo_set_output <- function(value, name) {
 #' Stop workflow commands
 #'
 #' This will stop github from processing any workflow commands until
-#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicous workflow commands.
+#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicious workflow commands.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
