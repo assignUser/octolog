@@ -199,7 +199,8 @@ utils::globalVariables(":=", "octolog")
 #' available in the following steps of the action. The `PATH` will not update
 #' during this step.
 #'
-#' @param dir A directory.
+#' @param dir A directory. If relative will turned absolute using
+#'   [base::getwd()].
 #' @param check Should be checked that `dir` is an existing dir.
 #' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
@@ -213,7 +214,7 @@ octo_add_path <- function(dir, check = TRUE) {
     octo_abort("{.arg dir} must be length 1.")
   }
 
-  if (!fs::is_dir(dir)) {
+  if (!fs::is_dir(dir) && check) {
     octo_abort(
       c("The path {.path {dir}} could not be found.")
     )

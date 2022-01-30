@@ -7,7 +7,8 @@
 octo_add_path(dir, check = TRUE)
 }
 \arguments{
-\item{dir}{A directory.}
+\item{dir}{A directory. If relative will turned absolute using
+\code{\link[base:getwd]{base::getwd()}}.}
 
 \item{check}{Should be checked that \code{dir} is an existing dir.}
 }
