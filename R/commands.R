@@ -218,15 +218,14 @@ octo_add_path <- function(dir, check = TRUE) {
     octo_abort("{.arg dir} must be length 1.")
   }
 
-  if (!fs::is_dir(dir) && check) {
+  if (!fs::is_dir(dir)) {
     octo_abort(
-      c("The path {.path {dir}} could not be found.",
-        i = paste0(
-          "If you want to add a path before it is ",
-          "created set {.arg check = FALSE}."
-        )
-      )
+      c("The path {.path {dir}} could not be found.")
     )
+  }
+
+  if (!fs::is_absolute_path(dir)) {
+    dir <- fs::path(getwd(), dir)
   }
 
   glue("echo '{dir}' >> $GITHUB_PATH") %>% system()
