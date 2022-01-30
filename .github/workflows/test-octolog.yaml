@@ -66,7 +66,7 @@ jobs:
           octo_warn("The added dir will only be on the path in the next step.")
           fs::dir_create("bin_dir")
           octo_add_path("bin_dir/")
-          system("echo $PATH")
+          system("echo '$PATH'")
         shell: Rscript {0}
       - name: Next step
         run: |
