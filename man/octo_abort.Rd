@@ -7,7 +7,7 @@
 \alias{octo_abort}
 \title{Signal conditions that create Github annotations.}
 \usage{
-octo_debug(message)
+octo_debug(message, .envir = parent.frame())
 
 octo_inform(
   message,
@@ -37,6 +37,8 @@ octo_abort(
 \arguments{
 \item{message}{It is formatted via a call to \code{\link[cli:cli_bullets]{cli_bullets()}}.}
 
+\item{.envir}{Environment to evaluate the glue expressions in.}
+
 \item{...}{Passed to \code{\link[rlang:abort]{rlang::abort()}}, \code{\link[rlang:abort]{rlang::warn()}} or
 \code{\link[rlang:abort]{rlang::inform()}}.}
 
@@ -44,8 +46,6 @@ octo_abort(
 if not \code{\link[=missing]{missing()}}.}
 
 \item{title}{A custom title for the Github annotation.}
-
-\item{.envir}{Environment to evaluate the glue expressions in.}
 
 \item{.fail_fast}{An error on Github will not kill the R process if this is
 set to \code{FALSE}. Use the option \code{octolog.fail_fast} to set the value
@@ -75,11 +75,11 @@ the dir the path should be relative to.
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "")
 octo_warn(c("A warning message", i = "Try something else!"),
-    title = "Custom Title"
+  title = "Custom Title"
 )
 Sys.setenv(GITHUB_ACTIONS = "TRUE")
 octo_warn(c("A warning message", i = "Try something else!"),
-    title = "Custom Title"
+  title = "Custom Title"
 )
 }
 \seealso{

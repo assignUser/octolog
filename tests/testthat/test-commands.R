@@ -38,11 +38,23 @@ cli::test_that_cli("masking errors", {
   skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar("GITHUB_ACTIONS" = "true", "SECRET_VAR1" = 42)
   expect_snapshot(octo_mask_value(c(1, 2)), error = TRUE)
-  expect_snapshot_error(octo_mask_envvar(c("VAR1", "VAR2")))
-  expect_snapshot_error(octo_mask_envvar("SECRET_VAR"))
+  expect_snapshot(octo_mask_envvar(c("VAR1", "VAR2")), error = TRUE)
+  expect_snapshot(octo_mask_envvar("SECRET_VAR"), error = TRUE)
 
   withr::local_envvar("GITHUB_ACTIONS" = "false", "SECRET_VAR1" = 42)
   expect_snapshot_error(octo_mask_value(c(1, 2)))
   expect_snapshot_error(octo_mask_envvar(c("VAR1", "VAR2")))
   expect_snapshot_error(octo_mask_envvar("SECRET_VAR"))
+})
+
+cli::test_that_cli("set_output", {
+  withr::local_envvar("GITHUB_ACTIONS" = "true")
+  expect_snapshot(octo_set_output(5, c("some", "output")), error = TRUE)
+  expect_snapshot(octo_set_output(c(2, 3), "output"), error = TRUE)
+  expect_snapshot(octo_set_output("Some Important text to pass on", "pkg-info"))
+
+  withr::local_envvar("GITHUB_ACTIONS" = "false")
+  expect_snapshot_error(octo_set_output(5, c("some", "output")))
+  expect_snapshot_error(octo_set_output(c(2, 3), "output"))
+  expect_snapshot(octo_set_output("Some Important text to pass on", "pkg-info"))
 })
