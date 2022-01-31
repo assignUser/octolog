@@ -193,7 +193,7 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
 
   if (on_github()) {
     if (on_windows()) {
-      cmd <- "| Out-File -FilePath $GITHUB_ENV -Append'"
+      cmd <- "| Add-Content -Path $GITHUB_ENV"
     } else {
       cmd <- ">> $GITHUB_ENV"
     }
@@ -242,7 +242,7 @@ octo_add_path <- function(dir, check = TRUE) {
 
   if (on_github()) {
     if (on_windows()) {
-      cmd <- "| Out-File -FilePath $GITHUB_PATH -Append'"
+      cmd <- "| Add-Content -Path $GITHUB_PATH"
     } else {
       cmd <- ">> $GITHUB_PATH"
     }
