@@ -147,14 +147,7 @@ get_location_string <- function(trace) {
 
   src <- integer(0)
 
-  # rlang changed trace layout with 1.0.0
-  if (utils::packageVersion("rlang") >= "1.0.0") {
-    calls <- trace$call
-  } else {
-    calls <- trace$calls
-  }
-
-  for (call in calls) {
+  for (call in trace$call) {
     if (!is.null(attributes(call))) {
       src <- attr(call, "srcref")
       break

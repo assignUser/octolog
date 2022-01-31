@@ -108,7 +108,10 @@ octo_set_output <- function(value, name) {
 #' Stop workflow commands
 #'
 #' This will stop github from processing any workflow commands until
-#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicious workflow commands.
+#' [octo_start_commands()] is called with the correct `token`. This can be used
+#' if untrusted output (e.g. issue titles, bodies or commit messages) needs to
+#' be logged this can be used to stop this output from running possibly
+#' malicious workflow commands.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
@@ -120,7 +123,7 @@ octo_set_output <- function(value, name) {
 #' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
-  token <- tempfile("") %>% basename()
+  token <- openssl::rand_bytes(12) %>% paste0(collapse = "")
   glue("::stop-commands::{token}") %>% octocat()
 
   token
@@ -169,6 +172,7 @@ octo_echo_off <- function() {
 #' @param set Should the envvar also be set in this step?
 #' @param delim Delimiter used for multiline strings. No need to change this
 #'   unless your string contains 'EOF'.
+#' @return `name` invisibly.
 #' @examples
 #' \dontrun{
 #' val <- c("Some content", "that spans", "multiple lines")
@@ -179,8 +183,12 @@ octo_echo_off <- function() {
 #' @seealso [octo_mask_envvar()]and the
 #' [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
+  if (length(name) != 1) {
+    octo_abort("{.arg name} must be length 1.")
+  }
+
   if (set) {
-    rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
+    rlang::exec(Sys.setenv, "{name}" := glue("{ paste0(value, collapse ='\n') }") %>% as.character())
   }
 
   if (on_github()) {
@@ -190,6 +198,8 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
     cmd <- paste0(c(head, body, footer), collapse = ";")
     system(command = cmd)
   }
+
+  invisible(name)
 }
 utils::globalVariables(":=", "octolog")
 
@@ -202,6 +212,7 @@ utils::globalVariables(":=", "octolog")
 #' @param dir A directory. If relative will turned absolute using
 #'   [base::getwd()].
 #' @param check Should be checked that `dir` is an existing dir.
+#' @return `dir` invisibly.
 #' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
 #' @examples
@@ -224,5 +235,9 @@ octo_add_path <- function(dir, check = TRUE) {
     dir <- fs::path(getwd(), dir)
   }
 
-  glue('echo "{dir}" >> $GITHUB_PATH') %>% system()
+  if (on_github()) {
+    glue('echo "{dir}" >> $GITHUB_PATH') %>% system()
+  }
+
+  invisible(dir)
 }

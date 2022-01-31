@@ -100,8 +100,9 @@
       octo_start_group(c("error", "too much"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
-    Error <rlang_error>
-      Group `name` must be length 1!
+    Condition
+      Error in `octo_start_group()`:
+      ! Group `name` must be length 1!
 
 ---
 
@@ -113,8 +114,9 @@
       octo_start_group(c("error", "too much"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
-    Error <rlang_error>
-      [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_start_group()`[49m[39m:[22m
+      [33m![39m [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
 
 ---
 
@@ -126,8 +128,9 @@
       octo_start_group(c("error", "too much"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
-    Error <rlang_error>
-      Group `name` must be length 1!
+    Condition
+      Error in `octo_start_group()`:
+      ! Group `name` must be length 1!
 
 ---
 
@@ -139,8 +142,9 @@
       octo_start_group(c("error", "too much"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
-    Error <rlang_error>
-      [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_start_group()`[49m[39m:[22m
+      [33m![39m [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
 
 ---
 
@@ -248,8 +252,9 @@
       octo_mask_value(c(1, 2))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
-    Error <rlang_error>
-      You can only mask one value at a time.
+    Condition
+      Error in `octo_mask_value()`:
+      ! You can only mask one value at a time.
 
 ---
 
@@ -257,8 +262,9 @@
       octo_mask_envvar(c("VAR1", "VAR2"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
-    Error <rlang_error>
-      You can only mask one envvar at a time.
+    Condition
+      Error in `octo_mask_envvar()`:
+      ! You can only mask one envvar at a time.
 
 ---
 
@@ -266,8 +272,9 @@
       octo_mask_envvar("SECRET_VAR")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
-    Error <rlang_error>
-      The envvar `SECRET_VAR` does not exists!
+    Condition
+      Error in `octo_mask_envvar()`:
+      ! The envvar `SECRET_VAR` does not exists!
 
 ---
 
@@ -287,8 +294,9 @@
       octo_mask_value(c(1, 2))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
-    Error <rlang_error>
-      [1m[22mYou can only mask one value at a time.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_value()`[49m[39m:[22m
+      [33m![39m [1m[22mYou can only mask one value at a time.
 
 ---
 
@@ -296,8 +304,9 @@
       octo_mask_envvar(c("VAR1", "VAR2"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
-    Error <rlang_error>
-      [1m[22mYou can only mask one envvar at a time.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_envvar()`[49m[39m:[22m
+      [33m![39m [1m[22mYou can only mask one envvar at a time.
 
 ---
 
@@ -305,8 +314,9 @@
       octo_mask_envvar("SECRET_VAR")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
-    Error <rlang_error>
-      [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_envvar()`[49m[39m:[22m
+      [33m![39m [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
 
 ---
 
@@ -326,8 +336,9 @@
       octo_mask_value(c(1, 2))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
-    Error <rlang_error>
-      You can only mask one value at a time.
+    Condition
+      Error in `octo_mask_value()`:
+      ! You can only mask one value at a time.
 
 ---
 
@@ -335,8 +346,9 @@
       octo_mask_envvar(c("VAR1", "VAR2"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
-    Error <rlang_error>
-      You can only mask one envvar at a time.
+    Condition
+      Error in `octo_mask_envvar()`:
+      ! You can only mask one envvar at a time.
 
 ---
 
@@ -344,8 +356,9 @@
       octo_mask_envvar("SECRET_VAR")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
-    Error <rlang_error>
-      The envvar `SECRET_VAR` does not exists!
+    Condition
+      Error in `octo_mask_envvar()`:
+      ! The envvar `SECRET_VAR` does not exists!
 
 ---
 
@@ -365,8 +378,9 @@
       octo_mask_value(c(1, 2))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
-    Error <rlang_error>
-      [1m[22mYou can only mask one value at a time.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_value()`[49m[39m:[22m
+      [33m![39m [1m[22mYou can only mask one value at a time.
 
 ---
 
@@ -374,8 +388,9 @@
       octo_mask_envvar(c("VAR1", "VAR2"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
-    Error <rlang_error>
-      [1m[22mYou can only mask one envvar at a time.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_envvar()`[49m[39m:[22m
+      [33m![39m [1m[22mYou can only mask one envvar at a time.
 
 ---
 
@@ -383,8 +398,9 @@
       octo_mask_envvar("SECRET_VAR")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
-    Error <rlang_error>
-      [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_mask_envvar()`[49m[39m:[22m
+      [33m![39m [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
 
 ---
 
@@ -404,8 +420,9 @@
       octo_set_output(5, c("some", "output"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
-    Error <rlang_error>
-      The output `name` must be length 1.
+    Condition
+      Error in `octo_set_output()`:
+      ! The output `name` must be length 1.
 
 ---
 
@@ -413,8 +430,9 @@
       octo_set_output(c(2, 3), "output")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
-    Error <rlang_error>
-      The output `value` must be length 1.
+    Condition
+      Error in `octo_set_output()`:
+      ! The output `value` must be length 1.
 
 ---
 
@@ -442,8 +460,9 @@
       octo_set_output(5, c("some", "output"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
-    Error <rlang_error>
-      [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_set_output()`[49m[39m:[22m
+      [33m![39m [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
 
 ---
 
@@ -451,8 +470,9 @@
       octo_set_output(c(2, 3), "output")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
-    Error <rlang_error>
-      [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_set_output()`[49m[39m:[22m
+      [33m![39m [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
 
 ---
 
@@ -480,8 +500,9 @@
       octo_set_output(5, c("some", "output"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
-    Error <rlang_error>
-      The output `name` must be length 1.
+    Condition
+      Error in `octo_set_output()`:
+      ! The output `name` must be length 1.
 
 ---
 
@@ -489,8 +510,9 @@
       octo_set_output(c(2, 3), "output")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
-    Error <rlang_error>
-      The output `value` must be length 1.
+    Condition
+      Error in `octo_set_output()`:
+      ! The output `value` must be length 1.
 
 ---
 
@@ -518,8 +540,9 @@
       octo_set_output(5, c("some", "output"))
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
-    Error <rlang_error>
-      [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_set_output()`[49m[39m:[22m
+      [33m![39m [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
 
 ---
 
@@ -527,8 +550,9 @@
       octo_set_output(c(2, 3), "output")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
-    Error <rlang_error>
-      [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+    Condition
+      [1m[33mError[39m in [1m[1m[30m[47m`octo_set_output()`[49m[39m:[22m
+      [33m![39m [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
 
 ---
 
@@ -549,4 +573,112 @@
 
     Code
       octo_set_output("Some Important text to pass on", "pkg-info")
+
+# stop_commands [plain]
+
+    Code
+      octo_stop_commands()
+    Output
+      ::stop-commands::token123
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+    Output
+      ::token123::
+
+---
+
+    Code
+      octo_stop_commands()
+    Output
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+
+# stop_commands [ansi]
+
+    Code
+      octo_stop_commands()
+    Output
+      ::stop-commands::token123
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+    Output
+      ::token123::
+
+---
+
+    Code
+      octo_stop_commands()
+    Output
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+
+# stop_commands [unicode]
+
+    Code
+      octo_stop_commands()
+    Output
+      ::stop-commands::token123
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+    Output
+      ::token123::
+
+---
+
+    Code
+      octo_stop_commands()
+    Output
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+
+# stop_commands [fancy]
+
+    Code
+      octo_stop_commands()
+    Output
+      ::stop-commands::token123
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
+    Output
+      ::token123::
+
+---
+
+    Code
+      octo_stop_commands()
+    Output
+      [1] "token123"
+
+---
+
+    Code
+      octo_start_commands("token123")
 
