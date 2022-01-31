@@ -178,3 +178,8 @@ get_location_string <- function(trace) {
   ) %>%
     glue::glue()
 }
+
+on_windows <- function() {
+  os <- Sys.info()[["sysname"]] %>% tolower()
+  os == "windows"
+}

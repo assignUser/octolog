@@ -192,9 +192,14 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
   }
 
   if (on_github()) {
-    head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
-    body <- glue("echo '{value}' >> $GITHUB_ENV")
-    footer <- glue("echo '{delim}' >> $GITHUB_ENV")
+    if (on_windows()) {
+      cmd <- "| Out-File -FilePath $GITHUB_ENV -Append'"
+    } else {
+      cmd <- ">> $GITHUB_ENV"
+    }
+    head <- glue("echo '{name}<<{delim}' {cmd}")
+    body <- glue("echo '{value}' {cmd}")
+    footer <- glue("echo '{delim}' {cmd}")
     cmd <- paste0(c(head, body, footer), collapse = ";")
     system(command = cmd)
   }
@@ -236,7 +241,12 @@ octo_add_path <- function(dir, check = TRUE) {
   }
 
   if (on_github()) {
-    glue('echo "{dir}" >> $GITHUB_PATH') %>% system()
+    if (on_windows()) {
+      cmd <- "| Out-File -FilePath $GITHUB_PATH -Append'"
+    } else {
+      cmd <- ">> $GITHUB_PATH"
+    }
+    glue('echo "{dir}" {cmd}') %>% system()
   }
 
   invisible(dir)
