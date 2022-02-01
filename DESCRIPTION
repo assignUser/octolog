@@ -1,13 +1,14 @@
 Package: octolog
-Title: Better Github Action Logging
+Title: Better 'Github Action' Logging
 Version: 0.0.0.9000
 Authors@R: 
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7281-3989"))
-Description: Provides an API for Github workflow commands and
-    makes it possible to signal conditions from within R that will create
-    annotations when used within Github Actions but raise normal R
-    conditions when used interactively.
+Description: Provides an API for 'Github' <https://github.com> workflow
+    commands and makes it possible to signal conditions from within R that
+    will create annotations when used within 'Github Actions'
+    <https://github.com/features/actions> but raise normal R conditions
+    when used interactively.
 License: MIT + file LICENSE
 URL: https://github.com/assignUser/octolog,
     https://assignuser.github.io/octolog/
@@ -22,13 +23,16 @@ Imports:
     utils,
     withr
 Suggests: 
+    knitr,
     covr,
     mockery (>= 0.4.2.9000),
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    rmarkdown
+Remotes: 
+    r-lib/mockery
 Config/testthat/edition: 3
 Config/testthat/parallel: true
-Remotes:  
-    r-lib/mockery
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
+VignetteBuilder: knitr
