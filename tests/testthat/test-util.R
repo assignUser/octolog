@@ -32,9 +32,33 @@ cli::test_that_cli("enable_github_colors", {
   env <- environment()
   withr::local_envvar(GITHUB_ACTIONS = "false", , R_CLI_NUM_COLORS = NULL)
   expect_false(enable_github_colors(.local_envir = env))
-  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL)
-  expect_snapshot(enable_github_colors(.local_envir = env))
+  expect_false(disable_github_colors())
 
+  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL, .local_envir = env)
+  expect_snapshot(enable_github_colors(.local_envir = env))
   withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 256^3)
   expect_snapshot(enable_github_colors(.local_envir = env))
+  expect_snapshot(disable_github_colors())
+  expect_true(disable_github_colors(quiet = TRUE, .local_envir = env))
+})
+
+test_that("get_location_string", {
+  withr::local_options(keep.source = TRUE)
+  old_wd <- getwd()
+  withr::defer(setwd(old_wd))
+  wd <- fs::file_temp("octo_test") %>% fs::dir_create()
+  setwd(wd)
+  writeLines(
+    c(
+      "trace_dummy <- function(a = rlang::trace_back()) a",
+      "trc <- trace_dummy()"
+    ),
+    "dummy.R"
+  )
+  withr::defer(unlink("dummy.R"))
+
+  source("dummy.R")
+
+  expect_equal(get_location_string(NULL), "")
+  expect_snapshot(get_location_string(trc))
 })

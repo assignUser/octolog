@@ -17,7 +17,7 @@ The \code{token} needed to reactivate the workflow command parsing.
 }
 \description{
 This will stop github from processing any workflow commands until
-\code{\link[=octo_start_commands]{octo_start_commands()}} is called with the correct \code{token}. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicous workflow commands.
+\code{\link[=octo_start_commands]{octo_start_commands()}} is called with the correct \code{token}. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicious workflow commands.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "true")

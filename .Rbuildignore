@@ -10,3 +10,4 @@
 ^CONTRIBUTING\.md$
 ^codemeta\.json$
 ^\.pre-commit-config\.yaml$
+^inst/action$

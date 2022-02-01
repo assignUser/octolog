@@ -17,7 +17,8 @@ Imports:
     fs,
     glue,
     magrittr,
-    rlang,
+    openssl,
+    rlang (>= 1.0.0),
     utils,
     withr
 Suggests: 

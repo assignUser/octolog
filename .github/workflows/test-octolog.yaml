@@ -62,11 +62,17 @@ jobs:
           octo_inform("This will not be parsed")
           octo_start_commands(t)
           octo_inform("Now all commands are parsed again!")
+
+          octo_warn("The added dir will only be on the path in the next step.")
+          octo_add_path("bin_dir/", check = FALSE)
+          system("echo $PATH")
         shell: Rscript {0}
       - name: Next step
         run: |
           library(octolog)
 
+          octo_warn("The added dir is now available!")
+          system("echo $PATH")
           print("I accidentally logged my: secret_gh_token")
           print("secret_gh_token")
           octo_inform("Now in the next step the envvar mask has taken effect:")
@@ -80,5 +86,5 @@ jobs:
           octo_inform("We can use outputs from previous steps in other steps using the step id.")
           octo_inform("Multiline strings will be automatically converted from their escaped form.")
           cat('${{steps.step1.outputs.desc }}')
-
         shell: Rscript {0}
+        

@@ -14,7 +14,7 @@ octo_end_group()
 }
 \description{
 These functions make it possible to group lines in the Github Actions log.
-Groups can not be nested at this point, see this \href{https://github.com/actions/runner/issues/802}{isssue}.
+Groups can not be nested at this point, see this \href{https://github.com/actions/runner/issues/802}{issue}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "TRUE")

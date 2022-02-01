@@ -1,7 +1,7 @@
 #' Grouping log lines
 #'
 #' These functions make it possible to group lines in the Github Actions log.
-#' Groups can not be nested at this point, see this [isssue](https://github.com/actions/runner/issues/802).
+#' Groups can not be nested at this point, see this [issue](https://github.com/actions/runner/issues/802).
 #' @param name Name of the group, single line.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "TRUE")
@@ -11,17 +11,17 @@
 #' @export
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines)
 octo_start_group <- function(name) {
-    if (length(name) != 1) {
-        octo_abort("Group {.arg name} must be length 1!")
-    }
+  if (length(name) != 1) {
+    octo_abort("Group {.arg name} must be length 1!")
+  }
 
-    glue("::group::{name}") %>% octocat()
+  glue("::group::{name}") %>% octocat()
 }
 
 #' @rdname octo_start_group
 #' @export
 octo_end_group <- function() {
-    octocat("::endgroup::")
+  octocat("::endgroup::")
 }
 
 #' Masking a value or envvar in the GHA log.
@@ -32,12 +32,12 @@ octo_end_group <- function() {
 #' effect in the ***NEXT*** step of the workflow. Values that are masked
 #' directly are masked immediately. This is not very clear in the Github Docs
 #' but very important.
-#' @details The maskign is not restricted to R output, rather it will work for
+#' @details The masking is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
 #' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #'
-#' Additionally some values and envvars will be masked autmatically by github,
-#' though this behaviour is pporly documented. It looks like anything with
+#' Additionally some values and envvars will be masked automatically by github,
+#' though this behaviour is poorly documented. It looks like anything with
 #' "TOKEN" will be masked. Related Issues
 #' [here](https://github.com/actions/runner/issues/643#issuecomment-823537871)
 #' and
@@ -60,24 +60,24 @@ octo_end_group <- function() {
 #' # "***"
 #' @export
 octo_mask_value <- function(value) {
-    if (length(value) != 1) {
-        octo_abort(c("You can only mask one value at a time."))
-    }
+  if (length(value) != 1) {
+    octo_abort(c("You can only mask one value at a time."))
+  }
 
-    glue("::add-mask::{value}") %>% octocat()
+  glue("::add-mask::{value}") %>% octocat()
 }
 
 #' @rdname  octo_mask_value
 #' @export
 octo_mask_envvar <- function(name) {
-    if (length(name) != 1) {
-        octo_abort(c("You can only mask one envvar at a time."))
-    }
-    if (is.na(Sys.getenv(name, NA_character_))) {
-        octo_abort("The envvar {.envvar {name}} does not exists!")
-    }
+  if (length(name) != 1) {
+    octo_abort(c("You can only mask one envvar at a time."))
+  }
+  if (is.na(Sys.getenv(name, NA_character_))) {
+    octo_abort("The envvar {.envvar {name}} does not exists!")
+  }
 
-    glue("::add-mask::${name}") %>% octocat()
+  glue("::add-mask::${name}") %>% octocat()
 }
 
 #' Set an output parameter
@@ -95,20 +95,23 @@ octo_mask_envvar <- function(name) {
 #' octo_set_output("important-value", value)
 #' @export
 octo_set_output <- function(value, name) {
-    if (length(name) != 1) {
-        octo_abort(c("The output {.arg name} must be length 1."))
-    }
-    if (length(value) != 1) {
-        octo_abort(c("The output {.arg value} must be length 1."))
-    }
+  if (length(name) != 1) {
+    octo_abort(c("The output {.arg name} must be length 1."))
+  }
+  if (length(value) != 1) {
+    octo_abort(c("The output {.arg value} must be length 1."))
+  }
 
-    glue("::set-output name={name}::{value}") %>% octocat()
+  glue("::set-output name={name}::{value}") %>% octocat()
 }
 
 #' Stop workflow commands
 #'
 #' This will stop github from processing any workflow commands until
-#' [octo_start_commands()] is called with the correct `token`. This can be used if untrusted output (e.g. issue titles, bodies or commit messages) needs to be logged this can be used to stop this output from running possibly malicous workflow commands.
+#' [octo_start_commands()] is called with the correct `token`. This can be used
+#' if untrusted output (e.g. issue titles, bodies or commit messages) needs to
+#' be logged this can be used to stop this output from running possibly
+#' malicious workflow commands.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
@@ -120,16 +123,16 @@ octo_set_output <- function(value, name) {
 #' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
-    token <- tempfile("") %>% basename()
-    glue("::stop-commands::{token}") %>% octocat()
+  token <- openssl::rand_bytes(12) %>% paste0(collapse = "")
+  glue("::stop-commands::{token}") %>% octocat()
 
-    token
+  token
 }
 
 #' @rdname octo_stop_commands
 #' @export
 octo_start_commands <- function(token) {
-    glue("::{token}::") %>% octocat()
+  glue("::{token}::") %>% octocat()
 }
 
 #' Echo workflow commands
@@ -147,23 +150,19 @@ octo_start_commands <- function(token) {
 #' octo_echo_off()
 #' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs)
 octo_echo_on <- function() {
-    octocat("::echo::on")
+  octocat("::echo::on")
 }
 
 #' @rdname octo_echo_on
 #' @export
 octo_echo_off <- function() {
-    octocat("::echo::off")
+  octocat("::echo::off")
 }
 
-# #' @export
-# octo_save_state <- function(name, value) {
-
-# }
 
 #' Set environment variables
 #'
-#' This will set an envrionment variable in a way that makes it available to the
+#' This will set an environment variable in a way that makes it available to the
 #' following steps, compared to using [Sys.setenv()], which would only make an
 #' envvar available in the current step.
 #' @param value Value of the envvar, coercible to string. Can be a multiline
@@ -171,21 +170,75 @@ octo_echo_off <- function() {
 #'   interpreted as one line.
 #' @param name Name of the envvar.
 #' @param set Should the envvar also be set in this step?
-#' @param delim Delimter used for multiline strings. No need to change this
+#' @param delim Delimiter used for multiline strings. No need to change this
 #'   unless your string contains 'EOF'.
+#' @return `name` invisibly.
+#' @examples
+#' \dontrun{
+#' val <- c("Some content", "that spans", "multiple lines")
+#' octo_set_envvar(val, "multi")
+#' octo_set_envvar(2342, "pid")
+#' }
 #' @export
-#' @seealso [octo_mask_envvar()]
-#' and the [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
+#' @seealso [octo_mask_envvar()]and the
+#' [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
-    `:=` <- NULL
-    if (set) {
-        rlang::exec(Sys.setenv, "{name}" := "{ paste(value, sep ='\n') }")
-    }
+  if (length(name) != 1) {
+    octo_abort("{.arg name} must be length 1.")
+  }
 
-    if (on_github()) {
-        head <- glue("echo '{name}<<{delim}' >> $GITHUB_ENV")
-        body <- glue("echo '{value}' >> $GITHUB_ENV")
-        footer <- glue("echo '{delim}' >> $GITHUB_ENV")
-        system(command = paste0(c(head, body, footer), collapse = ";"))
-    }
+  if (set) {
+    rlang::exec(Sys.setenv, "{name}" := glue("{ paste0(value, collapse ='\n') }") %>% as.character())
+  }
+
+  if (on_github()) {
+    head <- glue("{name}<<{delim}")
+    write(c(head, value, delim), Sys.getenv("GITHUB_ENV"), append = TRUE)
+  }
+
+  invisible(name)
+}
+utils::globalVariables(":=", "octolog")
+
+#' Add a system path
+#'
+#' Prepends a directory so the runners `PATH` envvar in a way that make it
+#' available in the following steps of the action. The `PATH` will not update
+#' during this step.
+#'
+#' @param dir A directory. If relative will turned absolute using
+#'   [base::getwd()].
+#' @param check Should be checked that `dir` is an existing dir.
+#' @return `dir` invisibly.
+#' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
+#' @examples
+#' \dontrun{
+#' octo_addpath("/.local/bin")
+#' }
+#' @export
+octo_add_path <- function(dir, check = TRUE) {
+  if (length(dir) != 1) {
+    octo_abort("{.arg dir} must be length 1.")
+  }
+
+  if(!is.character(dir)){
+    octo_abort("{.arg dir} must be a string.")
+  }
+
+  if (!fs::is_dir(dir) && check) {
+    octo_abort(
+      c("The path {.path {dir}} could not be found.")
+    )
+  }
+
+  if (!fs::is_absolute_path(dir)) {
+    dir <- fs::path(getwd(), dir)
+  }
+
+  if (on_github()) {
+    write(dir, Sys.getenv("GITHUB_PATH"), append = TRUE)
+  }
+
+  invisible(dir)
 }

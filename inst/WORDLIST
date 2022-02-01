@@ -8,6 +8,7 @@ codecov
 Codecov
 codemeta
 codeRepository
+coercible
 ComputerLanguage
 Config
 contIntegration
@@ -16,7 +17,10 @@ cran
 cre
 de
 developmentStatus
+dir
 doi
+envvar
+EOF
 familyName
 fileSize
 fs
