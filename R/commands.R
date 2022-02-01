@@ -192,16 +192,8 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
   }
 
   if (on_github()) {
-    if (on_windows()) {
-      cmd <- "| Add-Content -Path $env:GITHUB_ENV"
-    } else {
-      cmd <- ">> $GITHUB_ENV"
-    }
-    head <- glue("echo '{name}<<{delim}' {cmd}")
-    body <- glue("echo '{value}' {cmd}")
-    footer <- glue("echo '{delim}' {cmd}")
-    cmd <- paste0(c(head, body, footer), collapse = ";")
-    system(command = cmd)
+    head <- glue("{name}<<{delim}")
+    write(c(head, value, delim), Sys.getenv("GITHUB_ENV"), append = TRUE)
   }
 
   invisible(name)
@@ -230,6 +222,10 @@ octo_add_path <- function(dir, check = TRUE) {
     octo_abort("{.arg dir} must be length 1.")
   }
 
+  if(!is.character(dir)){
+    octo_abort("{.arg dir} must be a string.")
+  }
+
   if (!fs::is_dir(dir) && check) {
     octo_abort(
       c("The path {.path {dir}} could not be found.")
@@ -241,12 +237,7 @@ octo_add_path <- function(dir, check = TRUE) {
   }
 
   if (on_github()) {
-    if (on_windows()) {
-      cmd <- "| Add-Content -Path $env:GITHUB_PATH"
-    } else {
-      cmd <- ">> $GITHUB_PATH"
-    }
-    glue('echo "{dir}" {cmd}') %>% system()
+    write(dir, Sys.getenv("GITHUB_PATH"), append = TRUE)
   }
 
   invisible(dir)
