@@ -11,7 +11,7 @@
 
 Octolog provides a complete[^1] API for Github [workflow commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions) that makes it easy to create powerful Github Actions that create readable logs. 
 
- and makes it possible to signal conditions from within R that will create annotations when used within Github Actions but raise normal R conditions
+A core feature is the ability to signal conditions from within R that will create annotations when used within Github Actions but raise normal R conditions
 when used interactively.
 ![Annotations on files of a PR](man/figures/error.png)
 
