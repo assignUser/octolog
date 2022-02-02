@@ -50,7 +50,8 @@ needs.
 The best way to see how {octolog} works, is in an actual
 [workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml).
 For more information please see the
-[website](assignUser.github.io/octolog) and the vignette [LINK ME]().
+[website](assignUser.github.io/octolog) and the [introductory
+vignette](https://assignUser.github.io/octolog/articles/octolog.html).
 
 ## Code of Conduct
 
