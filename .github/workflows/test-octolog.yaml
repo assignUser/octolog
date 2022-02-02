@@ -54,9 +54,8 @@ jobs:
           print("I accidentally logged my: secret_gh_token")
           octo_echo_off()
           
-          readLines("DESCRIPTION") %>%
+          readLines("README.md") %>%
             encode_string(join = TRUE) %>%
-            utils::URLencode() %>%
             octo_set_output("desc")
 
           t <- octo_stop_commands()
@@ -86,8 +85,7 @@ jobs:
           print(Sys.getenv("MULTI_LINE2"))
           octo_inform("We can use outputs from previous steps in other steps using the step id.")
           octo_inform("Multiline strings will be automatically converted from their escaped form.")
-          
-          utils::URLdecode("${{steps.step1.outputs.desc }}") %>%
-          cat()
+
+          cat("${{steps.step1.outputs.desc}}")
         shell: Rscript {0}
         
