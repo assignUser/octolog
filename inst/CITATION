@@ -1,0 +1,17 @@
+citHeader("To cite octolog in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "octolog: Better 'Github Action' Logging",
+  author   = "Jacob Wujciak-Jens",
+  note =  "https://github.com/assignUser/octolog, https://assignuser.github.io/octolog/",
+  year     = 2022,
+  url      = "https://doi.org/10.5281/zenodo.5948954",
+  doi = "10.5281/zenodo.5948954", 
+  textVersion = paste(
+    "Jacob Wujciak-Jens (2022).",
+    "octolog: Better 'Github Action' Logging.",
+    "doi: 10.5281/zenodo.5948955",
+    "https://assignuser.github.io/octolog"
+  )
+)

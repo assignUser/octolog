@@ -12,6 +12,7 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 [![pkgcheck](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml/badge.svg)](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)](https://app.codecov.io/gh/assignUser/octolog?branch=main)
+[![DOI](https://zenodo.org/badge/451156961.svg)](https://zenodo.org/badge/latestdoi/451156961)
 <!-- badges: end -->
 
 Octolog provides a complete[^1] API for Github [workflow
