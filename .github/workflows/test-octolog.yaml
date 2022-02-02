@@ -86,6 +86,6 @@ jobs:
           octo_inform("We can use outputs from previous steps in other steps using the step id.")
           octo_inform("Multiline strings will be automatically converted from their escaped form.")
 
-          cat("${{steps.step1.outputs.desc}}")
+          cat('${{steps.step1.outputs.desc}}')
         shell: Rscript {0}
         
