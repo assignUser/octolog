@@ -13,3 +13,4 @@
 ^inst/action$
 ^doc$
 ^Meta$
+^CITATION\.cff$
