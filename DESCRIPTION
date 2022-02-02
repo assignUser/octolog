@@ -1,6 +1,6 @@
 Package: octolog
 Title: Better 'Github Action' Logging
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: 
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7281-3989"))
