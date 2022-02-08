@@ -18,14 +18,14 @@ Imports:
     fs,
     glue,
     magrittr,
-    openssl,
-    rlang (>= 1.0.0),
+    rlang (>= 0.4.10),
     utils,
     withr
 Suggests: 
     knitr,
     covr,
     mockery (>= 0.4.2.9000),
+    openssl,
     testthat (>= 3.0.0),
     rmarkdown
 Remotes: 

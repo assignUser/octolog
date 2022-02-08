@@ -89,7 +89,21 @@ octo_abort <- function(message,
 
   if (!on_github() || .fail_fast) {
     if (missing(trace)) trace <- NULL
-    cli::cli_abort(message, ..., trace = trace, .envir = .envir, call = rlang::caller_env())
+
+    if (packageVersion("rlang") >= "1.0.0") {
+      cli::cli_abort(message,
+        ...,
+        trace = trace,
+        .envir = .envir,
+        call = rlang::caller_env()
+      )
+    } else {
+      cli::cli_abort(message,
+        ...,
+        trace = trace,
+        .envir = .envir
+      )
+    }
   }
 
   invisible(message)

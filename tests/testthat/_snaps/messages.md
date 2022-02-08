@@ -2,7 +2,7 @@
 
     Code
       octo_debug("Tracking the error")
-    Message
+    Message <cliMessage>
       ! This is a debug message
       Tracking the error
 
@@ -15,8 +15,9 @@
 
     Code
       octo_inform("A notice")
-    Message
+    Message <cliMessage>
       
+    Message <rlang_message>
       A notice
 
 ---
@@ -54,9 +55,8 @@
       octo_abort("An error")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
-    Condition
-      Error:
-      ! An error
+    Error <rlang_error>
+      An error
 
 ---
 
@@ -69,7 +69,7 @@
 
     Code
       octo_debug("Tracking the error")
-    Message
+    Message <cliMessage>
       [33m![39m This is a debug message
       Tracking the error
 
@@ -82,8 +82,9 @@
 
     Code
       octo_inform("A notice")
-    Message
+    Message <cliMessage>
       
+    Message <rlang_message>
       [1m[22mA notice
 
 ---
@@ -121,9 +122,8 @@
       octo_abort("An error")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
-    Condition
-      [1m[33mError[39m:[22m
-      [33m![39m [1m[22mAn error
+    Error <rlang_error>
+      [1m[22mAn error
 
 ---
 
@@ -136,7 +136,7 @@
 
     Code
       octo_debug("Tracking the error")
-    Message
+    Message <cliMessage>
       ! This is a debug message
       Tracking the error
 
@@ -149,8 +149,9 @@
 
     Code
       octo_inform("A notice")
-    Message
+    Message <cliMessage>
       
+    Message <rlang_message>
       A notice
 
 ---
@@ -188,9 +189,8 @@
       octo_abort("An error")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
-    Condition
-      Error:
-      ! An error
+    Error <rlang_error>
+      An error
 
 ---
 
@@ -203,7 +203,7 @@
 
     Code
       octo_debug("Tracking the error")
-    Message
+    Message <cliMessage>
       [33m![39m This is a debug message
       Tracking the error
 
@@ -216,8 +216,9 @@
 
     Code
       octo_inform("A notice")
-    Message
+    Message <cliMessage>
       
+    Message <rlang_message>
       [1m[22mA notice
 
 ---
@@ -255,9 +256,8 @@
       octo_abort("An error")
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::An error
-    Condition
-      [1m[33mError[39m:[22m
-      [33m![39m [1m[22mAn error
+    Error <rlang_error>
+      [1m[22mAn error
 
 ---
 

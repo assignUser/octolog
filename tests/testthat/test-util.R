@@ -29,6 +29,7 @@ test_that("encode_string", {
 })
 
 cli::test_that_cli("enable_github_colors", {
+  # skip_if_not_installed("rlang", "1.0.0")
   env <- environment()
   withr::local_envvar(GITHUB_ACTIONS = "false", , R_CLI_NUM_COLORS = NULL)
   expect_false(enable_github_colors(.local_envir = env))

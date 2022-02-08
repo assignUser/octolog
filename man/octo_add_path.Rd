@@ -12,6 +12,9 @@ octo_add_path(dir, check = TRUE)
 
 \item{check}{Should be checked that \code{dir} is an existing dir.}
 }
+\value{
+\code{dir} invisibly.
+}
 \description{
 Prepends a directory so the runners \code{PATH} envvar in a way that make it
 available in the following steps of the action. The \code{PATH} will not update
