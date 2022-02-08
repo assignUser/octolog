@@ -20,9 +20,9 @@ commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-f
 that makes it easy to create powerful Github Actions that create
 readable logs.
 
-and makes it possible to signal conditions from within R that will
-create annotations when used within Github Actions but raise normal R
-conditions when used interactively. ![Annotations on files of a
+Additionally it is possible to signal conditions with octolog from R
+that will create annotations when used within Github Actions but raise
+normal R conditions when used interactively. ![Annotations on files of a
 PR](man/figures/error.png)
 
 ## Installation
