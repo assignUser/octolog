@@ -111,7 +111,8 @@ octo_set_output <- function(value, name) {
 #' [octo_start_commands()] is called with the correct `token`. This can be used
 #' if untrusted output (e.g. issue titles, bodies or commit messages) needs to
 #' be logged this can be used to stop this output from running possibly
-#' malicious workflow commands.
+#' malicious workflow commands. Requires the suggested package
+#' [openssl::openssl] to be installed.
 #' @param token A unique token used to restart workflow command parsing.
 #' @return The `token` needed to reactivate the workflow command parsing.
 #' @examples
@@ -123,6 +124,16 @@ octo_set_output <- function(value, name) {
 #' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
+  if (!rlang::is_installed("openssl")) {
+    octo_abort(c(
+      paste0(
+        "The package {.pkg openssl} must be installed to use",
+        " this function safely!"
+      ),
+      i = "{.code install.packages('openssl')}"
+    ))
+  }
+
   token <- openssl::rand_bytes(12) %>% paste0(collapse = "")
   glue("::stop-commands::{token}") %>% octocat()
 
@@ -222,7 +233,7 @@ octo_add_path <- function(dir, check = TRUE) {
     octo_abort("{.arg dir} must be length 1.")
   }
 
-  if(!is.character(dir)){
+  if (!is.character(dir)) {
     octo_abort("{.arg dir} must be a string.")
   }
 

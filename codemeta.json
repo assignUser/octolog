@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/assignUser/octolog",
   "issueTracker": "https://github.com/assignUser/octolog/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.1.0",
+  "version": "0.1.1.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -70,6 +70,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://github.com/r-lib/mockery"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "openssl",
+      "name": "openssl",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=openssl"
     },
     {
       "@type": "SoftwareApplication",
@@ -149,21 +161,9 @@
     },
     "5": {
       "@type": "SoftwareApplication",
-      "identifier": "openssl",
-      "name": "openssl",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=openssl"
-    },
-    "6": {
-      "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 1.0.0",
+      "version": ">= 0.4.10",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -172,12 +172,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "7": {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    "8": {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -191,10 +191,29 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "209.536KB",
+  "fileSize": "210.347KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "datePublished": "2022",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Jacob",
+          "familyName": "Wujciak-Jens"
+        }
+      ],
+      "name": "octolog: Better 'Github Action' Logging",
+      "identifier": "10.5281/zenodo.5948954",
+      "url": "https://doi.org/10.5281/zenodo.5948954",
+      "description": "https://github.com/assignUser/octolog, https://assignuser.github.io/octolog/",
+      "@id": "https://doi.org/10.5281/zenodo.5948954",
+      "sameAs": "https://doi.org/10.5281/zenodo.5948954"
+    }
+  ],
   "releaseNotes": "https://github.com/assignUser/octolog/blob/master/NEWS.md",
   "readme": "https://github.com/assignUser/octolog/blob/main/README.md",
   "contIntegration": ["https://github.com/assignUser/octolog/actions", "https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml", "https://app.codecov.io/gh/assignUser/octolog?branch=main"],
   "developmentStatus": "https://www.repostatus.org/#active",
-  "keywords": ["rstats", "actions", "workflows"]
+  "keywords": ["rstats", "actions", "workflows", "r", "ci"]
 }

@@ -35,7 +35,6 @@ cli::test_that_cli("masking", {
 })
 
 cli::test_that_cli("masking errors", {
-  skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar("GITHUB_ACTIONS" = "true", "SECRET_VAR1" = 42)
   expect_snapshot(octo_mask_value(c(1, 2)), error = TRUE)
   expect_snapshot(octo_mask_envvar(c("VAR1", "VAR2")), error = TRUE)
@@ -68,6 +67,9 @@ cli::test_that_cli("stop_commands", {
   withr::local_envvar("GITHUB_ACTIONS" = "false")
   expect_snapshot(octo_stop_commands())
   expect_snapshot(octo_start_commands("token123"))
+
+  mockery::stub(octo_stop_commands, "rlang::is_installed", FALSE)
+  expect_error(octo_stop_commands(), "must be installed")
 })
 
 test_that("set_envvar", {

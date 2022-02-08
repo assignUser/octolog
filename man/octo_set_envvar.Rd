@@ -18,6 +18,9 @@ interpreted as one line.}
 \item{delim}{Delimiter used for multiline strings. No need to change this
 unless your string contains 'EOF'.}
 }
+\value{
+\code{name} invisibly.
+}
 \description{
 This will set an environment variable in a way that makes it available to the
 following steps, compared to using \code{\link[=Sys.setenv]{Sys.setenv()}}, which would only make an

@@ -28,84 +28,84 @@
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       v Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       i `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message
+    Message <cliMessage>
       x Disabeled colors!
 
 # enable_github_colors [ansi]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       [32mv[39m Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       [36mi[39m [30m[47m[30m[47m`R_CLI_NUM_COLORS`[47m[30m[49m[39m already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message
+    Message <cliMessage>
       x Disabeled colors!
 
 # enable_github_colors [unicode]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       ✔ Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       ℹ `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message
+    Message <cliMessage>
       ✖ Disabeled colors!
 
 # enable_github_colors [fancy]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       [32m✔[39m Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message
+    Message <cliMessage>
       [36mℹ[39m [30m[47m[30m[47m`R_CLI_NUM_COLORS`[47m[30m[49m[39m already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message
+    Message <cliMessage>
       ✖ Disabeled colors!
 
 # get_location_string
@@ -113,5 +113,5 @@
     Code
       get_location_string(trc)
     Output
-      file=test-util.R,line=60,endLine=60,col=3,endCol=19
+      file=test-util.R,line=61,endLine=61,col=3,endCol=19
 

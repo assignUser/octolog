@@ -59,8 +59,8 @@ repos:
     hooks: 
     -   id: check-added-large-files
         args: ['--maxkb=200']
-    -   id: end-of-file-fixer
-        exclude: '\.Rd'
+    # -   id: end-of-file-fixer
+    #     exclude: '\.Rd'
 -   repo: local
     hooks:
     -   id: forbid-to-commit
