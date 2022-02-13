@@ -147,7 +147,7 @@ get_location_string <- function(trace) {
 
   src <- integer(0)
 
-  if (packageVersion("rlang") >= "1.0.0") {
+  if (utils::packageVersion("rlang") >= "1.0.0") {
     calls <- trace$call
   } else {
     calls <- trace$calls

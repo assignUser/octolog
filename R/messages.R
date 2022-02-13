@@ -90,7 +90,7 @@ octo_abort <- function(message,
   if (!on_github() || .fail_fast) {
     if (missing(trace)) trace <- NULL
 
-    if (packageVersion("rlang") >= "1.0.0") {
+    if (utils::packageVersion("rlang") >= "1.0.0") {
       cli::cli_abort(message,
         ...,
         trace = trace,
