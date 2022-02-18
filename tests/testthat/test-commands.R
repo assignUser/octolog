@@ -64,12 +64,13 @@ cli::test_that_cli("stop_commands", {
   expect_snapshot(octo_stop_commands())
   expect_snapshot(octo_start_commands("token123"))
 
+  mockery::stub(octo_stop_commands, "rlang::is_installed", FALSE)
+  expect_error(octo_stop_commands(), "must be installed")
+
+  mockery::stub(octo_stop_commands, "tempfile", "token123")
   withr::local_envvar("GITHUB_ACTIONS" = "false")
   expect_snapshot(octo_stop_commands())
   expect_snapshot(octo_start_commands("token123"))
-
-  mockery::stub(octo_stop_commands, "rlang::is_installed", FALSE)
-  expect_error(octo_stop_commands(), "must be installed")
 })
 
 test_that("set_envvar", {
