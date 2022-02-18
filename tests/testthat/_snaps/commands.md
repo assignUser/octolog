@@ -114,11 +114,11 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
-      [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+      [1m[22mGroup `name` must be length 1!
 
 ---
 
-    [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+    [1m[22mGroup `name` must be length 1!
 
 # group errors [unicode]
 
@@ -140,11 +140,11 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Error <rlang_error>
-      [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+      [1m[22mGroup `name` must be length 1!
 
 ---
 
-    [1m[22mGroup [30m[47m`name`[49m[39m must be length 1!
+    [1m[22mGroup `name` must be length 1!
 
 # masking [plain]
 
@@ -306,7 +306,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
     Error <rlang_error>
-      [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+      [1m[22mThe envvar `SECRET_VAR` does not exists!
 
 ---
 
@@ -318,7 +318,7 @@
 
 ---
 
-    [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+    [1m[22mThe envvar `SECRET_VAR` does not exists!
 
 # masking errors [unicode]
 
@@ -384,7 +384,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
     Error <rlang_error>
-      [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+      [1m[22mThe envvar `SECRET_VAR` does not exists!
 
 ---
 
@@ -396,7 +396,7 @@
 
 ---
 
-    [1m[22mThe envvar [30m[47m`SECRET_VAR`[49m[39m does not exists!
+    [1m[22mThe envvar `SECRET_VAR` does not exists!
 
 # set_output [plain]
 
@@ -443,7 +443,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
     Error <rlang_error>
-      [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+      [1m[22mThe output `name` must be length 1.
 
 ---
 
@@ -452,7 +452,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
     Error <rlang_error>
-      [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+      [1m[22mThe output `value` must be length 1.
 
 ---
 
@@ -463,11 +463,11 @@
 
 ---
 
-    [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+    [1m[22mThe output `name` must be length 1.
 
 ---
 
-    [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+    [1m[22mThe output `value` must be length 1.
 
 ---
 
@@ -519,7 +519,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
     Error <rlang_error>
-      [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+      [1m[22mThe output `name` must be length 1.
 
 ---
 
@@ -528,7 +528,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
     Error <rlang_error>
-      [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+      [1m[22mThe output `value` must be length 1.
 
 ---
 
@@ -539,11 +539,11 @@
 
 ---
 
-    [1m[22mThe output [30m[47m`name`[49m[39m must be length 1.
+    [1m[22mThe output `name` must be length 1.
 
 ---
 
-    [1m[22mThe output [30m[47m`value`[49m[39m must be length 1.
+    [1m[22mThe output `value` must be length 1.
 
 ---
 
