@@ -78,9 +78,8 @@ or multiline string.</p></dd>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTION <span class="op">=</span> <span class="st">"true"</span><span class="op">)</span></span>
 <span class="r-in"><span class="va">string</span> <span class="op">&lt;-</span> <span class="st">"A multi-line \n String."</span></span>
 <span class="r-in"><span class="va">value</span> <span class="op">&lt;-</span> <span class="fu"><a href="encode_string.html">encode_string</a></span><span class="op">(</span><span class="va">string</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in encode_string(string):</span> could not find function "encode_string"</span>
 <span class="r-in"><span class="fu">octo_set_output</span><span class="op">(</span><span class="st">"important-value"</span>, <span class="va">value</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> ::set-output name=A multi-line %0A String.::important-value</span>
 </code></pre></div>
     </div>
   </div>

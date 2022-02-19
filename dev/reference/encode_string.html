@@ -83,12 +83,12 @@ this.</p>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">chrs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"100% This is some output with \n"</span>, <span class="st">"a new line"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">encode_string</span><span class="op">(</span><span class="va">chrs</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in encode_string(chrs):</span> could not find function "encode_string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "100%25 This is some output with %0A" "a new line"                         </span>
 <span class="r-in"></span>
 <span class="r-in"><span class="co"># encode some md (e.g. to post as comment)</span></span>
 <span class="r-in"><span class="va">md</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"# Important PR Comment"</span>, <span class="st">" "</span>, <span class="st">"This commit is great!"</span><span class="op">)</span></span>
 <span class="r-in"><span class="fu">encode_string</span><span class="op">(</span><span class="va">md</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in encode_string(md, TRUE):</span> could not find function "encode_string"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "# Important PR Comment%0A %0AThis commit is great!"</span>
 </code></pre></div>
     </div>
   </div>
