@@ -92,7 +92,7 @@
 <code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort</a></code> <span class="math inline">\(\rightarrow\)</span> <code><a href="../reference/octo_abort.html">octolog::octo_abort</a></code>
 </li>
 </ul>
-<p>In an interactive session you will not see a difference, as the calls are passed through to {cli} but if your code throws conditions within a Github Action (detected via the environment variable <code>GITHUB_ACTIONS = "true"</code>) the behaviour will change. The conditions will be signaled in a way that will make them stand out in the log, appear in the action summary and create annotations<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on affected files.</p>
+<p>In an interactive session you will not see a difference, as the calls are passed through to {cli} but if your code throws conditions within a GitHub Action (detected via the environment variable <code>GITHUB_ACTIONS = "true"</code>) the behaviour will change. The conditions will be signaled in a way that will make them stand out in the log, appear in the action summary and create annotations<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on affected files.</p>
 <div class="figure">
 <img src="../reference/figures/annotations.png" alt=""><p class="caption">Annotations on files of a PR.</p>
 </div>
@@ -103,7 +103,7 @@
 <div class="section level2">
 <h2 id="workflow-commands">Workflow commands<a class="anchor" aria-label="anchor" href="#workflow-commands"></a>
 </h2>
-<p>In addition to signaling conditions, Github Actions provide a number of <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow commands</a> to interact with the runner and following actions steps. Octolog provides a complete API<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for the workflow commands, please see the <a href="https://jacob.wujciak.de/octolog/reference/index.html" class="external-link">function reference</a> and the official documentation for an overview. To see the workflow commands in practice you can check out the <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">example workflow</a> or the real world use case of the <a href="https://github.com/ropensci-review-tools/pkgcheck-action" class="external-link">pkgcheck action</a>.</p>
+<p>In addition to signaling conditions, GitHub Actions provide a number of <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow commands</a> to interact with the runner and following actions steps. Octolog provides a complete API<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for the workflow commands, please see the <a href="https://jacob.wujciak.de/octolog/reference/index.html" class="external-link">function reference</a> and the official documentation for an overview. To see the workflow commands in practice you can check out the <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">example workflow</a> or the real world use case of the <a href="https://github.com/ropensci-review-tools/pkgcheck-action" class="external-link">pkgcheck action</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="security">Security<a class="anchor" aria-label="anchor" href="#security"></a>
@@ -152,7 +152,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>

@@ -5,16 +5,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Better Github Action Logging • octolog</title>
+<title>Better GitHub Actions Logging • octolog</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="Better Github Action Logging">
-<meta property="og:description" content="Provides an API for Github &lt;https://github.com&gt; workflow
+<script src="pkgdown.js"></script><meta property="og:title" content="Better GitHub Actions Logging">
+<meta property="og:description" content="Provides an API for GitHub &lt;https://github.com&gt; workflow
     commands and makes it possible to signal conditions from within R that
-    will create annotations when used within Github Actions
+    will create annotations when used within GitHub Actions
     &lt;https://github.com/features/actions&gt; but raise normal R conditions
     when used interactively.">
 <meta name="robots" content="noindex">
@@ -78,9 +78,8 @@
 <div class="page-header"><h1 id="octolog">octolog<a class="anchor" aria-label="anchor" href="#octolog"></a>
 </h1></div>
 <!-- badges: start -->
-
-<p>Octolog provides a complete<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> API for Github <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow commands</a> that makes it easy to create powerful Github Actions that create readable logs.</p>
-<p>Additionally it is possible to signal conditions with octolog from R that will create annotations when used within Github Actions but raise normal R conditions when used interactively. <img src="reference/figures/error.png" alt="Annotations on files of a PR"></p>
+<p>Octolog provides a complete<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> API for GitHub <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow commands</a> that makes it easy to create powerful GitHub Actions that create readable logs.</p>
+<p>Additionally it is possible to signal conditions with octolog from R that will create annotations when used within GitHub Actions but raise normal R conditions when used interactively. <img src="reference/figures/error.png" alt="Annotations on files of a PR"></p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -90,19 +89,19 @@
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"assignUser/octolog"</span><span class="op">)</span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="what-are-github-actions">What are <em>Github Actions</em>?<a class="anchor" aria-label="anchor" href="#what-are-github-actions"></a>
+<h2 id="what-are-github-actions">What are <em>GitHub Actions</em>?<a class="anchor" aria-label="anchor" href="#what-are-github-actions"></a>
 </h2>
-<p><a href="https://github.com/features/actions" class="external-link">Github Actions</a> is a powerful,free<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> <a href="https://devguide.ropensci.org/ci.html" class="external-link">CI</a> service integrated into every repository on Github. You can use actions created by other users (e.g. the very popular <a href="https://github.com/r-lib/actions" class="external-link">r-lib/actions</a> collection of R related actions) or create your own customized workflow that fits your needs.</p>
+<p><a href="https://github.com/features/actions" class="external-link">GitHub Actions</a> is a powerful,free<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> <a href="https://devguide.ropensci.org/ci.html" class="external-link">CI</a> service integrated into every repository on GitHub. You can use actions created by other users (e.g. the very popular <a href="https://github.com/r-lib/actions" class="external-link">r-lib/actions</a> collection of R related actions) or create your own customized workflow that fits your needs.</p>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<p>The best way to see how {octolog} works, is in an actual <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">workflow</a>. For more information please see the <a href="assignUser.github.io/octolog">website</a> and the <a href="https://assignUser.github.io/octolog/articles/octolog.html" class="external-link">introductory vignette</a>.</p>
+<p>The best way to see how {octolog} works, is in an actual <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">workflow</a>. For more information please see the <a href="assignUser.github.io/octolog">website</a> and the <a href="https://jacob.wujciak.de/octolog/articles/octolog.html" class="external-link">introductory vignette</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="code-of-conduct">Code of Conduct<a class="anchor" aria-label="anchor" href="#code-of-conduct"></a>
 </h2>
-<p>Please note that the octolog project is released with a <a href="https://assignuser.github.io/octolog/CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the octolog project is released with a <a href="https://jacob.wujciak.de/octolog/CODE_OF_CONDUCT.html" class="external-link">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 <div class="footnotes">
@@ -177,7 +176,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
 </div>
 
       </footer>
