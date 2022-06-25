@@ -113,5 +113,5 @@
     Code
       get_location_string(trc)
     Output
-      file=test-util.R,line=64,endLine=64,col=3,endCol=19
+      file=test-util.R,line=60,endLine=60,col=3,endCol=19
 
