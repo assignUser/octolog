@@ -17,7 +17,6 @@ Imports:
     cli (>= 3.0.0),
     fs,
     glue,
-    magrittr,
     rlang (>= 0.4.10),
     utils,
     withr
@@ -34,5 +33,5 @@ Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 VignetteBuilder: knitr

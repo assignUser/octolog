@@ -112,9 +112,9 @@ octo_abort <- function(message,
 #' Print a github condition
 #'
 #' @param prefix The condition prefix.
-#' @param message The message string which was [preapre_string()]'ed.
+#' @param message The message string which was [prepare_string()]'ed.
 #' @param trace An [rlang::trace_back()].
-#' @param title An optional title for the conditon.
+#' @param title An optional title for the condition.
 #' @param .envir Environment the message is [glue::glue()]ed in.
 #' @noRd
 signal_github_condition <- function(prefix = c(
@@ -139,9 +139,8 @@ signal_github_condition <- function(prefix = c(
     loc_str <- get_location_string(trace)
   }
 
-
   # Colors work in the log but break the annotations
   disable_github_colors(quiet = TRUE)
   message <- prepare_string(message, .envir = .envir)
-  glue("{prefix}{loc_str}{title}::{message}") %>% octocat()
+  octocat(glue("{prefix}{loc_str}{title}::{message}"))
 }

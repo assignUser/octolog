@@ -6,7 +6,7 @@
 \alias{octolog-package}
 \title{octolog: Better 'Github Action' Logging}
 \description{
-Provides an API for 'Github' <https://github.com> workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'Github Actions' <https://github.com/features/actions> but raise normal R conditions when used interactively.
+Provides an API for 'Github' \url{https://github.com} workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'Github Actions' \url{https://github.com/features/actions} but raise normal R conditions when used interactively.
 }
 \seealso{
 Useful links:

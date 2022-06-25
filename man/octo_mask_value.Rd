@@ -25,10 +25,11 @@ but very important.
 \details{
 The masking is not restricted to R output, rather it will work for
 any logged output. For a practical demonstration please see the
-\href{https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml}{{octolog} example workflow}
+\link{{octolog} example workflow}(https://github.com/assignUser/octolog/actions/
+workflows/test-octolog.yaml)
 
 Additionally some values and envvars will be masked automatically by github,
-though this behaviour is poorly documented. It looks like anything with
+though this behavior is poorly documented. It looks like anything with
 "TOKEN" will be masked. Related Issues
 \href{https://github.com/actions/runner/issues/643#issuecomment-823537871}{here}
 and
@@ -49,5 +50,6 @@ print(Sys.getenv("SECRET_TOKEN"))
 # "***"
 }
 \seealso{
-\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log}{Github Docs}
+\link{Github Docs}(https://docs.github.com/en/actions/using-workflows/
+workflow-commands-for-github-actions#masking-a-value-in-log)
 }

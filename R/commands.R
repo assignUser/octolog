@@ -1,7 +1,8 @@
 #' Grouping log lines
 #'
 #' These functions make it possible to group lines in the Github Actions log.
-#' Groups can not be nested at this point, see this [issue](https://github.com/actions/runner/issues/802).
+#' Groups can not be nested at this point, see this [issue](https://github.com
+#' /actions/runner/issues/802).
 #' @param name Name of the group, single line.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "TRUE")
@@ -9,13 +10,14 @@
 #' print("Log other output")
 #' octo_end_group()
 #' @export
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#grouping-log-lines)
 octo_start_group <- function(name) {
   if (length(name) != 1) {
     octo_abort("Group {.arg name} must be length 1!")
   }
 
-  glue("::group::{name}") %>% octocat()
+  octocat(glue("::group::{name}"))
 }
 
 #' @rdname octo_start_group
@@ -34,17 +36,19 @@ octo_end_group <- function() {
 #' but very important.
 #' @details The masking is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
-#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/
+#' workflows/test-octolog.yaml)
 #'
 #' Additionally some values and envvars will be masked automatically by github,
-#' though this behaviour is poorly documented. It looks like anything with
+#' though this behavior is poorly documented. It looks like anything with
 #' "TOKEN" will be masked. Related Issues
 #' [here](https://github.com/actions/runner/issues/643#issuecomment-823537871)
 #' and
 #' [here](https://github.com/actions/runner/issues/475#issuecomment-742271143).
 #' @param value A single value to mask, coercible to string.
 #' @param name Name of the envvar to mask.
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#masking-a-value-in-log)
 #' @examples
 #' octo_mask_value("secret_token123")
 #' # The mask takes effect in the NEXT step
@@ -64,7 +68,7 @@ octo_mask_value <- function(value) {
     octo_abort(c("You can only mask one value at a time."))
   }
 
-  glue("::add-mask::{value}") %>% octocat()
+  octocat(glue("::add-mask::{value}"))
 }
 
 #' @rdname  octo_mask_value
@@ -77,7 +81,7 @@ octo_mask_envvar <- function(name) {
     octo_abort("The envvar {.envvar {name}} does not exists!")
   }
 
-  glue("::add-mask::${name}") %>% octocat()
+  octocat(glue("::add-mask::${name}"))
 }
 
 #' Set an output parameter
@@ -102,7 +106,7 @@ octo_set_output <- function(value, name) {
     octo_abort(c("The output {.arg value} must be length 1."))
   }
 
-  glue("::set-output name={name}::{value}") %>% octocat()
+  octocat(glue("::set-output name={name}::{value}"))
 }
 
 #' Stop workflow commands
@@ -137,11 +141,11 @@ octo_stop_commands <- function() {
   }
 
   if (on_github()) {
-    token <- openssl::rand_bytes(12) %>% paste0(collapse = "")
+    token <- paste0(openssl::rand_bytes(12), collapse = "")
   } else {
     token <- basename(tempfile(""))
   }
-  glue("::stop-commands::{token}") %>% octocat()
+  octocat(glue("::stop-commands::{token}"))
 
   token
 }
@@ -149,7 +153,7 @@ octo_stop_commands <- function() {
 #' @rdname octo_stop_commands
 #' @export
 octo_start_commands <- function(token) {
-  glue("::{token}::") %>% octocat()
+  octocat(glue("::{token}::"))
 }
 
 #' Echo workflow commands
@@ -198,14 +202,19 @@ octo_echo_off <- function() {
 #' }
 #' @export
 #' @seealso [octo_mask_envvar()]and the
-#' [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
+#' [Github docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
   if (length(name) != 1) {
     octo_abort("{.arg name} must be length 1.")
   }
 
   if (set) {
-    rlang::exec(Sys.setenv, "{name}" := glue("{ paste0(value, collapse ='\n') }") %>% as.character())
+    rlang::exec(
+      Sys.setenv, "{name}" := as.character(
+        glue("{ paste0(value, collapse ='\n') }")
+      )
+    )
   }
 
   if (on_github()) {
@@ -227,11 +236,13 @@ utils::globalVariables(":=", "octolog")
 #'   [base::getwd()].
 #' @param check Should be checked that `dir` is an existing dir.
 #' @return `dir` invisibly.
-#' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
-#' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
+#' @seealso The [{octolog} example workflow](https://github.com/assignUser/
+#' octolog/actions/workflows/test-octolog.yaml)
+#' and the [Github Docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#adding-a-system-path).
 #' @examples
 #' \dontrun{
-#' octo_addpath("/.local/bin")
+#' octo_add_path("/.local/bin")
 #' }
 #' @export
 octo_add_path <- function(dir, check = TRUE) {

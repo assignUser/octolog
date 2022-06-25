@@ -22,10 +22,12 @@ during this step.
 }
 \examples{
 \dontrun{
-octo_addpath("/.local/bin")
+octo_add_path("/.local/bin")
 }
 }
 \seealso{
-The \href{https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml}{{octolog} example workflow}
-and the \href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path}{Github Docs}.
+The \link{{octolog} example workflow}(https://github.com/assignUser/
+octolog/actions/workflows/test-octolog.yaml)
+and the \link{Github Docs}(https://docs.github.com/en/actions/using-workflows/
+workflow-commands-for-github-actions#adding-a-system-path).
 }

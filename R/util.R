@@ -42,9 +42,9 @@ octocat <- function(string) {
 #' @inheritParams encode_string
 #' @noRd
 prepare_string <- function(string, .envir = parent.frame()) {
-  string %>%
-    cli::format_message(.envir = .envir) %>%
-    encode_string()
+  encode_string(
+    cli::format_message(string, .envir = .envir)
+  )
 }
 
 #' Encode String for Github Actions
@@ -69,10 +69,9 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' encode_string(md, TRUE)
 #' @export
 encode_string <- function(string, join = FALSE) {
-  encoded <- string %>%
-    gsub("%", "%25", .) %>%
-    gsub("\n", "%0A", .) %>%
-    gsub("\r", "%0D", .)
+  string <- gsub("%", "%25", string)
+  string <- gsub("\n", "%0A", string)
+  encoded <- gsub("\r", "%0D", string)
 
   if (join) {
     encoded <- paste0(encoded, collapse = "%0A")
@@ -80,7 +79,7 @@ encode_string <- function(string, join = FALSE) {
 
   encoded
 }
-utils::globalVariables(".", "octolog")
+
 
 #' Enable/disable Colors on Github Actions
 #'
@@ -147,6 +146,8 @@ get_location_string <- function(trace) {
 
   src <- integer(0)
 
+  # This would work with $call via partial matching but better
+  # to be explicit
   if (utils::packageVersion("rlang") >= "1.0.0") {
     calls <- trace$call
   } else {
@@ -164,28 +165,29 @@ get_location_string <- function(trace) {
     return("")
   }
 
-  path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+  path <- fs::path_tidy(
+    utils::getSrcFilename(src, full.names = TRUE)
+  )
 
   if (!fs::is_absolute_path(path)) {
     path <- fs::path(getwd(), path)
   }
 
-  start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
-    ".") %>%
-    fs::path_tidy()
+  start_dir <- fs::path_tidy(
+    (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|% ".")
+  )
 
-  path <- path %>% fs::path_rel(start_dir)
+  path <- fs::path_rel(path, start_dir)
 
-
-  paste0(
-    "file={path},",
-    "line={src[[1]]},endLine={src[[3]]},",
-    "col={src[[5]]},endCol={src[[6]]}"
-  ) %>%
-    glue::glue()
+  glue::glue(
+    paste0(
+      "file={path},",
+      "line={src[[1]]},endLine={src[[3]]},",
+      "col={src[[5]]},endCol={src[[6]]}"
+    )
+  )
 }
 
 on_windows <- function() {
-  os <- Sys.info()[["sysname"]] %>% tolower()
-  os == "windows"
+  tolower(Sys.info()[["sysname"]]) == "windows"
 }
