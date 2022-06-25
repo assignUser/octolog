@@ -2,15 +2,15 @@
 % Please edit documentation in R/util.R
 \name{on_github}
 \alias{on_github}
-\title{Detect if R is running within a Github Action.}
+\title{Detect if R is running within a GitHub Action.}
 \usage{
 on_github()
 }
 \value{
-\code{TRUE} if on Github. \code{FALSE} otherwise.
+\code{TRUE} if on GitHub. \code{FALSE} otherwise.
 }
 \description{
-Detect if R is running within a Github Action.
+Detect if R is running within a GitHub Action.
 }
 \details{
 Uses \code{GITHUB_ACTIONS} envvar`.

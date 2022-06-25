@@ -3,7 +3,7 @@
     Code
       octocat(test_string)
     Output
-      This is a message for Github!
+      This is a message for GitHub!
 
 ---
 

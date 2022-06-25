@@ -3,7 +3,7 @@
 \name{enable_github_colors}
 \alias{enable_github_colors}
 \alias{disable_github_colors}
-\title{Enable/disable Colors on Github Actions}
+\title{Enable/disable Colors on GitHub Actions}
 \usage{
 enable_github_colors(
   n_colors = as.integer(256^3),

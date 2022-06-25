@@ -15,13 +15,13 @@ coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)]
 [![DOI](https://zenodo.org/badge/451156961.svg)](https://zenodo.org/badge/latestdoi/451156961)
 <!-- badges: end -->
 
-Octolog provides a complete[^1] API for Github [workflow
+Octolog provides a complete[^1] API for GitHub [workflow
 commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions)
-that makes it easy to create powerful Github Actions that create
+that makes it easy to create powerful GitHub Actions that create
 readable logs.
 
 Additionally it is possible to signal conditions with octolog from R
-that will create annotations when used within Github Actions but raise
+that will create annotations when used within GitHub Actions but raise
 normal R conditions when used interactively. ![Annotations on files of a
 PR](man/figures/error.png)
 
@@ -35,11 +35,11 @@ pak::pak("assignUser/octolog")
 devtools::install_github("assignUser/octolog")
 ```
 
-## What are *Github Actions*?
+## What are *GitHub Actions*?
 
-[Github Actions](https://github.com/features/actions) is a
+[GitHub Actions](https://github.com/features/actions) is a
 powerful,free[^2] [CI](https://devguide.ropensci.org/ci.html) service
-integrated into every repository on Github. You can use actions created
+integrated into every repository on GitHub. You can use actions created
 by other users (e.g. the very popular
 [r-lib/actions](https://github.com/r-lib/actions) collection of R
 related actions) or create your own customized workflow that fits your

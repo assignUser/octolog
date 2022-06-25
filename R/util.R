@@ -1,6 +1,6 @@
-#' Detect if R is running within a Github Action.
+#' Detect if R is running within a GitHub Action.
 #'
-#' @return `TRUE` if on Github. `FALSE` otherwise.
+#' @return `TRUE` if on GitHub. `FALSE` otherwise.
 #' @details Uses `GITHUB_ACTIONS` envvar`.
 #' @examples
 #' on_github()
@@ -10,9 +10,9 @@ on_github <- function() {
 }
 
 
-#' "cat" a string if on Github
+#' "cat" a string if on GitHub
 #'
-#' Prints a `string` if on Github, detected via env var `GITHUB_ACTIONS ==
+#' Prints a `string` if on GitHub, detected via env var `GITHUB_ACTIONS ==
 #' 'true'`.
 #'
 #' @param string A character vector of length 1. This string will be terminated
@@ -35,10 +35,10 @@ octocat <- function(string) {
   invisible(string)
 }
 
-#' Prepare a String for Github
+#' Prepare a String for GitHub
 #'
 #' This will format the string with [cli::format_message()] and encode it to be
-#' in one line for Github Action output.
+#' in one line for GitHub Action output.
 #' @inheritParams encode_string
 #' @noRd
 prepare_string <- function(string, .envir = parent.frame()) {
@@ -47,12 +47,12 @@ prepare_string <- function(string, .envir = parent.frame()) {
   )
 }
 
-#' Encode String for Github Actions
+#' Encode String for GitHub Actions
 #'
-#' Encodes a multiline string into one line for Github Action output.
+#' Encodes a multiline string into one line for GitHub Action output.
 #'
 #' This will only encode '%', '\\n', '\\r' as these will be automatically
-#' decoded by Github when using the output via `${{
+#' decoded by GitHub when using the output via `${{
 #' steps.<step_id>.outputs.<name> }}`. You can use [utils::URLencode()] instead
 #' of this function to also escape everything else problematic like (double)
 #' quotes etc. but you will have to manually use [utils::URLdecode()] to revert
@@ -81,7 +81,7 @@ encode_string <- function(string, join = FALSE) {
 }
 
 
-#' Enable/disable Colors on Github Actions
+#' Enable/disable Colors on GitHub Actions
 #'
 #' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors` within the scope of
 #' `.local_envir`.  To avoid sideeffects through overriding
@@ -136,7 +136,7 @@ disable_github_colors <- function(.local_envir = parent.frame(),
 #' Extract file path and position from trace_back.
 #'
 #' @param trace An [rlang::trace_back()] object.
-#' @return A string formated for use in Github Action workflow commands.
+#' @return A string formated for use in GitHub Action workflow commands.
 #' @importFrom rlang `%|%`
 #' @noRd
 get_location_string <- function(trace) {

@@ -4,7 +4,7 @@ test_that("on_github", {
   withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_true(on_github())
 
-  # Githubn sets the var to "true"
+  # GitHub sets the var to "true"
   withr::local_envvar(GITHUB_ACTIONS = "false")
   expect_false(on_github())
   withr::local_envvar(GITHUB_ACTIONS = "true")
@@ -12,7 +12,7 @@ test_that("on_github", {
 })
 
 test_that("octocat", {
-  test_string <- "This is a message for Github!"
+  test_string <- "This is a message for GitHub!"
   withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_snapshot(octocat(test_string))
   withr::local_envvar(GITHUB_ACTIONS = "false")

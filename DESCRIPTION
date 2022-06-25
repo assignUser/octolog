@@ -1,12 +1,12 @@
 Package: octolog
-Title: Better 'Github Actions' Logging
+Title: Better 'GitHub Actions' Logging
 Version: 0.1.1.9000
 Authors@R: 
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-7281-3989"))
-Description: Provides an API for 'Github' <https://github.com> workflow
+Description: Provides an API for 'GitHub' <https://github.com> workflow
     commands and makes it possible to signal conditions from within R that
-    will create annotations when used within 'Github Actions'
+    will create annotations when used within 'GitHub Actions'
     <https://github.com/features/actions> but raise normal R conditions
     when used interactively.
 License: MIT + file LICENSE

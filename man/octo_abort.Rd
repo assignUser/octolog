@@ -5,7 +5,7 @@
 \alias{octo_inform}
 \alias{octo_warn}
 \alias{octo_abort}
-\title{Signal conditions that create Github annotations.}
+\title{Signal conditions that create GitHub annotations.}
 \usage{
 octo_debug(message, .envir = parent.frame())
 
@@ -45,15 +45,15 @@ octo_abort(
 \item{trace}{An \code{\link[rlang:trace_back]{rlang::trace_back()}} will only be passed to \code{\link[rlang:abort]{rlang::abort()}}
 if not \code{\link[=missing]{missing()}}.}
 
-\item{title}{A custom title for the Github annotation.}
+\item{title}{A custom title for the GitHub annotation.}
 
-\item{.fail_fast}{An error on Github will not kill the R process if this is
+\item{.fail_fast}{An error on GitHub will not kill the R process if this is
 set to \code{FALSE}. Use the option \code{octolog.fail_fast} to set the value
 globally.`}
 }
 \description{
 These functions are a drop-in replacements for \code{\link[cli:cli_abort]{cli::cli_warn()}} and friends.
-If used while R is running within a Github Action, the conditions will be
+If used while R is running within a GitHub Action, the conditions will be
 signaled in such a way that they will create annotations on the files
 affected. Even if \code{\link[=enable_github_colors]{enable_github_colors()}} was used the conditions will not
 have colors in the log as the color codes break the annotation.

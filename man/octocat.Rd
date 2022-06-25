@@ -2,7 +2,7 @@
 % Please edit documentation in R/util.R
 \name{octocat}
 \alias{octocat}
-\title{"cat" a string if on Github}
+\title{"cat" a string if on GitHub}
 \usage{
 octocat(string)
 }
@@ -14,7 +14,7 @@ with \code{last} and printed with a new line.}
 \code{string} invisibly
 }
 \description{
-Prints a \code{string} if on Github, detected via env var \code{GITHUB_ACTIONS == 'true'}.
+Prints a \code{string} if on GitHub, detected via env var \code{GITHUB_ACTIONS == 'true'}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "true")

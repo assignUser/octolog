@@ -16,10 +16,10 @@ octo_mask_envvar(name)
 }
 \description{
 This will mask either a \code{value} or an envvar and prevent them (or their
-content) from showing up in the Github Actions log.
+content) from showing up in the GitHub Actions log.
 \cr \emph{\strong{ATTENTION}}: Currently the masking of envvar values will only take
 effect in the \emph{\strong{NEXT}} step of the workflow. Values that are masked
-directly are masked immediately. This is not very clear in the Github Docs
+directly are masked immediately. This is not very clear in the GitHub Docs
 but very important.
 }
 \details{
@@ -49,5 +49,5 @@ print(Sys.getenv("SECRET_TOKEN"))
 # "***"
 }
 \seealso{
-\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log}{Github Docs}
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log}{GitHub Docs}
 }

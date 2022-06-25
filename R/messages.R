@@ -46,10 +46,10 @@ octo_warn <- function(message,
 
 
 
-#' Signal conditions that create Github annotations.
+#' Signal conditions that create GitHub annotations.
 #'
 #' These functions are a drop-in replacements for [cli::cli_warn()] and friends.
-#' If used while R is running within a Github Action, the conditions will be
+#' If used while R is running within a GitHub Action, the conditions will be
 #' signaled in such a way that they will create annotations on the files
 #' affected. Even if [enable_github_colors()] was used the conditions will not
 #' have colors in the log as the color codes break the annotation.
@@ -65,10 +65,10 @@ octo_warn <- function(message,
 #' separate dir), as annotations require the file paths to be relative to the
 #' repository root.
 #' @inheritParams cli::cli_abort
-#' @param title A custom title for the Github annotation.
+#' @param title A custom title for the GitHub annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
 #'   if not [missing()].
-#' @param .fail_fast An error on Github will not kill the R process if this is
+#' @param .fail_fast An error on GitHub will not kill the R process if this is
 #'   set to `FALSE`. Use the option `octolog.fail_fast` to set the value
 #'   globally.`
 #' @examples
