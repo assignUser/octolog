@@ -231,10 +231,8 @@ utils::globalVariables(":=", "octolog")
 #'   [base::getwd()].
 #' @param check Should be checked that `dir` is an existing dir.
 #' @return `dir` invisibly.
-#' @seealso The [{octolog} example workflow](https://github.com/assignUser/
-#' octolog/actions/workflows/test-octolog.yaml)
-#' and the [GitHub Docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#adding-a-system-path).
+#' @seealso The [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' and the [GitHub Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path).
 #' @examples
 #' \dontrun{
 #' octo_add_path("/.local/bin")
