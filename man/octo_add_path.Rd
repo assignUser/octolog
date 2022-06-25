@@ -26,8 +26,6 @@ octo_add_path("/.local/bin")
 }
 }
 \seealso{
-The \link{{octolog} example workflow}(https://github.com/assignUser/
-octolog/actions/workflows/test-octolog.yaml)
-and the \link{GitHub Docs}(https://docs.github.com/en/actions/using-workflows/
-workflow-commands-for-github-actions#adding-a-system-path).
+The \href{https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml}{{octolog} example workflow}
+and the \href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path}{GitHub Docs}.
 }

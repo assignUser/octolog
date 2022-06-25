@@ -26,7 +26,7 @@ Invisibly returns \code{TRUE} if enabling/disabling was successful,
 }
 \description{
 This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors} within the scope of
-\code{.local_envir}.  To avoid sideeffects through overriding
+\code{.local_envir}.  To avoid side effects through overriding
 \code{\link[crayon:has_color]{crayon::has_color()}}, this function only works \code{\link[=on_github]{on_github()}}.
 }
 \examples{
