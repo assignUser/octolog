@@ -57,8 +57,11 @@ octo_warn <- function(message,
 #' use.
 #'
 #' The file path for the annotations will be relative to the R working
-#' directory, if you want to change that set the envvar `OCTOLOG_START_DIR` to
-#' the dir the path should be relative to.
+#' directory, if you want to change that set the envvar `OCTOLOG_REPO_DIR` to
+#' the dir the path should be relative to. This will be necessary if the current
+#' working directory is not the repository root (e.g. you checked out into a
+#' separate dir), as annotations require the file paths to be relative to the
+#' repository root.
 #' @inheritParams cli::cli_abort
 #' @param title A custom title for the Github annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]

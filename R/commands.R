@@ -254,14 +254,14 @@ octo_add_path <- function(dir, check = TRUE) {
     octo_abort("{.arg dir} must be a string.")
   }
 
-  if (!fs::is_dir(dir) && check) {
+  if (!dir.exists(dir) && check) {
     octo_abort(
       c("The path {.path {dir}} could not be found.")
     )
   }
 
-  if (!fs::is_absolute_path(dir)) {
-    dir <- fs::path(getwd(), dir)
+  if (!is_absolute_path(dir)) {
+    dir <- file.path(getwd(), dir)
   }
 
   if (on_github()) {

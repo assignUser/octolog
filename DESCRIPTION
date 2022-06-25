@@ -1,5 +1,5 @@
 Package: octolog
-Title: Better 'Github Action' Logging
+Title: Better 'Github Actions' Logging
 Version: 0.1.1.9000
 Authors@R: 
     person("Jacob", "Wujciak-Jens", , "jacob@wujciak.de", role = c("aut", "cre"),
@@ -15,7 +15,6 @@ URL: https://github.com/assignUser/octolog,
 BugReports: https://github.com/assignUser/octolog/issues
 Imports: 
     cli (>= 3.0.0),
-    fs,
     glue,
     rlang (>= 0.4.10),
     utils,
@@ -27,8 +26,6 @@ Suggests:
     openssl,
     testthat (>= 3.0.0),
     rmarkdown
-Remotes: 
-    r-lib/mockery
 Config/testthat/edition: 3
 Config/testthat/parallel: true
 Encoding: UTF-8

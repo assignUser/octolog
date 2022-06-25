@@ -4,7 +4,7 @@
 \name{octolog-package}
 \alias{octolog}
 \alias{octolog-package}
-\title{octolog: Better 'Github Action' Logging}
+\title{octolog: Better 'Github Actions' Logging}
 \description{
 Provides an API for 'Github' \url{https://github.com} workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'Github Actions' \url{https://github.com/features/actions} but raise normal R conditions when used interactively.
 }

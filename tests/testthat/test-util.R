@@ -47,7 +47,8 @@ test_that("get_location_string", {
   withr::local_options(keep.source = TRUE)
   old_wd <- getwd()
   withr::defer(setwd(old_wd))
-  wd <- fs::file_temp("octo_test") %>% fs::dir_create()
+  wd <- tempfile("octo_test")
+  dir.create(wd)
   setwd(wd)
   writeLines(
     c(
@@ -56,6 +57,7 @@ test_that("get_location_string", {
     ),
     "dummy.R"
   )
+
   withr::defer(unlink("dummy.R"))
 
   source("dummy.R")

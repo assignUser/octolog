@@ -64,8 +64,11 @@ Annotations will only have file and line references if the option
 use.
 
 The file path for the annotations will be relative to the R working
-directory, if you want to change that set the envvar \code{OCTOLOG_START_DIR} to
-the dir the path should be relative to.
+directory, if you want to change that set the envvar \code{OCTOLOG_REPO_DIR} to
+the dir the path should be relative to. This will be necessary if the current
+working directory is not the repository root (e.g. you checked out into a
+separate dir), as annotations require the file paths to be relative to the
+repository root.
 }
 \section{Functions}{
 \itemize{

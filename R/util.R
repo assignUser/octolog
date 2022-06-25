@@ -165,19 +165,21 @@ get_location_string <- function(trace) {
     return("")
   }
 
-  path <- fs::path_tidy(
-    utils::getSrcFilename(src, full.names = TRUE)
-  )
+  path <- utils::getSrcFilename(src, full.names = TRUE)
 
-  if (!fs::is_absolute_path(path)) {
-    path <- fs::path(getwd(), path)
+  if (!is_absolute_path(path)) {
+    path <- file.path(getwd(), path)
+  } else {
+    path <- path.expand(path)
   }
 
-  start_dir <- fs::path_tidy(
-    (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|% ".")
+  # For annotations to work the path has to be relative
+  # to the repository root
+  base_path <- (
+    Sys.getenv("OCTOLOG_REPO_DIR", unset = NA_character_) %|% getwd()
   )
-
-  path <- fs::path_rel(path, start_dir)
+  path <- path.expand(path)
+  path <- sub(glue("{base_path}/"), "", path)
 
   glue::glue(
     paste0(
