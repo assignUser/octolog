@@ -51,13 +51,13 @@ The best way to see how {octolog} works, is in an actual
 [workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml).
 For more information please see the
 [website](assignUser.github.io/octolog) and the [introductory
-vignette](https://assignUser.github.io/octolog/articles/octolog.html).
+vignette](https://jacob.wujciak.de/octolog/articles/octolog.html).
 
 ## Code of Conduct
 
 Please note that the octolog project is released with a [Contributor
 Code of
-Conduct](https://assignuser.github.io/octolog/CODE_OF_CONDUCT.html). By
+Conduct](https://jacob.wujciak.de/octolog/CODE_OF_CONDUCT.html). By
 contributing to this project, you agree to abide by its terms.
 
 [^1]: The only exception is

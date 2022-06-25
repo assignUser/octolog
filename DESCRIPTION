@@ -11,7 +11,7 @@ Description: Provides an API for 'Github' <https://github.com> workflow
     when used interactively.
 License: MIT + file LICENSE
 URL: https://github.com/assignUser/octolog,
-    https://assignuser.github.io/octolog/
+    https://jacob.wujciak.de/octolog/
 BugReports: https://github.com/assignUser/octolog/issues
 Imports: 
     cli (>= 3.0.0),

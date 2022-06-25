@@ -12,7 +12,7 @@ Provides an API for 'Github' \url{https://github.com} workflow commands and make
 Useful links:
 \itemize{
   \item \url{https://github.com/assignUser/octolog}
-  \item \url{https://assignuser.github.io/octolog/}
+  \item \url{https://jacob.wujciak.de/octolog/}
   \item Report bugs at \url{https://github.com/assignUser/octolog/issues}
 }
 
