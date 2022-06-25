@@ -46,11 +46,7 @@ cli::test_that_cli("enable_github_colors", {
 
 test_that("get_location_string", {
   withr::local_options(keep.source = TRUE)
-  old_wd <- getwd()
-  withr::defer(setwd(old_wd))
-  wd <- tempfile("octo_test")
-  dir.create(wd)
-  setwd(wd)
+
   writeLines(
     c(
       "trace_dummy <- function(a = rlang::trace_back()) a",
