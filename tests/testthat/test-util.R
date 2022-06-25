@@ -29,13 +29,14 @@ test_that("encode_string", {
 })
 
 cli::test_that_cli("enable_github_colors", {
-  # skip_if_not_installed("rlang", "1.0.0")
   env <- environment()
   withr::local_envvar(GITHUB_ACTIONS = "false", , R_CLI_NUM_COLORS = NULL)
   expect_false(enable_github_colors(.local_envir = env))
   expect_false(disable_github_colors())
 
-  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL, .local_envir = env)
+  withr::local_envvar(
+    GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL, .local_envir = env
+    )
   expect_snapshot(enable_github_colors(.local_envir = env))
   withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 256^3)
   expect_snapshot(enable_github_colors(.local_envir = env))

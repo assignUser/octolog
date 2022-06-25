@@ -6,7 +6,6 @@ mockery::stub(
 )
 
 cli::test_that_cli("messages work", {
-  # skip_if_not_installed("rlang", "1.0.0")
   withr::local_envvar(GITHUB_ACTIONS = "false")
 
   withr::with_options(list(octolog.debug = TRUE), {

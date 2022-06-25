@@ -72,7 +72,8 @@ repository root.
 }
 \section{Functions}{
 \itemize{
-\item \code{octo_debug}: A debug message which is only visible if the secret \code{ACTIONS_STEP_DEBUG} is set. For local use set option \code{octolog.debug = TRUE}.
+\item \code{octo_debug}: A debug message which is only visible if the secret
+\code{ACTIONS_STEP_DEBUG} is set. For local use set option \code{octolog.debug = TRUE}.
 }}
 
 \examples{

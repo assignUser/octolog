@@ -91,7 +91,8 @@ octo_mask_envvar <- function(name) {
 #' @param value A single line string (or coercible to character). Use
 #'   [encode_string()] to encode a numeric
 #'   or multiline string.
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#setting-an-output-parameter)
 #' @examples
 #' Sys.setenv(GITHUB_ACTION = "true")
 #' string <- "A multi-line \n String."
@@ -127,8 +128,10 @@ octo_set_output <- function(value, name) {
 #' tk <- octo_stop_commands()
 #' # Commands will not be parsed by Github Actions
 #' octo_start_commands(tk)
-#' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
-#' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
+#' @seealso The [example workflow](https://github.com/assignUser/octolog/
+#' actions/workflows/test-octolog.yaml)
+#' and the [Github Blog](https://github.blog/changelog/
+#' 2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
   if (on_github() && !rlang::is_installed("openssl")) {
@@ -169,7 +172,8 @@ octo_start_commands <- function(token) {
 #' # workflow commands will be printed in their unparsed state in addition to
 #' # their normal effects
 #' octo_echo_off()
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
+#' workflow-commands-for-github-actions#echoing-command-outputs)
 octo_echo_on <- function() {
   octocat("::echo::on")
 }
@@ -211,7 +215,7 @@ octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
 
   if (set) {
     rlang::exec(
-      Sys.setenv, "{name}" := as.character(
+      Sys.setenv, "{name}" := as.character( # nolint
         glue("{ paste0(value, collapse ='\n') }")
       )
     )

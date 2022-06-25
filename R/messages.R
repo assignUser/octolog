@@ -1,4 +1,6 @@
-#' @describeIn octo_abort A debug message which is only visible if the secret `ACTIONS_STEP_DEBUG` is set. For local use set option `octolog.debug = TRUE`.
+#' @describeIn octo_abort A debug message which is only visible if the
+#' secret `ACTIONS_STEP_DEBUG` is set. For local use set option
+#'  `octolog.debug = TRUE`.
 #' @export
 octo_debug <- function(message, .envir = parent.frame()) {
   if (on_github()) {
