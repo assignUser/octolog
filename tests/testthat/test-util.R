@@ -4,7 +4,7 @@ test_that("on_github", {
   withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_true(on_github())
 
-  # Githubn sets the var to "true"
+  # GitHub sets the var to "true"
   withr::local_envvar(GITHUB_ACTIONS = "false")
   expect_false(on_github())
   withr::local_envvar(GITHUB_ACTIONS = "true")
@@ -12,7 +12,7 @@ test_that("on_github", {
 })
 
 test_that("octocat", {
-  test_string <- "This is a message for Github!"
+  test_string <- "This is a message for GitHub!"
   withr::local_envvar(GITHUB_ACTIONS = "true")
   expect_snapshot(octocat(test_string))
   withr::local_envvar(GITHUB_ACTIONS = "false")
@@ -29,13 +29,14 @@ test_that("encode_string", {
 })
 
 cli::test_that_cli("enable_github_colors", {
-  # skip_if_not_installed("rlang", "1.0.0")
   env <- environment()
   withr::local_envvar(GITHUB_ACTIONS = "false", , R_CLI_NUM_COLORS = NULL)
   expect_false(enable_github_colors(.local_envir = env))
   expect_false(disable_github_colors())
 
-  withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL, .local_envir = env)
+  withr::local_envvar(
+    GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = NULL, .local_envir = env
+    )
   expect_snapshot(enable_github_colors(.local_envir = env))
   withr::local_envvar(GITHUB_ACTIONS = "true", R_CLI_NUM_COLORS = 256^3)
   expect_snapshot(enable_github_colors(.local_envir = env))
@@ -47,7 +48,8 @@ test_that("get_location_string", {
   withr::local_options(keep.source = TRUE)
   old_wd <- getwd()
   withr::defer(setwd(old_wd))
-  wd <- fs::file_temp("octo_test") %>% fs::dir_create()
+  wd <- tempfile("octo_test")
+  dir.create(wd)
   setwd(wd)
   writeLines(
     c(
@@ -56,6 +58,7 @@ test_that("get_location_string", {
     ),
     "dummy.R"
   )
+
   withr::defer(unlink("dummy.R"))
 
   source("dummy.R")

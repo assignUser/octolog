@@ -23,5 +23,5 @@ octo_echo_on()
 octo_echo_off()
 }
 \seealso{
-\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs}{Github Docs}
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs}{GitHub Docs}
 }

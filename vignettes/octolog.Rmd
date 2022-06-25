@@ -13,7 +13,7 @@ Getting started with octolog is easy, just replace the *{cli}* conditions functi
 * `cli::cli_warn` $\rightarrow$ `octolog::octo_warn`
 * `cli::cli_abort` $\rightarrow$ `octolog::octo_abort`
 
-In an interactive session you will not see a difference, as the calls are passed through to {cli} but if your code throws conditions within a Github Action (detected via the environment variable `GITHUB_ACTIONS = "true"`) the behaviour will change. The conditions will be signaled in a way that will make them stand out in the log, appear in the action summary and create annotations[^1] on affected files. 
+In an interactive session you will not see a difference, as the calls are passed through to {cli} but if your code throws conditions within a GitHub Action (detected via the environment variable `GITHUB_ACTIONS = "true"`) the behaviour will change. The conditions will be signaled in a way that will make them stand out in the log, appear in the action summary and create annotations[^1] on affected files. 
 
 ![Annotations on files of a PR.](../man/figures/annotations.png)
 
@@ -25,7 +25,7 @@ You can throw *errors* that do not kill the R session when using `octo_abort()` 
 
 ## Workflow commands
 
-In addition to signaling conditions, Github Actions provide a number of [workflow commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions) to interact with the runner and following actions steps. Octolog provides a complete API[^2] for the workflow commands, please see the [function reference](https://jacob.wujciak.de/octolog/reference/index.html) and the official documentation for an overview. To see the workflow commands in practice you can check out the [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml) or the real world use case of the [pkgcheck action](https://github.com/ropensci-review-tools/pkgcheck-action).
+In addition to signaling conditions, GitHub Actions provide a number of [workflow commands](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions) to interact with the runner and following actions steps. Octolog provides a complete API[^2] for the workflow commands, please see the [function reference](https://jacob.wujciak.de/octolog/reference/index.html) and the official documentation for an overview. To see the workflow commands in practice you can check out the [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml) or the real world use case of the [pkgcheck action](https://github.com/ropensci-review-tools/pkgcheck-action).
 
 [^2]: The only exception is [`save-state`](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#sending-values-to-the-pre-and-post-actions) which can only be used in JavaScript actions. 
 

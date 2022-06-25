@@ -23,5 +23,5 @@ value <- encode_string(string)
 octo_set_output("important-value", value)
 }
 \seealso{
-\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter}{Github Docs}
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter}{GitHub Docs}
 }

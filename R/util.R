@@ -1,6 +1,6 @@
-#' Detect if R is running within a Github Action.
+#' Detect if R is running within a GitHub Action.
 #'
-#' @return `TRUE` if on Github. `FALSE` otherwise.
+#' @return `TRUE` if on GitHub. `FALSE` otherwise.
 #' @details Uses `GITHUB_ACTIONS` envvar`.
 #' @examples
 #' on_github()
@@ -10,9 +10,9 @@ on_github <- function() {
 }
 
 
-#' "cat" a string if on Github
+#' "cat" a string if on GitHub
 #'
-#' Prints a `string` if on Github, detected via env var `GITHUB_ACTIONS ==
+#' Prints a `string` if on GitHub, detected via env var `GITHUB_ACTIONS ==
 #' 'true'`.
 #'
 #' @param string A character vector of length 1. This string will be terminated
@@ -35,24 +35,24 @@ octocat <- function(string) {
   invisible(string)
 }
 
-#' Prepare a String for Github
+#' Prepare a String for GitHub
 #'
 #' This will format the string with [cli::format_message()] and encode it to be
-#' in one line for Github Action output.
+#' in one line for GitHub Action output.
 #' @inheritParams encode_string
 #' @noRd
 prepare_string <- function(string, .envir = parent.frame()) {
-  string %>%
-    cli::format_message(.envir = .envir) %>%
-    encode_string()
+  encode_string(
+    cli::format_message(string, .envir = .envir)
+  )
 }
 
-#' Encode String for Github Actions
+#' Encode String for GitHub Actions
 #'
-#' Encodes a multiline string into one line for Github Action output.
+#' Encodes a multiline string into one line for GitHub Action output.
 #'
 #' This will only encode '%', '\\n', '\\r' as these will be automatically
-#' decoded by Github when using the output via `${{
+#' decoded by GitHub when using the output via `${{
 #' steps.<step_id>.outputs.<name> }}`. You can use [utils::URLencode()] instead
 #' of this function to also escape everything else problematic like (double)
 #' quotes etc. but you will have to manually use [utils::URLdecode()] to revert
@@ -69,10 +69,9 @@ prepare_string <- function(string, .envir = parent.frame()) {
 #' encode_string(md, TRUE)
 #' @export
 encode_string <- function(string, join = FALSE) {
-  encoded <- string %>%
-    gsub("%", "%25", .) %>%
-    gsub("\n", "%0A", .) %>%
-    gsub("\r", "%0D", .)
+  string <- gsub("%", "%25", string)
+  string <- gsub("\n", "%0A", string)
+  encoded <- gsub("\r", "%0D", string)
 
   if (join) {
     encoded <- paste0(encoded, collapse = "%0A")
@@ -80,12 +79,12 @@ encode_string <- function(string, join = FALSE) {
 
   encoded
 }
-utils::globalVariables(".", "octolog")
 
-#' Enable/disable Colors on Github Actions
+
+#' Enable/disable Colors on GitHub Actions
 #'
 #' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors` within the scope of
-#' `.local_envir`.  To avoid sideeffects through overriding
+#' `.local_envir`.  To avoid side effects through overriding
 #' [crayon::has_color()], this function only works [on_github()].
 #' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @param quiet Should messages be printed?
@@ -137,7 +136,7 @@ disable_github_colors <- function(.local_envir = parent.frame(),
 #' Extract file path and position from trace_back.
 #'
 #' @param trace An [rlang::trace_back()] object.
-#' @return A string formated for use in Github Action workflow commands.
+#' @return A string formated for use in GitHub Action workflow commands.
 #' @importFrom rlang `%|%`
 #' @noRd
 get_location_string <- function(trace) {
@@ -147,6 +146,8 @@ get_location_string <- function(trace) {
 
   src <- integer(0)
 
+  # This would work with $call via partial matching but better
+  # to be explicit
   if (utils::packageVersion("rlang") >= "1.0.0") {
     calls <- trace$call
   } else {
@@ -164,28 +165,31 @@ get_location_string <- function(trace) {
     return("")
   }
 
-  path <- utils::getSrcFilename(src, full.names = TRUE) %>% fs::path_tidy()
+  path <- utils::getSrcFilename(src, full.names = TRUE)
 
-  if (!fs::is_absolute_path(path)) {
-    path <- fs::path(getwd(), path)
+  if (!is_absolute_path(path)) {
+    path <- file.path(getwd(), path)
+  } else {
+    path <- path.expand(path)
   }
 
-  start_dir <- (Sys.getenv("OCTOLOG_START_DIR", unset = NA_character_) %|%
-    ".") %>%
-    fs::path_tidy()
+  # For annotations to work the path has to be relative
+  # to the repository root
+  base_path <- (
+    Sys.getenv("OCTOLOG_REPO_DIR", unset = NA_character_) %|% getwd()
+  )
+  path <- path.expand(path)
+  path <- sub(glue("{base_path}/"), "", path)
 
-  path <- path %>% fs::path_rel(start_dir)
-
-
-  paste0(
-    "file={path},",
-    "line={src[[1]]},endLine={src[[3]]},",
-    "col={src[[5]]},endCol={src[[6]]}"
-  ) %>%
-    glue::glue()
+  glue::glue(
+    paste0(
+      "file={path},",
+      "line={src[[1]]},endLine={src[[3]]},",
+      "col={src[[5]]},endCol={src[[6]]}"
+    )
+  )
 }
 
 on_windows <- function() {
-  os <- Sys.info()[["sysname"]] %>% tolower()
-  os == "windows"
+  tolower(Sys.info()[["sysname"]]) == "windows"
 }

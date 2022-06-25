@@ -4,15 +4,15 @@
 \name{octolog-package}
 \alias{octolog}
 \alias{octolog-package}
-\title{octolog: Better 'Github Action' Logging}
+\title{octolog: Better 'GitHub Actions' Logging}
 \description{
-Provides an API for 'Github' <https://github.com> workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'Github Actions' <https://github.com/features/actions> but raise normal R conditions when used interactively.
+Provides an API for 'GitHub' \url{https://github.com} workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'GitHub Actions' \url{https://github.com/features/actions} but raise normal R conditions when used interactively.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/assignUser/octolog}
-  \item \url{https://assignuser.github.io/octolog/}
+  \item \url{https://jacob.wujciak.de/octolog/}
   \item Report bugs at \url{https://github.com/assignUser/octolog/issues}
 }
 

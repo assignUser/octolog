@@ -1,4 +1,6 @@
-#' @describeIn octo_abort A debug message which is only visible if the secret `ACTIONS_STEP_DEBUG` is set. For local use set option `octolog.debug = TRUE`.
+#' @describeIn octo_abort A debug message which is only visible if the
+#' secret `ACTIONS_STEP_DEBUG` is set. For local use set option
+#'  `octolog.debug = TRUE`.
 #' @export
 octo_debug <- function(message, .envir = parent.frame()) {
   if (on_github()) {
@@ -44,10 +46,10 @@ octo_warn <- function(message,
 
 
 
-#' Signal conditions that create Github annotations.
+#' Signal conditions that create GitHub annotations.
 #'
 #' These functions are a drop-in replacements for [cli::cli_warn()] and friends.
-#' If used while R is running within a Github Action, the conditions will be
+#' If used while R is running within a GitHub Action, the conditions will be
 #' signaled in such a way that they will create annotations on the files
 #' affected. Even if [enable_github_colors()] was used the conditions will not
 #' have colors in the log as the color codes break the annotation.
@@ -57,13 +59,16 @@ octo_warn <- function(message,
 #' use.
 #'
 #' The file path for the annotations will be relative to the R working
-#' directory, if you want to change that set the envvar `OCTOLOG_START_DIR` to
-#' the dir the path should be relative to.
+#' directory, if you want to change that set the envvar `OCTOLOG_REPO_DIR` to
+#' the dir the path should be relative to. This will be necessary if the current
+#' working directory is not the repository root (e.g. you checked out into a
+#' separate dir), as annotations require the file paths to be relative to the
+#' repository root.
 #' @inheritParams cli::cli_abort
-#' @param title A custom title for the Github annotation.
+#' @param title A custom title for the GitHub annotation.
 #' @param trace An [rlang::trace_back()] will only be passed to [rlang::abort()]
 #'   if not [missing()].
-#' @param .fail_fast An error on Github will not kill the R process if this is
+#' @param .fail_fast An error on GitHub will not kill the R process if this is
 #'   set to `FALSE`. Use the option `octolog.fail_fast` to set the value
 #'   globally.`
 #' @examples
@@ -112,9 +117,9 @@ octo_abort <- function(message,
 #' Print a github condition
 #'
 #' @param prefix The condition prefix.
-#' @param message The message string which was [preapre_string()]'ed.
+#' @param message The message string which was [prepare_string()]'ed.
 #' @param trace An [rlang::trace_back()].
-#' @param title An optional title for the conditon.
+#' @param title An optional title for the condition.
 #' @param .envir Environment the message is [glue::glue()]ed in.
 #' @noRd
 signal_github_condition <- function(prefix = c(
@@ -139,9 +144,8 @@ signal_github_condition <- function(prefix = c(
     loc_str <- get_location_string(trace)
   }
 
-
   # Colors work in the log but break the annotations
   disable_github_colors(quiet = TRUE)
   message <- prepare_string(message, .envir = .envir)
-  glue("{prefix}{loc_str}{title}::{message}") %>% octocat()
+  octocat(glue("{prefix}{loc_str}{title}::{message}"))
 }

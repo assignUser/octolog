@@ -74,12 +74,9 @@ cli::test_that_cli("stop_commands", {
 })
 
 test_that("set_envvar", {
-  file1 <- tempdir() %>%
-    fs::path("gh_env1") %>%
-    fs::file_create()
-  file2 <- tempdir() %>%
-    fs::path("gh_env2") %>%
-    fs::file_create()
+  file1 <- file.path(tempdir(), "gh_env1")
+  file2 <- file.path(tempdir(), "gh_env2")
+  file.create(file1, file2)
 
   withr::defer(unlink(c(file1, file2)))
   withr::local_envvar("GITHUB_ACTIONS" = "false")
@@ -109,9 +106,8 @@ test_that("set_envvar", {
 })
 
 test_that("add_path", {
-  file1 <- tempdir() %>%
-    fs::path("gh_path1") %>%
-    fs::file_create()
+  file1 <- file.path(tempdir(), "gh_path1")
+  file.create(file1)
 
   withr::defer(unlink(file1))
   withr::local_envvar("GITHUB_ACTIONS" = "false")

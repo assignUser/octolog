@@ -3,7 +3,7 @@
 \name{enable_github_colors}
 \alias{enable_github_colors}
 \alias{disable_github_colors}
-\title{Enable/disable Colors on Github Actions}
+\title{Enable/disable Colors on GitHub Actions}
 \usage{
 enable_github_colors(
   n_colors = as.integer(256^3),
@@ -26,7 +26,7 @@ Invisibly returns \code{TRUE} if enabling/disabling was successful,
 }
 \description{
 This will set the envvar \code{R_CLI_NUM_COLORS} to \code{n_colors} within the scope of
-\code{.local_envir}.  To avoid sideeffects through overriding
+\code{.local_envir}.  To avoid side effects through overriding
 \code{\link[crayon:has_color]{crayon::has_color()}}, this function only works \code{\link[=on_github]{on_github()}}.
 }
 \examples{

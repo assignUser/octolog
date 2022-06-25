@@ -3,7 +3,7 @@
     Code
       octocat(test_string)
     Output
-      This is a message for Github!
+      This is a message for GitHub!
 
 ---
 
@@ -28,84 +28,84 @@
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       v Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       i `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message <cliMessage>
+    Message
       x Disabeled colors!
 
 # enable_github_colors [ansi]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       [32mv[39m Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       [36mi[39m `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message <cliMessage>
+    Message
       x Disabeled colors!
 
 # enable_github_colors [unicode]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       ✔ Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       ℹ `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message <cliMessage>
+    Message
       ✖ Disabeled colors!
 
 # enable_github_colors [fancy]
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       [32m✔[39m Enabled colors!
 
 ---
 
     Code
       enable_github_colors(.local_envir = env)
-    Message <cliMessage>
+    Message
       [36mℹ[39m `R_CLI_NUM_COLORS` already set.
 
 ---
 
     Code
       disable_github_colors()
-    Message <cliMessage>
+    Message
       ✖ Disabeled colors!
 
 # get_location_string
@@ -113,5 +113,5 @@
     Code
       get_location_string(trc)
     Output
-      file=test-util.R,line=61,endLine=61,col=3,endCol=19
+      file=test-util.R,line=64,endLine=64,col=3,endCol=19
 

@@ -54,9 +54,8 @@ jobs:
           print("I accidentally logged my: secret_gh_token")
           octo_echo_off()
           
-          readLines("README.md") %>%
-            encode_string(join = TRUE) %>%
-            octo_set_output("desc")
+          str <- encode_string(readLines("README.md"), join = TRUE) 
+          octo_set_output(str, "desc")
 
           t <- octo_stop_commands()
           octo_inform("This will not be parsed")

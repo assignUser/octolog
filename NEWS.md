@@ -2,7 +2,7 @@
 
 * octolog is now compatible with rlang >= 0.4.10
 * openssl is now optional as it is only used in `octo_stop_commands()`. 
-  * An unsafe fallback is used to generate the token outside of Github Actions.
+  * An unsafe fallback is used to generate the token outside of GitHub Actions.
   
 # octolog 0.1.1
 
