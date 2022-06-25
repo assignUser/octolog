@@ -2,9 +2,9 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "octolog",
-  "description": "Provides an API for 'Github' <https://github.com> workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'Github Actions' <https://github.com/features/actions> but raise normal R conditions when used interactively.",
-  "name": "octolog: Better 'Github Action' Logging",
-  "relatedLink": "https://assignuser.github.io/octolog/",
+  "description": "Provides an API for 'GitHub' <https://github.com> workflow commands and makes it possible to signal conditions from within R that will create annotations when used within 'GitHub Actions' <https://github.com/features/actions> but raise normal R conditions when used interactively.",
+  "name": "octolog: Better 'GitHub Actions' Logging",
+  "relatedLink": "https://jacob.wujciak.de/octolog/",
   "codeRepository": "https://github.com/assignUser/octolog",
   "issueTracker": "https://github.com/assignUser/octolog/issues",
   "license": "https://spdx.org/licenses/MIT",
@@ -14,7 +14,7 @@
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.2.0 (2022-04-22)",
   "author": [
     {
       "@type": "Person",
@@ -69,7 +69,7 @@
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://github.com/r-lib/mockery"
+      "sameAs": "https://CRAN.R-project.org/package=mockery"
     },
     {
       "@type": "SoftwareApplication",
@@ -125,18 +125,6 @@
     },
     "2": {
       "@type": "SoftwareApplication",
-      "identifier": "fs",
-      "name": "fs",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=fs"
-    },
-    "3": {
-      "@type": "SoftwareApplication",
       "identifier": "glue",
       "name": "glue",
       "provider": {
@@ -147,19 +135,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=glue"
     },
-    "4": {
-      "@type": "SoftwareApplication",
-      "identifier": "magrittr",
-      "name": "magrittr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=magrittr"
-    },
-    "5": {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
@@ -172,12 +148,12 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    "6": {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
     },
-    "7": {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "withr",
       "name": "withr",
@@ -191,7 +167,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "210.347KB",
+  "fileSize": "213.022KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -203,7 +179,7 @@
           "familyName": "Wujciak-Jens"
         }
       ],
-      "name": "octolog: Better 'Github Action' Logging",
+      "name": "octolog: Better 'GitHub Actions' Logging",
       "identifier": "10.5281/zenodo.5948954",
       "url": "https://doi.org/10.5281/zenodo.5948954",
       "description": "https://github.com/assignUser/octolog, https://assignuser.github.io/octolog/",
