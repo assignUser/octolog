@@ -14,8 +14,7 @@ octo_end_group()
 }
 \description{
 These functions make it possible to group lines in the Github Actions log.
-Groups can not be nested at this point, see this \link{issue}(https://github.com
-/actions/runner/issues/802).
+Groups can not be nested at this point, see this \href{https://github.com/actions/runner/issues/802}{issue}.
 }
 \examples{
 Sys.setenv(GITHUB_ACTIONS = "TRUE")
@@ -24,6 +23,5 @@ print("Log other output")
 octo_end_group()
 }
 \seealso{
-\link{Github Docs}(https://docs.github.com/en/actions/using-workflows/
-workflow-commands-for-github-actions#grouping-log-lines)
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines}{Github Docs}
 }

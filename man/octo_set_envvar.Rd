@@ -35,6 +35,5 @@ octo_set_envvar(2342, "pid")
 }
 \seealso{
 \code{\link[=octo_mask_envvar]{octo_mask_envvar()}}and the
-\link{Github docs}(https://docs.github.com/en/actions/using-workflows/
-workflow-commands-for-github-actions#setting-an-environment-variable)
+\href{https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable}{Github docs}
 }

@@ -1,8 +1,7 @@
 #' Grouping log lines
 #'
 #' These functions make it possible to group lines in the Github Actions log.
-#' Groups can not be nested at this point, see this [issue](https://github.com
-#' /actions/runner/issues/802).
+#' Groups can not be nested at this point, see this [issue](https://github.com/actions/runner/issues/802).
 #' @param name Name of the group, single line.
 #' @examples
 #' Sys.setenv(GITHUB_ACTIONS = "TRUE")
@@ -10,8 +9,7 @@
 #' print("Log other output")
 #' octo_end_group()
 #' @export
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#grouping-log-lines)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#grouping-log-lines)
 octo_start_group <- function(name) {
   if (length(name) != 1) {
     octo_abort("Group {.arg name} must be length 1!")
@@ -36,8 +34,7 @@ octo_end_group <- function() {
 #' but very important.
 #' @details The masking is not restricted to R output, rather it will work for
 #' any logged output. For a practical demonstration please see the
-#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/
-#' workflows/test-octolog.yaml)
+#' [{octolog} example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
 #'
 #' Additionally some values and envvars will be masked automatically by github,
 #' though this behavior is poorly documented. It looks like anything with
@@ -47,8 +44,7 @@ octo_end_group <- function() {
 #' [here](https://github.com/actions/runner/issues/475#issuecomment-742271143).
 #' @param value A single value to mask, coercible to string.
 #' @param name Name of the envvar to mask.
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#masking-a-value-in-log)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#masking-a-value-in-log)
 #' @examples
 #' octo_mask_value("secret_token123")
 #' # The mask takes effect in the NEXT step
@@ -91,8 +87,7 @@ octo_mask_envvar <- function(name) {
 #' @param value A single line string (or coercible to character). Use
 #'   [encode_string()] to encode a numeric
 #'   or multiline string.
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#setting-an-output-parameter)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-output-parameter)
 #' @examples
 #' Sys.setenv(GITHUB_ACTION = "true")
 #' string <- "A multi-line \n String."
@@ -128,10 +123,8 @@ octo_set_output <- function(value, name) {
 #' tk <- octo_stop_commands()
 #' # Commands will not be parsed by Github Actions
 #' octo_start_commands(tk)
-#' @seealso The [example workflow](https://github.com/assignUser/octolog/
-#' actions/workflows/test-octolog.yaml)
-#' and the [Github Blog](https://github.blog/changelog/
-#' 2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
+#' @seealso The [example workflow](https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml)
+#' and the [Github Blog](https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/)
 #' @export
 octo_stop_commands <- function() {
   if (on_github() && !rlang::is_installed("openssl")) {
@@ -172,8 +165,7 @@ octo_start_commands <- function(token) {
 #' # workflow commands will be printed in their unparsed state in addition to
 #' # their normal effects
 #' octo_echo_off()
-#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#echoing-command-outputs)
+#' @seealso [Github Docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#echoing-command-outputs)
 octo_echo_on <- function() {
   octocat("::echo::on")
 }
@@ -206,8 +198,7 @@ octo_echo_off <- function() {
 #' }
 #' @export
 #' @seealso [octo_mask_envvar()]and the
-#' [Github docs](https://docs.github.com/en/actions/using-workflows/
-#' workflow-commands-for-github-actions#setting-an-environment-variable)
+#' [Github docs](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#setting-an-environment-variable)
 octo_set_envvar <- function(value, name, set = TRUE, delim = "EOF") {
   if (length(name) != 1) {
     octo_abort("{.arg name} must be length 1.")
