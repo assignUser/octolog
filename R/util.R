@@ -84,7 +84,7 @@ encode_string <- function(string, join = FALSE) {
 #' Enable/disable Colors on GitHub Actions
 #'
 #' This will set the envvar `R_CLI_NUM_COLORS` to `n_colors` within the scope of
-#' `.local_envir`.  To avoid sideeffects through overriding
+#' `.local_envir`.  To avoid side effects through overriding
 #' [crayon::has_color()], this function only works [on_github()].
 #' @param n_colors An integer giving the number of colors. Default 24bit.
 #' @param quiet Should messages be printed?
