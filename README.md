@@ -10,8 +10,8 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/assignUser/octolog/workflows/R-CMD-check/badge.svg)](https://github.com/assignUser/octolog/actions)
 [![pkgcheck](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml/badge.svg)](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml)
-[![Codecov test
-coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)](https://app.codecov.io/gh/assignUser/octolog?branch=main)
+[![Coverage
+Status](https://coveralls.io/repos/github/assignUser/octolog/badge.svg?branch=main)](https://coveralls.io/github/assignUser/octolog?branch=main)
 [![DOI](https://zenodo.org/badge/451156961.svg)](https://zenodo.org/badge/latestdoi/451156961)
 <!-- badges: end -->
 
@@ -56,9 +56,8 @@ vignette](https://jacob.wujciak.de/octolog/articles/octolog.html).
 ## Code of Conduct
 
 Please note that the octolog project is released with a [Contributor
-Code of
-Conduct](https://jacob.wujciak.de/octolog/CODE_OF_CONDUCT.html). By
-contributing to this project, you agree to abide by its terms.
+Code of Conduct](https://jacob.wujciak.de/octolog/CODE_OF_CONDUCT.html).
+By contributing to this project, you agree to abide by its terms.
 
 [^1]: The only exception is
     [`save-state`](https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#sending-values-to-the-pre-and-post-actions)

@@ -11,7 +11,7 @@ output:
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![R-CMD-check](https://github.com/assignUser/octolog/workflows/R-CMD-check/badge.svg)](https://github.com/assignUser/octolog/actions)
 [![pkgcheck](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml/badge.svg)](https://github.com/assignUser/octolog/actions/workflows/pkgcheck.yaml)
-[![Codecov test coverage](https://codecov.io/gh/assignUser/octolog/branch/main/graph/badge.svg)](https://app.codecov.io/gh/assignUser/octolog?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/assignUser/octolog/badge.svg?branch=main)](https://coveralls.io/github/assignUser/octolog?branch=main)
 [![DOI](https://zenodo.org/badge/451156961.svg)](https://zenodo.org/badge/latestdoi/451156961)
 <!-- badges: end -->
 
