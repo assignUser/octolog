@@ -25,8 +25,13 @@ jobs:
           extra-packages: any::covr
 
       - name: Test coverage
-        env:
-          COVERALLS_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          CI_SERVICE: gha
-        run: covr::coveralls()
+        run: |
+          cov <- covr::package_coverage()
+          covr::to_cobertura(cov, "cov.xml")
         shell: Rscript {0}
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v2
+        with:
+          format: 'cobertura'
+          file: 'cov.xml'
