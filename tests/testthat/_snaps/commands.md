@@ -115,7 +115,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Condition
-      [1m[33mError[39m in [1m[1m`octo_start_group()`:[22m
+      [1m[33mError[39m in `octo_start_group()`:[22m
       [1m[22m[33m![39m Group `name` must be length 1!
 
 ---
@@ -143,7 +143,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::Group `name` must be length 1!
     Condition
-      [1m[33mError[39m in [1m[1m`octo_start_group()`:[22m
+      [1m[33mError[39m in `octo_start_group()`:[22m
       [1m[22m[33m![39m Group `name` must be length 1!
 
 ---
@@ -295,7 +295,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_value()`:[22m
+      [1m[33mError[39m in `octo_mask_value()`:[22m
       [1m[22m[33m![39m You can only mask one value at a time.
 
 ---
@@ -305,7 +305,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_envvar()`:[22m
+      [1m[33mError[39m in `octo_mask_envvar()`:[22m
       [1m[22m[33m![39m You can only mask one envvar at a time.
 
 ---
@@ -315,7 +315,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_envvar()`:[22m
+      [1m[33mError[39m in `octo_mask_envvar()`:[22m
       [1m[22m[33m![39m The envvar `SECRET_VAR` does not exists!
 
 ---
@@ -379,7 +379,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one value at a time.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_value()`:[22m
+      [1m[33mError[39m in `octo_mask_value()`:[22m
       [1m[22m[33m![39m You can only mask one value at a time.
 
 ---
@@ -389,7 +389,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::You can only mask one envvar at a time.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_envvar()`:[22m
+      [1m[33mError[39m in `octo_mask_envvar()`:[22m
       [1m[22m[33m![39m You can only mask one envvar at a time.
 
 ---
@@ -399,7 +399,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The envvar `SECRET_VAR` does not exists!
     Condition
-      [1m[33mError[39m in [1m[1m`octo_mask_envvar()`:[22m
+      [1m[33mError[39m in `octo_mask_envvar()`:[22m
       [1m[22m[33m![39m The envvar `SECRET_VAR` does not exists!
 
 ---
@@ -461,7 +461,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_set_output()`:[22m
+      [1m[33mError[39m in `octo_set_output()`:[22m
       [1m[22m[33m![39m The output `name` must be length 1.
 
 ---
@@ -471,7 +471,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_set_output()`:[22m
+      [1m[33mError[39m in `octo_set_output()`:[22m
       [1m[22m[33m![39m The output `value` must be length 1.
 
 ---
@@ -541,7 +541,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `name` must be length 1.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_set_output()`:[22m
+      [1m[33mError[39m in `octo_set_output()`:[22m
       [1m[22m[33m![39m The output `name` must be length 1.
 
 ---
@@ -551,7 +551,7 @@
     Output
       ::error file=universe.R,line=23,endLine=42,col=3,endCol=27::The output `value` must be length 1.
     Condition
-      [1m[33mError[39m in [1m[1m`octo_set_output()`:[22m
+      [1m[33mError[39m in `octo_set_output()`:[22m
       [1m[22m[33m![39m The output `value` must be length 1.
 
 ---
