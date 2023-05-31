@@ -64,32 +64,32 @@ have colors in the log as the color codes break the annotation.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">octo_debug</span><span class="op">(</span><span class="va">message</span>, .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">octo_inform</span><span class="op">(</span>
-  <span class="va">message</span>,
-  <span class="va">...</span>,
-  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,
-  title <span class="op">=</span> <span class="cn">NULL</span>,
-  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">octo_warn</span><span class="op">(</span>
-  <span class="va">message</span>,
-  <span class="va">...</span>,
-  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,
-  title <span class="op">=</span> <span class="cn">NULL</span>,
-  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="fu">octo_abort</span><span class="op">(</span>
-  <span class="va">message</span>,
-  <span class="va">...</span>,
-  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,
-  title <span class="op">=</span> <span class="cn">NULL</span>,
-  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>,
-  .fail_fast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"octolog.fail_fast"</span><span class="op">)</span> <span class="op">%||%</span> <span class="cn">TRUE</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">octo_debug</span><span class="op">(</span><span class="va">message</span>, .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">octo_inform</span><span class="op">(</span></span>
+<span>  <span class="va">message</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">octo_warn</span><span class="op">(</span></span>
+<span>  <span class="va">message</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">octo_abort</span><span class="op">(</span></span>
+<span>  <span class="va">message</span>,</span>
+<span>  <span class="va">...</span>,</span>
+<span>  trace <span class="op">=</span> <span class="fu">rlang</span><span class="fu">::</span><span class="fu"><a href="https://rlang.r-lib.org/reference/trace_back.html" class="external-link">trace_back</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  title <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  .envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sys.parent.html" class="external-link">parent.frame</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  .fail_fast <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">getOption</a></span><span class="op">(</span><span class="st">"octolog.fail_fast"</span><span class="op">)</span> <span class="op">%||%</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -148,16 +148,16 @@ secret <code>ACTIONS_STEP_DEBUG</code> is set. For local use set option
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTIONS <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">octo_warn</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A warning message"</span>, i <span class="op">=</span> <span class="st">"Try something else!"</span><span class="op">)</span>,</span>
-<span class="r-in">  title <span class="op">=</span> <span class="st">"Custom Title"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTIONS <span class="op">=</span> <span class="st">""</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">octo_warn</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A warning message"</span>, i <span class="op">=</span> <span class="st">"Try something else!"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  title <span class="op">=</span> <span class="st">"Custom Title"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>A warning message</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Try something else!</span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTIONS <span class="op">=</span> <span class="st">"TRUE"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">octo_warn</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A warning message"</span>, i <span class="op">=</span> <span class="st">"Try something else!"</span><span class="op">)</span>,</span>
-<span class="r-in">  title <span class="op">=</span> <span class="st">"Custom Title"</span></span>
-<span class="r-in"><span class="op">)</span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>GITHUB_ACTIONS <span class="op">=</span> <span class="st">"TRUE"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">octo_warn</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A warning message"</span>, i <span class="op">=</span> <span class="st">"Try something else!"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  title <span class="op">=</span> <span class="st">"Custom Title"</span></span></span>
+<span class="r-in"><span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ::warning ,title=Custom Title::A warning message%0Aℹ Try something else!</span>
 </code></pre></div>
     </div>
@@ -173,7 +173,7 @@ secret <code>ACTIONS_STEP_DEBUG</code> is set. For local use set option
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -80,57 +80,102 @@
 
     
     
-<p>Getting started with octolog is easy, just replace the <em>{cli}</em> conditions functions with their octolog counterpart:</p>
+<p>Getting started with octolog is easy, just replace the <em>{cli}</em>
+conditions functions with their octolog counterpart:</p>
 <ul>
 <li>
-<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_inform</a></code> <span class="math inline">\(\rightarrow\)</span> <code><a href="../reference/octo_abort.html">octolog::octo_inform</a></code>
+<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_inform</a></code> <span class="math inline">\(\rightarrow\)</span>
+<code><a href="../reference/octo_abort.html">octolog::octo_inform</a></code>
 </li>
 <li>
-<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_warn</a></code> <span class="math inline">\(\rightarrow\)</span> <code><a href="../reference/octo_abort.html">octolog::octo_warn</a></code>
+<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_warn</a></code> <span class="math inline">\(\rightarrow\)</span>
+<code><a href="../reference/octo_abort.html">octolog::octo_warn</a></code>
 </li>
 <li>
-<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort</a></code> <span class="math inline">\(\rightarrow\)</span> <code><a href="../reference/octo_abort.html">octolog::octo_abort</a></code>
+<code><a href="https://cli.r-lib.org/reference/cli_abort.html" class="external-link">cli::cli_abort</a></code> <span class="math inline">\(\rightarrow\)</span>
+<code><a href="../reference/octo_abort.html">octolog::octo_abort</a></code>
 </li>
 </ul>
-<p>In an interactive session you will not see a difference, as the calls are passed through to {cli} but if your code throws conditions within a GitHub Action (detected via the environment variable <code>GITHUB_ACTIONS = "true"</code>) the behaviour will change. The conditions will be signaled in a way that will make them stand out in the log, appear in the action summary and create annotations<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on affected files.</p>
+<p>In an interactive session you will not see a difference, as the calls
+are passed through to {cli} but if your code throws conditions within a
+GitHub Action (detected via the environment variable
+<code>GITHUB_ACTIONS = "true"</code>) the behaviour will change. The
+conditions will be signaled in a way that will make them stand out in
+the log, appear in the action summary and create annotations<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> on
+affected files.</p>
 <div class="figure">
 <img src="../reference/figures/annotations.png" alt=""><p class="caption">Annotations on files of a PR.</p>
 </div>
-<p>You can throw <em>errors</em> that do not kill the R session when using <code><a href="../reference/octo_abort.html">octo_abort()</a></code> by setting the optional argument <code>.fail_fast = FALSE</code>. This can be useful if you want a workflow to fail (e.g. to block a PR) by throwing an error but do not want to stop the R process.</p>
+<p>You can throw <em>errors</em> that do not kill the R session when
+using <code><a href="../reference/octo_abort.html">octo_abort()</a></code> by setting the optional argument
+<code>.fail_fast = FALSE</code>. This can be useful if you want a
+workflow to fail (e.g. to block a PR) by throwing an error but do not
+want to stop the R process.</p>
 <div class="figure">
 <img src="../reference/figures/summary.png" alt=""><p class="caption">Annotations in the workflow summary.</p>
 </div>
 <div class="section level2">
 <h2 id="workflow-commands">Workflow commands<a class="anchor" aria-label="anchor" href="#workflow-commands"></a>
 </h2>
-<p>In addition to signaling conditions, GitHub Actions provide a number of <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow commands</a> to interact with the runner and following actions steps. Octolog provides a complete API<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for the workflow commands, please see the <a href="https://jacob.wujciak.de/octolog/reference/index.html" class="external-link">function reference</a> and the official documentation for an overview. To see the workflow commands in practice you can check out the <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">example workflow</a> or the real world use case of the <a href="https://github.com/ropensci-review-tools/pkgcheck-action" class="external-link">pkgcheck action</a>.</p>
+<p>In addition to signaling conditions, GitHub Actions provide a number
+of <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">workflow
+commands</a> to interact with the runner and following actions steps.
+Octolog provides a complete API<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> for the workflow commands, please see the
+<a href="https://jacob.wujciak.de/octolog/reference/index.html" class="external-link">function
+reference</a> and the official documentation for an overview. To see the
+workflow commands in practice you can check out the <a href="https://github.com/assignUser/octolog/actions/workflows/test-octolog.yaml" class="external-link">example
+workflow</a> or the real world use case of the <a href="https://github.com/ropensci-review-tools/pkgcheck-action" class="external-link">pkgcheck
+action</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="security">Security<a class="anchor" aria-label="anchor" href="#security"></a>
 </h2>
-<p><strong>In doubt always refer to the <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">official documentation</a> and <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions" class="external-link">security hardening guide</a> and test the behaviour to make sure the functions behave as you expect!</strong></p>
-<p>There are commands that can have an impact on the security of your repository if they are not or wrongly used. As their official documentation is a bit lacking in parts this section will add some additional remarks.</p>
+<p><strong>In doubt always refer to the <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions" class="external-link">official
+documentation</a> and <a href="https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions" class="external-link">security
+hardening guide</a> and test the behaviour to make sure the functions
+behave as you expect!</strong></p>
+<p>There are commands that can have an impact on the security of your
+repository if they are not or wrongly used. As their official
+documentation is a bit lacking in parts this section will add some
+additional remarks.</p>
 <div class="section level3">
 <h3 id="masking">Masking<a class="anchor" aria-label="anchor" href="#masking"></a>
 </h3>
-<p>Masking values directly (<code>octo_mask_value</code>) and masking environment variables and their values (<code>octo_mask_envvar</code>) differs in unexpected and undocumented ways.</p>
+<p>Masking values directly (<code>octo_mask_value</code>) and masking
+environment variables and their values (<code>octo_mask_envvar</code>)
+differs in unexpected and undocumented ways.</p>
 <div class="figure">
-<img src="../reference/figures/masking.png" alt=""><p class="caption">Difference in masking values and environment variables.</p>
+<img src="../reference/figures/masking.png" alt=""><p class="caption">Difference in masking values and environment
+variables.</p>
 </div>
-<p>Values masked with <code>octo_mask_value</code> will be replaced with “***”” immediately but environment variables will only be masked in the <strong><em>next</em></strong> <code>step:</code> of the action!</p>
+<p>Values masked with <code>octo_mask_value</code> will be replaced with
+“***”” immediately but environment variables will only be masked in the
+<strong><em>next</em></strong> <code>step:</code> of the action!</p>
 </div>
 <div class="section level3">
 <h3 id="stopping-command-parsing">Stopping command parsing<a class="anchor" aria-label="anchor" href="#stopping-command-parsing"></a>
 </h3>
-<p>If you have to log untrusted user input (like commit messages, issue titles …) you can prevent the execution of workflow commands using <code>octo_stop_commands</code>.Internally the function creates a token based on cryptographically secure random bytes from {openssl}, this makes it impossible for a third party to guess the token before submitting their changes (e.g. to a PR) to enable the execution of their untrusted commands. This is not intended to protect against other R code. Due to R’s metaprogramming capabilities it is not possible to protect the token within the same R session.</p>
-<p><strong><em>NEVER</em></strong> run untrusted code using an action trigger that gives write access to your repository like “pull_request_target”. See this article about <a href="https://securitylab.github.com/research/github-actions-preventing-pwn-requests/" class="external-link"><em>pwn requests</em></a> for more in-depth information.</p>
+<p>If you have to log untrusted user input (like commit messages, issue
+titles …) you can prevent the execution of workflow commands using
+<code>octo_stop_commands</code>.Internally the function creates a token
+based on cryptographically secure random bytes from {openssl}, this
+makes it impossible for a third party to guess the token before
+submitting their changes (e.g. to a PR) to enable the execution of their
+untrusted commands. This is not intended to protect against other R
+code. Due to R’s metaprogramming capabilities it is not possible to
+protect the token within the same R session.</p>
+<p><strong><em>NEVER</em></strong> run untrusted code using an action
+trigger that gives write access to your repository like
+“pull_request_target”. See this article about <a href="https://securitylab.github.com/research/github-actions-preventing-pwn-requests/" class="external-link"><em>pwn
+requests</em></a> for more in-depth information.</p>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
 <li id="fn1"><p>Annotations only work on pull requests.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>The only exception is <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#sending-values-to-the-pre-and-post-actions" class="external-link"><code>save-state</code></a> which can only be used in JavaScript actions.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>The only exception is <a href="https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#sending-values-to-the-pre-and-post-actions" class="external-link"><code>save-state</code></a>
+which can only be used in JavaScript actions.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -152,7 +197,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

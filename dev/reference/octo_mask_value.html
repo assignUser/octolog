@@ -66,9 +66,9 @@ but very important.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">octo_mask_value</span><span class="op">(</span><span class="va">value</span><span class="op">)</span>
-
-<span class="fu">octo_mask_envvar</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">octo_mask_value</span><span class="op">(</span><span class="va">value</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">octo_mask_envvar</span><span class="op">(</span><span class="va">name</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -100,22 +100,22 @@ and
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">octo_mask_value</span><span class="op">(</span><span class="st">"secret_token123"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">octo_mask_value</span><span class="op">(</span><span class="st">"secret_token123"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ::add-mask::secret_token123</span>
-<span class="r-in"><span class="co"># The mask takes effect in the NEXT step</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Current token: secret_token123"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># The mask takes effect in the NEXT step</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Current token: secret_token123"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "Current token: secret_token123"</span>
-<span class="r-in"><span class="co"># Will log as</span></span>
-<span class="r-in"><span class="co"># "Current token:***"</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span> <span class="op">=</span> <span class="st">"007"</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">octo_mask_envvar</span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># Will log as</span></span></span>
+<span class="r-in"><span><span class="co"># "Current token:***"</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span> <span class="op">=</span> <span class="st">"007"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">octo_mask_envvar</span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> ::add-mask::$SECRET_TOKEN</span>
-<span class="r-in"><span class="co"># The mask takes effect in the NEXT step</span></span>
-<span class="r-in"><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span><span class="op">)</span><span class="op">)</span></span>
+<span class="r-in"><span><span class="co"># The mask takes effect in the NEXT step</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"SECRET_TOKEN"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] "007"</span>
-<span class="r-in"><span class="co"># Will log as</span></span>
-<span class="r-in"><span class="co"># "***"</span></span>
+<span class="r-in"><span><span class="co"># Will log as</span></span></span>
+<span class="r-in"><span><span class="co"># "***"</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -130,7 +130,7 @@ and
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.5.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
